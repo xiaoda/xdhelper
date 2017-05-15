@@ -16,6 +16,16 @@ let webpackConfig = {
   module: {
     rules: [
       {
+        enforce: 'pre',
+        test: /\.js?$/,
+        include: [path.resolve(__dirname, 'src')],
+        loader: 'eslint-loader',
+        options: {
+          failOnWarning: true,
+          failOnError: true,
+        }
+      },
+      {
         test: /\.js?$/,
         include: [path.resolve(__dirname, 'src')],
         loader: 'babel-loader',

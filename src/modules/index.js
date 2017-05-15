@@ -1,5 +1,4 @@
 class XdModule {
-
   constructor (funcs = {}) {
     this.funcs = funcs
     this.outputModule = {}
@@ -50,7 +49,6 @@ class XdModule {
   freezeFuncs () {
     Object.freeze(this.outputModule)
   }
-
 }
 
 module.exports = XdModule

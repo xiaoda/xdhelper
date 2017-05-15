@@ -11,11 +11,12 @@ const xdUrl = new XdModule({
     Object.keys(data).forEach((key, index) => {
       queries.push(`${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
     })
-    return queries.join("&")
+    return queries.join('&')
   },
 
   getQueryParams (url = window.location.search) {
-    let urlArray, resultObj = {}
+    let urlArray
+    let resultObj = {}
     if (!url) urlArray = []
     else if (url.charAt(0) === '?') urlArray = url.slice(1).split('&')
     else urlArray = url.split('&')
@@ -24,7 +25,7 @@ const xdUrl = new XdModule({
       resultObj[array[0]] = array[1]
     })
     return resultObj
-  },
+  }
 
 })
 

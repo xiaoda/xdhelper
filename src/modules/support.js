@@ -8,7 +8,7 @@ const xdSupport = new XdModule({
 
   sseSupport () {
     return window.EventSource !== undefined
-  },
+  }
 
 })
 

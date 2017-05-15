@@ -16,10 +16,18 @@
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.24.0",
+    "babel-eslint": "^7.2.3",
     "babel-loader": "^6.4.1",
     "babel-preset-latest": "^6.24.0",
     "babel-preset-stage-1": "^6.22.0",
     "copy-webpack-plugin": "^4.0.1",
+    "eslint": "^3.19.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-html": "^2.0.3",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
     "glob": "^7.1.1",
     "webpack": "^2.3.2",
     "webpack-dev-server": "^2.4.2"

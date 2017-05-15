@@ -20,7 +20,7 @@ const config = {
 
   showErr () {
     return this.isDevelop() && !!SHOW_ERROR
-  },
+  }
 
 }
 

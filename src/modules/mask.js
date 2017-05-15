@@ -21,7 +21,9 @@ const xdMask = new XdModule({
 
   idNumMask (id) {
     if (!id) return null
-    let start = 3, end = -4, reduce = 7
+    let start = 3
+    let end = -4
+    let reduce = 7
     if (id.length > 4 && id.length <= 8) {
       start = 1
       end = -2
@@ -30,7 +32,7 @@ const xdMask = new XdModule({
       return `${id.slice(0, 1)}${'*'.repeat(id.length - 1)}`
     }
     return `${id.slice(0, start)}${'*'.repeat(id.length - reduce)}${id.slice(end)}`
-  },
+  }
 
 })
 

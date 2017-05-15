@@ -43,7 +43,7 @@ const xdType = new XdModule({
 
   toStr (obj) {
     return obj.toString()
-  },
+  }
 
 })
 

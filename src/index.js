@@ -13,7 +13,7 @@ const xd = {
   ...xdMath,
   ...xdSupport,
   ...xdType,
-  ...xdUrl,
+  ...xdUrl
 }
 
 Object.freeze(xd)

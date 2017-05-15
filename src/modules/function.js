@@ -9,7 +9,7 @@ const xdFunc = new XdModule({
 
   safeExecFunc (func, ...args) {
     xdType.isFunc(func) && func(...args)
-  },
+  }
 
 })
 

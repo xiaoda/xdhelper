@@ -8,7 +8,7 @@ const xdArray = new XdModule({
 
   toggleArrItem (array, item) {
     let index = array.indexOf(item)
-    if(index === -1) array.push(item)
+    if (index === -1) array.push(item)
     else array.splice(index, 1)
     return array
   },
@@ -16,7 +16,7 @@ const xdArray = new XdModule({
   addArrUniqItem (array, item) {
     if (!array.includes(item)) array.push(item)
     return array
-  },
+  }
 
 })
 
