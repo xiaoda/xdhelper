@@ -1,0 +1,27 @@
+{
+  "name": "XDhelper",
+  "version": "1.0.0",
+  "description": "js helper",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV='develop' webpack-dev-server --config webpack.config.js",
+    "build": "NODE_ENV='production' webpack --config webpack.config.js",
+    "clear": "rm -rf ./dist"
+  },
+  "keywords": [
+    "js",
+    "helper"
+  ],
+  "author": "xiaoda",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-preset-latest": "^6.24.0",
+    "babel-preset-stage-1": "^6.22.0",
+    "copy-webpack-plugin": "^4.0.1",
+    "glob": "^7.1.1",
+    "webpack": "^2.3.2",
+    "webpack-dev-server": "^2.4.2"
+  }
+}
