@@ -1,12 +1,13 @@
-import XdModule from './'
-
 /**
  * 对象模块
+ * @flow
  */
+
+import XdModule from './'
 
 const xdObject = new XdModule({
 
-  clone (obj) {
+  clone (obj: object): string {
     return JSON.parse(JSON.stringify(obj))
   }
 

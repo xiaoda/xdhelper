@@ -1,12 +1,13 @@
-import XdModule from './'
-
 /**
  * 支持模块
+ * @flow
  */
+
+import XdModule from './'
 
 const xdSupport = new XdModule({
 
-  sseSupport () {
+  sseSupport (): boolean {
     return window.EventSource !== undefined
   }
 

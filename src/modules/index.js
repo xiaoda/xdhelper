@@ -1,5 +1,10 @@
+/**
+ * 构造类
+ * @flow
+ */
+
 class XdModule {
-  constructor (funcs = {}) {
+  constructor (funcs: object = {}): object {
     this.funcs = funcs
     this.outputModule = {}
 
@@ -10,12 +15,12 @@ class XdModule {
   }
 
   injectFuncs () {
-    Object.keys(this.funcs).forEach((key, index) => {
-      this['outputModule'][key] = (...args) => {
+    Object.keys(this.funcs).forEach((key: number, index: string) => {
+      this['outputModule'][key] = (...args: array): null => {
         if (args[0] === undefined) args = []
-        return (() => {
+        return ((): mixed => {
           try {
-            let result = this['funcs'][key].apply(this.outputModule, args)
+            let result = this['funcs'][key].apply(this.outputModule, JSON.parse(JSON.stringify(args)))
             if (config.showTrace()) {
               let infoMsg = [`[trace] ${key}`]
               if (args.length) {

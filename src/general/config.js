@@ -1,3 +1,8 @@
+/**
+ * @flow
+ * 配置文件
+ */
+
 const ENV = process.env.NODE_ENV
 const DEVELOP = 'develop'
 const PRODUCTION = 'production'
@@ -6,19 +11,19 @@ const SHOW_ERROR = true
 
 const config = {
 
-  isDevelop () {
+  isDevelop (): boolean {
     return ENV === DEVELOP
   },
 
-  isNotDevelop () {
+  isNotDevelop (): boolean {
     return ENV !== DEVELOP
   },
 
-  showTrace () {
+  showTrace (): boolean {
     return this.isDevelop() && !!SHOW_TRACE
   },
 
-  showErr () {
+  showErr (): boolean {
     return this.isDevelop() && !!SHOW_ERROR
   }
 

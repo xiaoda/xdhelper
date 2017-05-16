@@ -30,7 +30,7 @@ let webpackConfig = {
         include: [path.resolve(__dirname, 'src')],
         loader: 'babel-loader',
         options: {
-          presets: ['latest', 'stage-1']
+          presets: ['latest', 'stage-1', 'flow']
         }
       }
     ]

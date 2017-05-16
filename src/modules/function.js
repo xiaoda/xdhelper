@@ -1,14 +1,20 @@
+/**
+ * 函数模块
+ * @flow
+ */
+
 import XdModule from './'
 import xdType from './type'
 
-/**
- * 函数模块
- */
-
 const xdFunc = new XdModule({
 
-  safeExecFunc (func, ...args) {
-    xdType.isFunc(func) && func(...args)
+  safeExecFunc (func: string, ...args: array): boolean {
+    if (xdType.isFunc(func)) {
+      func(...args)
+      return true
+    } else {
+      return false
+    }
   }
 
 })

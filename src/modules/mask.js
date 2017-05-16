@@ -1,26 +1,27 @@
+/**
+ * 格式模块
+ * @flow
+ */
+
 import XdModule from './'
 import xdType from './type'
 
-/**
- * 格式模块
- */
-
 const xdMask = new XdModule({
 
-  mobileMask (mobile) {
+  mobileMask (mobile: string | number): string {
     mobile = xdType.toStr(mobile)
     return `${mobile.slice(0, 3)}${'*'.repeat(4)}${mobile.slice(-4)}`
   },
 
-  emailMask (email) {
+  emailMask (email: string): string {
     let emailArray = email.split('@')
     if (emailArray[0].length > 4) email = `${emailArray[0].slice(0, -4)}****@${emailArray[1]}`
     else email = `${emailArray[0].charAt(0)}${'*'.repeat(emailArray[0].length - 1)}@${emailArray[1]}`
     return email
   },
 
-  idNumMask (id) {
-    if (!id) return null
+  idNumMask (id: string | number): string {
+    id = xdType.toStr(id)
     let start = 3
     let end = -4
     let reduce = 7

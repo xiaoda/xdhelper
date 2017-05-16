@@ -1,13 +1,14 @@
-import XdModule from './'
-
 /**
  * 类型模块
+ * @flow
  */
+
+import XdModule from './'
 
 const xdType = new XdModule({
 
   /* 通用类型判断 */
-  getType (obj) {
+  getType (obj: mixed): string {
     if (Number.isNaN(obj)) return 'NaN'
     if (typeof obj === 'number' && !Number.isFinite(obj)) return 'Infinity'
     if (obj === null) return String(obj)
@@ -16,32 +17,32 @@ const xdType = new XdModule({
   },
 
   /* 类型判断 */
-  isStr (obj) {
+  isStr (obj: mixed): boolean {
     return this.getType(obj) === 'string'
   },
 
-  isNum (obj) {
+  isNum (obj: mixed): boolean {
     return this.getType(obj) === 'number'
   },
 
-  isArr (obj) {
+  isArr (obj: mixed): boolean {
     return this.getType(obj) === 'array'
   },
 
-  isObj (obj) {
+  isObj (obj: mixed): boolean {
     return this.getType(obj) === 'object'
   },
 
-  isFunc (obj) {
+  isFunc (obj: mixed): boolean {
     return this.getType(obj) === 'function'
   },
 
   /* 类型转换 */
-  toNum (obj) {
+  toNum (obj: mixed): number {
     return Number(obj)
   },
 
-  toStr (obj) {
+  toStr (obj: mixed): string {
     return obj.toString()
   }
 
