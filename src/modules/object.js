@@ -1,14 +1,19 @@
 /**
  * 对象模块
+ *
  * @flow
  */
 
 import XdModule from './'
 
-const xdObject = new XdModule({
+let xdObject = new XdModule({
 
   clone (obj: object): string {
     return JSON.parse(JSON.stringify(obj))
+  },
+
+  isObjEqual (objA: object, objB: object): boolean {
+    return JSON.stringify(objA) === JSON.stringify(objB)
   }
 
 })

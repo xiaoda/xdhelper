@@ -1,11 +1,12 @@
 /**
  * 类型模块
+ *
  * @flow
  */
 
 import XdModule from './'
 
-const xdType = new XdModule({
+let xdType = new XdModule({
 
   /* 通用类型判断 */
   getType (obj: mixed): string {
@@ -35,6 +36,10 @@ const xdType = new XdModule({
 
   isFunc (obj: mixed): boolean {
     return this.getType(obj) === 'function'
+  },
+
+  isRegExp (obj: mixed): boolean {
+    return obj instanceof RegExp
   },
 
   /* 类型转换 */

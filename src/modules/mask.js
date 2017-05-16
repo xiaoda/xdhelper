@@ -1,12 +1,13 @@
 /**
  * 格式模块
+ *
  * @flow
  */
 
 import XdModule from './'
 import xdType from './type'
 
-const xdMask = new XdModule({
+let xdMask = new XdModule({
 
   mobileMask (mobile: string | number): string {
     mobile = xdType.toStr(mobile)

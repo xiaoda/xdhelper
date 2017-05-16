@@ -1,5 +1,6 @@
 /**
  * 算术模块
+ *
  * @flow
  */
 
@@ -9,7 +10,7 @@ import xdType from './type'
 const NUM_1000 = 1000
 const NUM_1024 = 1024
 
-const xdMath = new XdModule({
+let xdMath = new XdModule({
 
   multiply1k (num: number | string, times: number | string = 1): number {
     return xdType.toNum(num) * Math.pow(NUM_1000, xdType.toNum(times))

@@ -1,11 +1,12 @@
 /**
  * url模块
+ *
  * @flow
  */
 
 import XdModule from './'
 
-const xdUrl = new XdModule({
+let xdUrl = new XdModule({
 
   buildQueryStr (data: object): string {
     let queries = []

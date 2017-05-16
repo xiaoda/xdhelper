@@ -1,3 +1,3 @@
 import xd from './'
 
-xd.toggleArrItem([], 1)
+xd.isMobile()

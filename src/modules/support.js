@@ -1,11 +1,12 @@
 /**
  * 支持模块
+ *
  * @flow
  */
 
 import XdModule from './'
 
-const xdSupport = new XdModule({
+let xdSupport = new XdModule({
 
   sseSupport (): boolean {
     return window.EventSource !== undefined

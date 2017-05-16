@@ -1,6 +1,7 @@
 /**
- * @flow
  * 配置文件
+ *
+ * @flow
  */
 
 const ENV = process.env.NODE_ENV
@@ -9,7 +10,7 @@ const PRODUCTION = 'production'
 const SHOW_TRACE = true
 const SHOW_ERROR = true
 
-const config = {
+let config = {
 
   isDevelop (): boolean {
     return ENV === DEVELOP
