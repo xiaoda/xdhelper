@@ -9,6 +9,7 @@ import xdDevice from './modules/device'
 import xdFunction from './modules/function'
 import xdMask from './modules/mask'
 import xdMath from './modules/math'
+import xdObject from './modules/object'
 import xdSupport from './modules/support'
 import xdType from './modules/type'
 import xdUrl from './modules/url'
@@ -19,6 +20,7 @@ let xd = {
   ...xdFunction,
   ...xdMask,
   ...xdMath,
+  ...xdObject,
   ...xdSupport,
   ...xdType,
   ...xdUrl

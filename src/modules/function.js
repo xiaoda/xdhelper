@@ -7,9 +7,9 @@
 import XdModule from './'
 import xdType from './type'
 
-let xdFunc = new XdModule({
+let xdFunction = new XdModule({
 
-  safeExecFunc (func: string, ...args: array): boolean {
+  safelyExecFunc (func: mixed, ...args: array): boolean {
     if (xdType.isFunc(func)) {
       func(...args)
       return true
@@ -20,4 +20,4 @@ let xdFunc = new XdModule({
 
 })
 
-module.exports = xdFunc
+module.exports = xdFunction

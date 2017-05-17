@@ -1,0 +1,8 @@
+require('./modules/array')
+require('./modules/device')
+require('./modules/function')
+require('./modules/mask')
+require('./modules/math')
+require('./modules/object')
+require('./modules/type')
+require('./modules/url')

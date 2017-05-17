@@ -4,8 +4,9 @@
   "description": "js helper",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV='develop' webpack-dev-server --config webpack.config.js",
-    "build": "NODE_ENV='production' webpack --config webpack.config.js",
+    "start": "NODE_ENV='develop' webpack-dev-server --config webpack.dev.config.js",
+    "build": "NODE_ENV='production' webpack --config webpack.build.config.js",
+    "test": "mocha",
     "clear": "rm -rf ./dist"
   },
   "keywords": [
@@ -31,6 +32,7 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "glob": "^7.1.1",
+    "mocha": "^3.4.1",
     "webpack": "^2.3.2",
     "webpack-dev-server": "^2.4.2"
   }
