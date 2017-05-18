@@ -1,6 +1,6 @@
 {
   "name": "xdhelper",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "js helper",
   "main": "dist/index.js",
   "files": [
