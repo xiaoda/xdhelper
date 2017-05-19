@@ -5,9 +5,9 @@
   "scripts": {
     "start": "NODE_ENV='develop' webpack-dev-server --config webpack.dev.config.js",
     "build": "NODE_ENV='production' webpack --config webpack.build.config.js",
-    "test": "mocha",
     "clear": "rm -rf ./dist",
-    "prepub": "npm run clear && npm run build && npm run test",
+    "test": "npm run clear && npm run build && mocha",
+    "prepub": "npm run test",
     "pub": "npm version patch && /bin/cp ./package.json ./dist/package.json && cd ./dist && npm publish"
   },
   "repository": {
