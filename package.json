@@ -9,7 +9,7 @@
     "test": "mocha",
     "copypackfiles": "/bin/cp ./package.json ./dist/package.json && /bin/cp ./README.md ./dist/README.md",
     "prepub": "npm run clear && npm run build && npm run test",
-    "pub": "npm version patch && npm run copypackfiles && cd ./dist && npm publish"
+    "pub": "npm version patch && npm run copypackfiles && git add . && git ci -m 'publish new version' && cd ./dist && npm publish"
   },
   "repository": {
     "type": "git",
