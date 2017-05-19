@@ -4,9 +4,9 @@
   "description": "js helper",
   "scripts": {
     "start": "NODE_ENV='develop' webpack-dev-server --config webpack.dev.config.js",
-    "build": "NODE_ENV='production' webpack --config webpack.build.config.js && npm run copypackfiles",
+    "build": "NODE_ENV='production' webpack --config webpack.build.config.js",
     "pub": "npm version patch && cd ./dist && npm publish",
-    "beforepub": "npm run clear && npm run build && npm run test",
+    "prepub": "npm run clear && npm run build && npm run copypackfiles && npm run test",
     "copypackfiles": "/bin/cp ./package.json ./dist/package.json && /bin/cp ./README.md ./dist/README.md",
     "test": "mocha",
     "clear": "rm -rf ./dist"
