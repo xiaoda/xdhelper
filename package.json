@@ -7,8 +7,9 @@
     "build": "NODE_ENV='production' webpack --config webpack.build.config.js",
     "clear": "rm -rf ./dist",
     "test": "mocha",
-    "prepub": "npm run clear && npm run build &&npm run test",
-    "pub": "npm version patch && /bin/cp ./package.json ./dist/package.json && cd ./dist && npm publish"
+    "copypackfiles": "/bin/cp ./package.json ./dist/package.json && /bin/cp ./README.md ./dist/README.md",
+    "prepub": "npm run clear && npm run build && npm run test",
+    "pub": "npm version patch && npm run copypackfiles && cd ./dist && npm publish"
   },
   "repository": {
     "type": "git",
