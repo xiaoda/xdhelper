@@ -4,12 +4,12 @@
   "description": "js helper",
   "scripts": {
     "start": "NODE_ENV='develop' webpack-dev-server --config webpack.dev.config.js",
-    "build": "NODE_ENV='production' webpack --config webpack.build.config.js",
-    "clear": "rm -rf ./dist",
-    "test": "mocha",
+    "build": "NODE_ENV='production' webpack --config webpack.build.config.js && npm run copypackfiles",
+    "pub": "npm version patch && cd ./dist && npm publish",
+    "beforepub": "npm run clear && npm run build && npm run test",
     "copypackfiles": "/bin/cp ./package.json ./dist/package.json && /bin/cp ./README.md ./dist/README.md",
-    "prepub": "npm run clear && npm run build && npm run test",
-    "pub": "npm version patch && npm run copypackfiles && cd ./dist && npm publish"
+    "test": "mocha",
+    "clear": "rm -rf ./dist"
   },
   "repository": {
     "type": "git",
