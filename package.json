@@ -2,15 +2,17 @@
   "name": "xdhelper",
   "version": "0.0.3",
   "description": "js helper",
-  "main": "dist/index.js",
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "start": "NODE_ENV='develop' webpack-dev-server --config webpack.dev.config.js",
     "build": "NODE_ENV='production' webpack --config webpack.build.config.js",
     "test": "mocha",
-    "clear": "rm -rf ./dist"
+    "clear": "rm -rf ./dist",
+    "prepub": "npm run clear && npm run build && npm run test",
+    "pub": "npm version patch && /bin/cp ./package.json ./dist/package.json && cd ./dist && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiaoda/xdhelper.git"
   },
   "keywords": [
     "js",
