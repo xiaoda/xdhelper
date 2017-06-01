@@ -1,9 +1,9 @@
 const path = require('path')
 const webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const defaultConfig = require('./webpack.default.config')
+const defaultConf = require('./webpack.default.config')
 
-let webpackConfig = {
+let webpackConf = {
   entry: {
     index: './public/index.js'
   },
@@ -13,8 +13,8 @@ let webpackConfig = {
   },
   module: {
     rules: [
-      defaultConfig.module.rules.srcEslint,
-      defaultConfig.module.rules.srcBabel,
+      defaultConf.module.rules.srcEslint,
+      defaultConf.module.rules.srcBabel,
       {
         test: /\.js?$/,
         include: [path.resolve(__dirname, 'public')],
@@ -25,7 +25,7 @@ let webpackConfig = {
       }
     ]
   },
-  resolve: defaultConfig.resolve,
+  resolve: defaultConf.resolve,
   devtool: 'source-map',
   context: __dirname,
   stats: 'errors-only',
@@ -38,8 +38,8 @@ let webpackConfig = {
     noInfo: true
   },
   plugins: [
-    defaultConfig.plugins.define,
-    defaultConfig.plugins.provide,
+    defaultConf.plugins.define,
+    defaultConf.plugins.provide,
     new CopyWebpackPlugin([
       {from: './public/index.html', to: './'}
     ], {
@@ -48,4 +48,4 @@ let webpackConfig = {
   ]
 }
 
-module.exports = webpackConfig
+module.exports = webpackConf
