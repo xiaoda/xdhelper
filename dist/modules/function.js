@@ -175,24 +175,24 @@ module.exports = XdModule;
  * 
  */
 
-var ENV = "production";
-var DEVELOP = 'develop';
-var PRODUCTION = 'production';
+var ENV = "prod";
+var DEV = 'dev';
+var PROD = 'prod';
 var SHOW_TRACE = true;
 var SHOW_ERROR = true;
 
 var config = {
-  isDevelop: function isDevelop() {
-    return ENV === DEVELOP;
+  isDev: function isDev() {
+    return ENV === DEV;
   },
-  isNotDevelop: function isNotDevelop() {
-    return ENV !== DEVELOP;
+  isNotDev: function isNotDev() {
+    return ENV !== DEV;
   },
   showTrace: function showTrace() {
-    return this.isDevelop() && !!SHOW_TRACE;
+    return this.isDev() && !!SHOW_TRACE;
   },
   showErr: function showErr() {
-    return this.isDevelop() && !!SHOW_ERROR;
+    return this.isDev() && !!SHOW_ERROR;
   }
 };
 
@@ -286,7 +286,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
                                                                                                                                                                                                      */
 
 var xdFunction = new _2.default({
-  safelyExecFunc: function safelyExecFunc(func) {
+  safelyRunFunc: function safelyRunFunc(func) {
     if (_type2.default.isFunc(func)) {
       for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
         args[_key - 1] = arguments[_key];

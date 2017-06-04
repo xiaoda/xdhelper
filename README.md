@@ -17,29 +17,32 @@ JS helper functions. Under development. Apis will change.
 > 获取用户代理信息
 
 [isMobile](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L15) (userAgent: string = this.getUserAgent()): boolean
-> 判断是否移动端（手机端）
+> 判断是否移动设备
 
-[isPad](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L19) (userAgent: string = this.getUserAgent()): boolean
+[isPhone](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L19) (userAgent: string = this.getUserAgent()): boolean
+> 判断是否手机
+
+[isPad](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L23) (userAgent: string = this.getUserAgent()): boolean
 > 判断是否平板电脑
 
-[isAndroid](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L23) (userAgent: string = this.getUserAgent()): boolean
+[isAndroid](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L27) (userAgent: string = this.getUserAgent()): boolean
 > 判断是否 Android 系统
 
-[isiOS](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L27) (userAgent: string = this.getUserAgent()): boolean
+[isiOS](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L31) (userAgent: string = this.getUserAgent()): boolean
 > 判断是否 iOS 系统
 
-[isiPhone](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L31) (userAgent: string = this.getUserAgent()): boolean
+[isiPhone](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L35) (userAgent: string = this.getUserAgent()): boolean
 > 判断是否 iPhone
 
-[isiPad](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L35) (userAgent: string = this.getUserAgent()): boolean
+[isiPad](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L39) (userAgent: string = this.getUserAgent()): boolean
 > 判断是否 iPad
 
-[isiPod](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L39) (userAgent: string = this.getUserAgent()): boolean
+[isiPod](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L43) (userAgent: string = this.getUserAgent()): boolean
 > 判断是否 iPod
 
 ### function（函数）
 
-[safelyExecFunc](https://github.com/xiaoda/xdhelper/blob/master/src/modules/function.js#L12) (func: mixed, ...args: array): boolean
+[safelyRunFunc](https://github.com/xiaoda/xdhelper/blob/master/src/modules/function.js#L12) (func: mixed, ...args: array): boolean
 > 安全执行函数
 
 ### mask（模糊格式）

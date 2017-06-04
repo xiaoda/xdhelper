@@ -5,13 +5,13 @@ describe('xdFunction', function () {
 
   describe('#safeExecFunc()', function () {
     it('legal function', function (done) {
-      xd.safelyExecFunc((param) => {
+      xd.safelyRunFunc((param) => {
         if (param === 1) done()
       }, 1)
     })
     it('illegal function', function () {
       assert.equal(
-        xd.safelyExecFunc('string'),
+        xd.safelyRunFunc('string'),
         false
       )
     })

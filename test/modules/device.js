@@ -12,6 +12,7 @@ let testData = {
     userAgent: IPHONE_USER_AGENT,
     expect: {
       isMobile: true,
+      isPhone: true,
       isPad: false,
       isAndroid: false,
       isiOS: true,
@@ -23,7 +24,8 @@ let testData = {
   iPad: {
     userAgent: IPAD_USER_AGENT,
     expect: {
-      isMobile: false,
+      isMobile: true,
+      isPhone: false,
       isPad: true,
       isAndroid: false,
       isiOS: true,
@@ -36,6 +38,7 @@ let testData = {
     userAgent: IPOD_USER_AGENT,
     expect: {
       isMobile: true,
+      isPhone: true,
       isPad: false,
       isAndroid: false,
       isiOS: true,
@@ -48,6 +51,7 @@ let testData = {
     userAgent: ANDROID_USER_AGENT,
     expect: {
       isMobile: true,
+      isPhone: true,
       isPad: false,
       isAndroid: true,
       isiOS: false,
@@ -60,6 +64,7 @@ let testData = {
     userAgent: CHROME_USER_AGENT,
     expect: {
       isMobile: false,
+      isPhone: false,
       isPad: false,
       isAndroid: false,
       isiOS: false,

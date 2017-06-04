@@ -5,27 +5,27 @@
  */
 
 const ENV = process.env.NODE_ENV
-const DEVELOP = 'develop'
-const PRODUCTION = 'production'
+const DEV = 'dev'
+const PROD = 'prod'
 const SHOW_TRACE = true
 const SHOW_ERROR = true
 
 let config = {
 
-  isDevelop (): boolean {
-    return ENV === DEVELOP
+  isDev (): boolean {
+    return ENV === DEV
   },
 
-  isNotDevelop (): boolean {
-    return ENV !== DEVELOP
+  isNotDev (): boolean {
+    return ENV !== DEV
   },
 
   showTrace (): boolean {
-    return this.isDevelop() && !!SHOW_TRACE
+    return this.isDev() && !!SHOW_TRACE
   },
 
   showErr (): boolean {
-    return this.isDevelop() && !!SHOW_ERROR
+    return this.isDev() && !!SHOW_ERROR
   }
 
 }

@@ -175,24 +175,24 @@ module.exports = XdModule;
  * 
  */
 
-var ENV = "production";
-var DEVELOP = 'develop';
-var PRODUCTION = 'production';
+var ENV = "prod";
+var DEV = 'dev';
+var PROD = 'prod';
 var SHOW_TRACE = true;
 var SHOW_ERROR = true;
 
 var config = {
-  isDevelop: function isDevelop() {
-    return ENV === DEVELOP;
+  isDev: function isDev() {
+    return ENV === DEV;
   },
-  isNotDevelop: function isNotDevelop() {
-    return ENV !== DEVELOP;
+  isNotDev: function isNotDev() {
+    return ENV !== DEV;
   },
   showTrace: function showTrace() {
-    return this.isDevelop() && !!SHOW_TRACE;
+    return this.isDev() && !!SHOW_TRACE;
   },
   showErr: function showErr() {
-    return this.isDevelop() && !!SHOW_ERROR;
+    return this.isDev() && !!SHOW_ERROR;
   }
 };
 
@@ -219,6 +219,11 @@ var xdDevice = new _2.default({
     return window.navigator.userAgent;
   },
   isMobile: function isMobile() {
+    var userAgent = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.getUserAgent();
+
+    return this.isiOS(userAgent) || this.isAndroid(userAgent);
+  },
+  isPhone: function isPhone() {
     var userAgent = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.getUserAgent();
 
     return (this.isiOS(userAgent) || this.isAndroid(userAgent)) && !this.isPad(userAgent);
