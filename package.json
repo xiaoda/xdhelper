@@ -5,6 +5,7 @@
   "scripts": {
     "start": "NODE_ENV='dev' webpack-dev-server --config webpack.dev.config.js",
     "build": "NODE_ENV='prod' webpack --config webpack.build.config.js",
+    "prebuild": "npm run clear",
     "clear": "rm -rf dist",
     "test": "node_modules/mocha/bin/mocha",
     "pub": "npm version patch && npm run copypackfiles && cd dist && npm publish",
