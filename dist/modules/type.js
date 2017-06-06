@@ -244,7 +244,19 @@ var xdType = new _2.default({
     return this.getType(obj) === 'function';
   },
   isRegExp: function isRegExp(obj) {
-    return obj instanceof RegExp;
+    return this.getType(obj) === 'regexp';
+  },
+  isBoolean: function isBoolean(obj) {
+    return this.getType(obj) === 'boolean';
+  },
+  isDate: function isDate(obj) {
+    return this.getType(obj) === 'date';
+  },
+  isNull: function isNull(obj) {
+    return this.getType(obj) === 'null';
+  },
+  isUndefined: function isUndefined(obj) {
+    return this.getType(obj) === 'undefined';
   },
 
 

@@ -1,15 +1,22 @@
 # xdhelper [![Build Status](https://travis-ci.org/xiaoda/xdhelper.svg?branch=master)](https://travis-ci.org/xiaoda/xdhelper)
-JS helper functions. Under development. Apis will change.
+
+Focus on operations & judgement, fundamental functions. Under development. Apis will change.
 
 ## modules
 
 ### array（数组）
 
-[toggleArrItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L13) (array: array, item: mixed): array
-> 数组切换元素
+[isArrEmpty](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L13) (arr: array): boolean
+> 判断数组是否为空
 
-[addArrUniqItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L20) (array: array, item: mixed): array
+[addArrUniqItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L17) (array: array, item: mixed): array
 > 数组添加唯一元素
+
+[removeArrItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L22) (array: array, item: mixed): array
+> 数组安全删除元素
+
+[toggleArrItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L29) (array: array, item: mixed): array
+> 数组切换元素
 
 ### device（设备）
 
@@ -42,7 +49,7 @@ JS helper functions. Under development. Apis will change.
 
 ### function（函数）
 
-[safelyRunFunc](https://github.com/xiaoda/xdhelper/blob/master/src/modules/function.js#L12) (func: mixed, ...args: array): boolean
+[execFunc](https://github.com/xiaoda/xdhelper/blob/master/src/modules/function.js#L12) (func: mixed, ...args: array): boolean
 > 安全执行函数
 
 ### mask（模糊格式）
@@ -75,11 +82,17 @@ JS helper functions. Under development. Apis will change.
 
 ### object（对象）
 
-[clone](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L11) (obj: object): string
+[isObjEmpty](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L11) (obj: object): boolean
+> 判断对象是否为空
+
+[isObjEqual](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L16) (objA: object, objB: object): boolean
+> 判断两个对象是否完全相等（包括属性顺序）
+
+[clone](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L20) (obj: object): string
 > 复制对象（非引用传值）
 
-[isObjEqual](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L15) (objA: object, objB: object): boolean
-> 判断两个对象是否完全相等（包括属性顺序）
+[loopObj](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L24) (obj: object, callback: mixed): boolean
+> 遍历对象
 
 ### support（支持）
 
@@ -107,12 +120,24 @@ JS helper functions. Under development. Apis will change.
 > 判断是否函数
 
 [isRegExp](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L41) (obj: mixed): boolean
-> 判断是否正则
+> 判断是否正则表达式
 
-[toNum](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L46) (obj: mixed): number
+[isBoolean](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L45) (obj: mixed): boolean
+> 判断是否布尔值
+
+[isDate](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L49) (obj: mixed): boolean
+> 判断是否日期
+
+[isNull](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L53) (obj: mixed): boolean
+> 判断是否 null
+
+[isUndefined](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L57) (obj: mixed): boolean
+> 判断是否 undefined
+
+[toNum](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L62) (obj: mixed): number
 > 转换为数字类型
 
-[toStr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L50) (obj: mixed): string
+[toStr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L66) (obj: mixed): string
 > 转换为字符串类型
 
 ### url（网址）

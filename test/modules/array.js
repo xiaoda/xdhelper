@@ -3,17 +3,17 @@ let xd = require('../../dist')
 
 describe('xdArray', function () {
 
-  describe('#toggleArrItem()', function () {
-    it('add item', function () {
+  describe('#isArrEmpty()', function () {
+    it('empty array', function () {
       assert.equal(
-        JSON.stringify(xd.toggleArrItem([1, 2], 3)),
-        JSON.stringify([1, 2, 3])
+        xd.isArrEmpty([]),
+        true
       )
     })
-    it('remove item', function () {
+    it('not empty array', function () {
       assert.equal(
-        JSON.stringify(xd.toggleArrItem([1, 2, 3], 3)),
-        JSON.stringify([1, 2])
+        xd.isArrEmpty([1, 2]),
+        false
       )
     })
   })
@@ -27,8 +27,38 @@ describe('xdArray', function () {
     })
     it('not add item', function () {
       assert.equal(
-        JSON.stringify(xd.addArrUniqItem([1, 2, 3], 3)),
+        JSON.stringify(xd.addArrUniqItem([1, 2], 2)),
+        JSON.stringify([1, 2])
+      )
+    })
+  })
+
+  describe('#removeArrItem()', function () {
+    it('remove existent item', function () {
+      assert.equal(
+        JSON.stringify(xd.removeArrItem([1, 2], 2)),
+        JSON.stringify([1])
+      )
+    })
+    it('remove nonexistent item', function () {
+      assert.equal(
+        JSON.stringify(xd.removeArrItem([1, 2], 3)),
+        JSON.stringify([1, 2])
+      )
+    })
+  })
+
+  describe('#toggleArrItem()', function () {
+    it('add item', function () {
+      assert.equal(
+        JSON.stringify(xd.toggleArrItem([1, 2], 3)),
         JSON.stringify([1, 2, 3])
+      )
+    })
+    it('remove item', function () {
+      assert.equal(
+        JSON.stringify(xd.toggleArrItem([1, 2, 3], 3)),
+        JSON.stringify([1, 2])
       )
     })
   })

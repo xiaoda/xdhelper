@@ -1,3 +1,5 @@
 import xd from '../src'
+import xdArray from '../src/modules/array'
 
-xd.toggleArrItem([1, 2], 3)
+console.log('xd:', xd)
+console.log('xdArray:', xdArray)

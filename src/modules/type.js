@@ -39,7 +39,23 @@ let xdType = new XdModule({
   },
 
   isRegExp (obj: mixed): boolean {
-    return obj instanceof RegExp
+    return this.getType(obj) === 'regexp'
+  },
+
+  isBoolean (obj: mixed): boolean {
+    return this.getType(obj) === 'boolean'
+  },
+
+  isDate (obj: mixed): boolean {
+    return this.getType(obj) === 'date'
+  },
+
+  isNull (obj: mixed): boolean {
+    return this.getType(obj) === 'null'
+  },
+
+  isUndefined (obj: mixed): boolean {
+    return this.getType(obj) === 'undefined'
   },
 
   /* 类型转换 */

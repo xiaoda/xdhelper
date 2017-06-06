@@ -244,7 +244,19 @@ var xdType = new _2.default({
     return this.getType(obj) === 'function';
   },
   isRegExp: function isRegExp(obj) {
-    return obj instanceof RegExp;
+    return this.getType(obj) === 'regexp';
+  },
+  isBoolean: function isBoolean(obj) {
+    return this.getType(obj) === 'boolean';
+  },
+  isDate: function isDate(obj) {
+    return this.getType(obj) === 'date';
+  },
+  isNull: function isNull(obj) {
+    return this.getType(obj) === 'null';
+  },
+  isUndefined: function isUndefined(obj) {
+    return this.getType(obj) === 'undefined';
   },
 
 
@@ -286,16 +298,15 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
                                                                                                                                                                                                      */
 
 var xdFunction = new _2.default({
-  safelyRunFunc: function safelyRunFunc(func) {
+  execFunc: function execFunc(func) {
     if (_type2.default.isFunc(func)) {
       for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
         args[_key - 1] = arguments[_key];
       }
 
-      func.apply(undefined, _toConsumableArray(args));
-      return true;
+      return func.apply(undefined, _toConsumableArray(args));
     } else {
-      return false;
+      return null;
     }
   }
 });

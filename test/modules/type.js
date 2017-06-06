@@ -8,6 +8,10 @@ let testData = [
   {value: {a: 1, b: 2}, type: 'object', isObj: true},
   {value: () => {}, type: 'function', isFunc: true},
   {value: /a-z1-9/, type: 'regexp', isRegExp: true},
+  {value: true, type: 'boolean', isBoolean: true},
+  {value: new Date(), type: 'date', isDate: true},
+  {value: null, type: 'null', isNull: true},
+  {value: undefined, type: 'undefined', isUndefined: true},
 ]
 let detectFuncs = [
   'isStr', 'isNum', 'isArr',

@@ -244,7 +244,19 @@ var xdType = new _2.default({
     return this.getType(obj) === 'function';
   },
   isRegExp: function isRegExp(obj) {
-    return obj instanceof RegExp;
+    return this.getType(obj) === 'regexp';
+  },
+  isBoolean: function isBoolean(obj) {
+    return this.getType(obj) === 'boolean';
+  },
+  isDate: function isDate(obj) {
+    return this.getType(obj) === 'date';
+  },
+  isNull: function isNull(obj) {
+    return this.getType(obj) === 'null';
+  },
+  isUndefined: function isUndefined(obj) {
+    return this.getType(obj) === 'undefined';
   },
 
 
@@ -301,14 +313,16 @@ var xdMask = new _2.default({
     var start = 3;
     var end = -4;
     var reduce = 7;
-    if (id.length > 4 && id.length <= 8) {
-      start = 1;
-      end = -2;
-      reduce = 3;
-    } else if (id.length <= 4) {
+    if (id.length <= 4) {
       return '' + id.slice(0, 1) + '*'.repeat(id.length - 1);
+    } else {
+      if (id.length > 4 && id.length <= 8) {
+        start = 1;
+        end = -2;
+        reduce = 3;
+      }
+      return '' + id.slice(0, start) + '*'.repeat(id.length - reduce) + id.slice(end);
     }
-    return '' + id.slice(0, start) + '*'.repeat(id.length - reduce) + id.slice(end);
   }
 });
 

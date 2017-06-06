@@ -9,12 +9,11 @@ import xdType from './type'
 
 let xdFunction = new XdModule({
 
-  safelyRunFunc (func: mixed, ...args: array): boolean {
+  execFunc (func: mixed, ...args: array): boolean {
     if (xdType.isFunc(func)) {
-      func(...args)
-      return true
+      return func(...args)
     } else {
-      return false
+      return null
     }
   }
 

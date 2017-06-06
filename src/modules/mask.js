@@ -26,14 +26,16 @@ let xdMask = new XdModule({
     let start = 3
     let end = -4
     let reduce = 7
-    if (id.length > 4 && id.length <= 8) {
-      start = 1
-      end = -2
-      reduce = 3
-    } else if (id.length <= 4) {
+    if (id.length <= 4) {
       return `${id.slice(0, 1)}${'*'.repeat(id.length - 1)}`
+    } else {
+      if (id.length > 4 && id.length <= 8) {
+        start = 1
+        end = -2
+        reduce = 3
+      }
+      return `${id.slice(0, start)}${'*'.repeat(id.length - reduce)}${id.slice(end)}`
     }
-    return `${id.slice(0, start)}${'*'.repeat(id.length - reduce)}${id.slice(end)}`
   }
 
 })

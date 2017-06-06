@@ -10,16 +10,27 @@ import xdObj from './object'
 
 let xdArray = new XdModule({
 
-  toggleArrItem (array: array, item: mixed): array {
-    let index = array.indexOf(item)
-    if (index === -1) array.push(item)
-    else array.splice(index, 1)
-    return array
+  isArrEmpty (arr: array): boolean {
+    return !arr.length
   },
 
-  addArrUniqItem (array: array, item: mixed): array {
-    if (!array.includes(item)) array.push(item)
-    return array
+  addArrUniqItem (arr: array, item: mixed): array {
+    if (!arr.includes(item)) arr.push(item)
+    return arr
+  },
+
+  removeArrItem (arr: array, item: mixed): array {
+    if (arr.includes(item)) {
+      arr.splice(arr.indexOf(item), 1)
+    }
+    return arr
+  },
+
+  toggleArrItem (arr: array, item: mixed): array {
+    let index = arr.indexOf(item)
+    if (index === -1) arr.push(item)
+    else arr.splice(index, 1)
+    return arr
   }
 
 })

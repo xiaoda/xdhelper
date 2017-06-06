@@ -213,11 +213,22 @@ var _2 = _interopRequireDefault(_);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var xdObject = new _2.default({
-  clone: function clone(obj) {
-    return JSON.parse(JSON.stringify(obj));
+  isObjEmpty: function isObjEmpty(obj) {
+    var keys = Object.keys(obj);
+    return !keys.length;
   },
   isObjEqual: function isObjEqual(objA, objB) {
     return JSON.stringify(objA) === JSON.stringify(objB);
+  },
+  clone: function clone(obj) {
+    return JSON.parse(JSON.stringify(obj));
+  },
+  loopObj: function loopObj(obj, callback) {
+    var keys = Object.keys(obj);
+    keys.forEach(function (key) {
+      callback(obj[key], key);
+    });
+    return keys.length;
   }
 }); /**
      * 对象模块

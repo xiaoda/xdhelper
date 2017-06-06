@@ -213,11 +213,22 @@ var _2 = _interopRequireDefault(_);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var xdObject = new _2.default({
-  clone: function clone(obj) {
-    return JSON.parse(JSON.stringify(obj));
+  isObjEmpty: function isObjEmpty(obj) {
+    var keys = Object.keys(obj);
+    return !keys.length;
   },
   isObjEqual: function isObjEqual(objA, objB) {
     return JSON.stringify(objA) === JSON.stringify(objB);
+  },
+  clone: function clone(obj) {
+    return JSON.parse(JSON.stringify(obj));
+  },
+  loopObj: function loopObj(obj, callback) {
+    var keys = Object.keys(obj);
+    keys.forEach(function (key) {
+      callback(obj[key], key);
+    });
+    return keys.length;
   }
 }); /**
      * 对象模块
@@ -252,14 +263,23 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 
 var xdArray = new _2.default({
-  toggleArrItem: function toggleArrItem(array, item) {
-    var index = array.indexOf(item);
-    if (index === -1) array.push(item);else array.splice(index, 1);
-    return array;
+  isArrEmpty: function isArrEmpty(arr) {
+    return !arr.length;
   },
-  addArrUniqItem: function addArrUniqItem(array, item) {
-    if (!array.includes(item)) array.push(item);
-    return array;
+  addArrUniqItem: function addArrUniqItem(arr, item) {
+    if (!arr.includes(item)) arr.push(item);
+    return arr;
+  },
+  removeArrItem: function removeArrItem(arr, item) {
+    if (arr.includes(item)) {
+      arr.splice(arr.indexOf(item), 1);
+    }
+    return arr;
+  },
+  toggleArrItem: function toggleArrItem(arr, item) {
+    var index = arr.indexOf(item);
+    if (index === -1) arr.push(item);else arr.splice(index, 1);
+    return arr;
   }
 });
 

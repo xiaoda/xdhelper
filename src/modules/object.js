@@ -8,12 +8,25 @@ import XdModule from './'
 
 let xdObject = new XdModule({
 
-  clone (obj: object): string {
-    return JSON.parse(JSON.stringify(obj))
+  isObjEmpty (obj: object): boolean {
+    let keys = Object.keys(obj)
+    return !keys.length
   },
 
   isObjEqual (objA: object, objB: object): boolean {
     return JSON.stringify(objA) === JSON.stringify(objB)
+  },
+
+  clone (obj: object): string {
+    return JSON.parse(JSON.stringify(obj))
+  },
+
+  loopObj (obj: object, callback: mixed): boolean {
+    let keys = Object.keys(obj)
+    keys.forEach((key: string) => {
+      callback(obj[key], key)
+    })
+    return keys.length
   }
 
 })
