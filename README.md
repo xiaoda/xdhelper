@@ -1,6 +1,6 @@
 # xdhelper [![Build Status](https://travis-ci.org/xiaoda/xdhelper.svg?branch=master)](https://travis-ci.org/xiaoda/xdhelper)
 
-Focus on operations & judgement, fundamental functions. Under development. Apis will change.
+Focus on operation & judgement, fundamental functions. Under development. Apis will change.
 
 ## modules
 
