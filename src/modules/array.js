@@ -6,7 +6,6 @@
  */
 
 import XdModule from './'
-import xdObj from './object'
 
 let xdArray = new XdModule({
 

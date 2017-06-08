@@ -63,11 +63,12 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -163,7 +164,8 @@ module.exports = XdModule;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 1 */
+
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -199,8 +201,8 @@ var config = {
 module.exports = config;
 
 /***/ }),
-/* 2 */,
-/* 3 */
+
+/***/ 8:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -220,7 +222,7 @@ var xdObject = new _2.default({
   isObjEqual: function isObjEqual(objA, objB) {
     return JSON.stringify(objA) === JSON.stringify(objB);
   },
-  clone: function clone(obj) {
+  cloneObj: function cloneObj(obj) {
     return JSON.parse(JSON.stringify(obj));
   },
   loopObj: function loopObj(obj, callback) {
@@ -239,5 +241,6 @@ var xdObject = new _2.default({
 module.exports = xdObject;
 
 /***/ })
-/******/ ])));
+
+/******/ })));
 //# sourceMappingURL=object.js.map

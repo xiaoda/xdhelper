@@ -261,11 +261,19 @@ var xdType = new _2.default({
 
 
   /* 类型转换 */
+  toStr: function toStr(obj) {
+    return obj.toString();
+  },
   toNum: function toNum(obj) {
     return Number(obj);
   },
-  toStr: function toStr(obj) {
-    return obj.toString();
+  toBoolean: function toBoolean(obj) {
+    return !!obj;
+  },
+  objToArr: function objToArr(obj) {
+    return Object.keys(obj).map(function (key) {
+      return obj[key];
+    });
   }
 });
 

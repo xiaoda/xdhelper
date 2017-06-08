@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -261,11 +261,19 @@ var xdType = new _2.default({
 
 
   /* 类型转换 */
+  toStr: function toStr(obj) {
+    return obj.toString();
+  },
   toNum: function toNum(obj) {
     return Number(obj);
   },
-  toStr: function toStr(obj) {
-    return obj.toString();
+  toBoolean: function toBoolean(obj) {
+    return !!obj;
+  },
+  objToArr: function objToArr(obj) {
+    return Object.keys(obj).map(function (key) {
+      return obj[key];
+    });
   }
 });
 
@@ -276,8 +284,7 @@ module.exports = xdType;
 /* 4 */,
 /* 5 */,
 /* 6 */,
-/* 7 */,
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

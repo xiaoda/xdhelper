@@ -17,7 +17,7 @@ let xdObject = new XdModule({
     return JSON.stringify(objA) === JSON.stringify(objB)
   },
 
-  clone (obj: object): string {
+  cloneObj (obj: object): string {
     return JSON.parse(JSON.stringify(obj))
   },
 

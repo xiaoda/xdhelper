@@ -88,11 +88,22 @@ Focus on operation & judgement, fundamental functions. Under development. Apis w
 [isObjEqual](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L16) (objA: object, objB: object): boolean
 > 判断两个对象是否完全相等（包括属性顺序）
 
-[clone](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L20) (obj: object): string
+[cloneObj](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L20) (obj: object): string
 > 复制对象（非引用传值）
 
 [loopObj](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L24) (obj: object, callback: mixed): boolean
 > 遍历对象
+
+### string（字符串）
+
+[capitalize](https://github.com/xiaoda/xdhelper/blob/master/src/modules/string.js#L11) (str: string): str
+> 首字母大写
+
+[camelCase](https://github.com/xiaoda/xdhelper/blob/master/src/modules/string.js#L15) (strs: array): str
+> 驼峰连接
+
+[kebabCase](https://github.com/xiaoda/xdhelper/blob/master/src/modules/string.js#L19) (strs: array): str
+> 中划线连接
 
 ### support（支持）
 
@@ -123,7 +134,7 @@ Focus on operation & judgement, fundamental functions. Under development. Apis w
 > 判断是否正则表达式
 
 [isBoolean](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L45) (obj: mixed): boolean
-> 判断是否布尔值
+> 判断是否布尔型
 
 [isDate](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L49) (obj: mixed): boolean
 > 判断是否日期
@@ -134,11 +145,17 @@ Focus on operation & judgement, fundamental functions. Under development. Apis w
 [isUndefined](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L57) (obj: mixed): boolean
 > 判断是否 undefined
 
-[toNum](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L62) (obj: mixed): number
+[toStr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L62) (obj: mixed): string
+> 转换为字符串类型
+
+[toNum](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L66) (obj: mixed): number
 > 转换为数字类型
 
-[toStr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L66) (obj: mixed): string
-> 转换为字符串类型
+[toBoolean](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L70) (obj: mixed): boolean
+> 转换为布尔型
+
+[objToArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L74) (obj: object): array
+> 对象转换为数组
 
 ### url（网址）
 

@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -212,56 +212,6 @@ var _2 = _interopRequireDefault(_);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var xdObject = new _2.default({
-  isObjEmpty: function isObjEmpty(obj) {
-    var keys = Object.keys(obj);
-    return !keys.length;
-  },
-  isObjEqual: function isObjEqual(objA, objB) {
-    return JSON.stringify(objA) === JSON.stringify(objB);
-  },
-  clone: function clone(obj) {
-    return JSON.parse(JSON.stringify(obj));
-  },
-  loopObj: function loopObj(obj, callback) {
-    var keys = Object.keys(obj);
-    keys.forEach(function (key) {
-      callback(obj[key], key);
-    });
-    return keys.length;
-  }
-}); /**
-     * 对象模块
-     *
-     * 
-     */
-
-module.exports = xdObject;
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _ = __webpack_require__(0);
-
-var _2 = _interopRequireDefault(_);
-
-var _object = __webpack_require__(3);
-
-var _object2 = _interopRequireDefault(_object);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * 数组模块
- * 用作 Lodash / underscore 以外的补充
- *
- * 
- */
-
 var xdArray = new _2.default({
   isArrEmpty: function isArrEmpty(arr) {
     return !arr.length;
@@ -281,7 +231,12 @@ var xdArray = new _2.default({
     if (index === -1) arr.push(item);else arr.splice(index, 1);
     return arr;
   }
-});
+}); /**
+     * 数组模块
+     * 用作 Lodash / underscore 以外的补充
+     *
+     * 
+     */
 
 module.exports = xdArray;
 

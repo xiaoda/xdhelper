@@ -18,10 +18,10 @@ describe('xdObject', function () {
     })
   })
 
-  describe('#clone()', function () {
+  describe('#cloneObj()', function () {
     it('clone array', function () {
       let arr = [1, 2]
-      let cloneArr = xd.clone(arr)
+      let cloneArr = xd.cloneObj(arr)
       cloneArr[0] = 99
       assert.equal(
         arr[0],
@@ -30,7 +30,7 @@ describe('xdObject', function () {
     })
     it('clone object', function () {
       let obj = {a: 1, b: 2}
-      let cloneObj = xd.clone(obj)
+      let cloneObj = xd.cloneObj(obj)
       cloneObj.a = 99
       assert.equal(
         obj.a,

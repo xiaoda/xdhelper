@@ -63,11 +63,12 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -163,7 +164,8 @@ module.exports = XdModule;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 1 */
+
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -199,17 +201,12 @@ var config = {
 module.exports = config;
 
 /***/ }),
-/* 2 */
+
+/***/ 9:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
-                                                                                                                                                                                                                                                                               * 类型模块
-                                                                                                                                                                                                                                                                               *
-                                                                                                                                                                                                                                                                               * 
-                                                                                                                                                                                                                                                                               */
 
 var _ = __webpack_require__(0);
 
@@ -217,109 +214,33 @@ var _2 = _interopRequireDefault(_);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var xdType = new _2.default({
-
-  /* 通用类型判断 */
-  getType: function getType(obj) {
-    if (Number.isNaN(obj)) return 'NaN';
-    if (typeof obj === 'number' && !Number.isFinite(obj)) return 'Infinity';
-    if (obj === null) return String(obj);else if ((typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) !== 'object') return typeof obj === 'undefined' ? 'undefined' : _typeof(obj);else return Object.prototype.toString.call(obj).toLowerCase().match(/\[\s*object\s*([^\]]*)\s*\]/)[1];
-  },
-
-
-  /* 类型判断 */
-  isStr: function isStr(obj) {
-    return this.getType(obj) === 'string';
-  },
-  isNum: function isNum(obj) {
-    return this.getType(obj) === 'number';
-  },
-  isArr: function isArr(obj) {
-    return this.getType(obj) === 'array';
-  },
-  isObj: function isObj(obj) {
-    return this.getType(obj) === 'object';
-  },
-  isFunc: function isFunc(obj) {
-    return this.getType(obj) === 'function';
-  },
-  isRegExp: function isRegExp(obj) {
-    return this.getType(obj) === 'regexp';
-  },
-  isBoolean: function isBoolean(obj) {
-    return this.getType(obj) === 'boolean';
-  },
-  isDate: function isDate(obj) {
-    return this.getType(obj) === 'date';
-  },
-  isNull: function isNull(obj) {
-    return this.getType(obj) === 'null';
-  },
-  isUndefined: function isUndefined(obj) {
-    return this.getType(obj) === 'undefined';
-  },
-
-
-  /* 类型转换 */
-  toStr: function toStr(obj) {
-    return obj.toString();
-  },
-  toNum: function toNum(obj) {
-    return Number(obj);
-  },
-  toBoolean: function toBoolean(obj) {
-    return !!obj;
-  },
-  objToArr: function objToArr(obj) {
-    return Object.keys(obj).map(function (key) {
-      return obj[key];
+var xdString = new _2.default({
+  capitalize: function capitalize(str) {
+    return str.toLowerCase().replace(/^a-z/, function (s) {
+      return s.toUpperCase();
     });
+  },
+  camelCase: function camelCase(strs) {
+    var _this = this;
+
+    return strs.map(function (str, index) {
+      return index ? _this.capitalize(str) : str;
+    }).join('');
+  },
+  kebabCase: function kebabCase(strs) {
+    return strs.map(function (str) {
+      return str.toLowerCase();
+    }).join('-');
   }
-});
+}); /**
+     * 字符串模块
+     *
+     * 
+     */
 
-module.exports = xdType;
-
-/***/ }),
-/* 3 */,
-/* 4 */,
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _ = __webpack_require__(0);
-
-var _2 = _interopRequireDefault(_);
-
-var _type = __webpack_require__(2);
-
-var _type2 = _interopRequireDefault(_type);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } } /**
-                                                                                                                                                                                                     * 函数模块
-                                                                                                                                                                                                     *
-                                                                                                                                                                                                     * 
-                                                                                                                                                                                                     */
-
-var xdFunction = new _2.default({
-  execFunc: function execFunc(func) {
-    if (_type2.default.isFunc(func)) {
-      for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-        args[_key - 1] = arguments[_key];
-      }
-
-      return func.apply(undefined, _toConsumableArray(args));
-    } else {
-      return null;
-    }
-  }
-});
-
-module.exports = xdFunction;
+module.exports = xdString;
 
 /***/ })
-/******/ ])));
-//# sourceMappingURL=function.js.map
+
+/******/ })));
+//# sourceMappingURL=string.js.map

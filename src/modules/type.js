@@ -59,12 +59,20 @@ let xdType = new XdModule({
   },
 
   /* 类型转换 */
+  toStr (obj: mixed): string {
+    return obj.toString()
+  },
+
   toNum (obj: mixed): number {
     return Number(obj)
   },
 
-  toStr (obj: mixed): string {
-    return obj.toString()
+  toBoolean (obj: mixed): boolean {
+    return !!obj
+  },
+
+  objToArr (obj: object): array {
+    return Object.keys(obj).map((key: string): mixed => obj[key])
   }
 
 })

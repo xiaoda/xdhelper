@@ -44,6 +44,15 @@ describe('xdType', function () {
     })
   })
 
+  describe('#toStr()', function () {
+    it('number type', function () {
+      assert.equal(
+        xd.toStr('1'),
+        1
+      )
+    })
+  })
+
   describe('#toNum()', function () {
     it('string type', function () {
       assert.equal(
@@ -53,11 +62,38 @@ describe('xdType', function () {
     })
   })
 
-  describe('#toStr()', function () {
-    it('number type', function () {
+  describe('#toBoolean()', function () {
+    it('string to true', function () {
       assert.equal(
-        xd.toStr('1'),
-        1
+        xd.toBoolean('abc'),
+        true
+      )
+    })
+    it('string to false', function () {
+      assert.equal(
+        xd.toBoolean(''),
+        false
+      )
+    })
+    it('number to true', function () {
+      assert.equal(
+        xd.toBoolean(123),
+        true
+      )
+    })
+    it('number to false', function () {
+      assert.equal(
+        xd.toBoolean(0),
+        false
+      )
+    })
+  })
+
+  describe('#objToArr()', function () {
+    it('legal object', function () {
+      assert.equal(
+        JSON.stringify(xd.objToArr({a: 1, b: 2})),
+        JSON.stringify([1, 2])
       )
     })
   })
