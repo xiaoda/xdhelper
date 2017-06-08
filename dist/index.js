@@ -340,12 +340,13 @@ var xdDevice = new _2.default({
   isMobile: function isMobile() {
     var userAgent = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.getUserAgent();
 
-    return this.isiOS(userAgent) || this.isAndroid(userAgent);
+    return (/mobile/i.test(userAgent)
+    );
   },
   isPhone: function isPhone() {
     var userAgent = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.getUserAgent();
 
-    return (this.isiOS(userAgent) || this.isAndroid(userAgent)) && !this.isPad(userAgent);
+    return this.isMobile(userAgent) && !this.isPad(userAgent);
   },
   isPad: function isPad() {
     var userAgent = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.getUserAgent();

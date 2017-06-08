@@ -13,11 +13,11 @@ let xdDevice = new XdModule({
   },
 
   isMobile (userAgent: string = this.getUserAgent()): boolean {
-    return this.isiOS(userAgent) || this.isAndroid(userAgent)
+    return /mobile/i.test(userAgent)
   },
 
   isPhone (userAgent: string = this.getUserAgent()): boolean {
-    return (this.isiOS(userAgent) || this.isAndroid(userAgent)) && !this.isPad(userAgent)
+    return this.isMobile(userAgent) && !this.isPad(userAgent)
   },
 
   isPad (userAgent: string = this.getUserAgent()): boolean {
