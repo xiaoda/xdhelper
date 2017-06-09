@@ -11,10 +11,10 @@ npm install xdhelper
 ```
 then import it
 ``` javascript
-/* import whole xdhelper */
+// import whole xdhelper
 import xd from 'xdhelper'
 
-/* or import part of it */
+// or import part of it
 import xdArray from 'xdhelper/modules/array'
 ```
 
