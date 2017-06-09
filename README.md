@@ -4,7 +4,21 @@
 
 Focus on operation & judgement, fundamental functions. Under development. Apis will change.
 
-## modules
+## install
+install with npm or cnpm
+```
+npm install xdhelper
+```
+then import it
+``` javascript
+/* import whole xdhelper */
+import xd from 'xdhelper'
+
+/* or import part of it */
+import xdArray from 'xdhelper/modules/array'
+```
+
+## modules & functions
 
 ### array - 数组
 
