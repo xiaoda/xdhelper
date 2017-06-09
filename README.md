@@ -5,10 +5,12 @@
 Focus on operation & judgement, fundamental functions. Under development. Apis will change.
 
 ## install
+
 install with npm or cnpm
 ```
 npm install xdhelper
 ```
+
 then import it
 ``` javascript
 // import whole xdhelper
