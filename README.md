@@ -1,24 +1,26 @@
 # xdhelper [![Build Status](https://travis-ci.org/xiaoda/xdhelper.svg?branch=master)](https://travis-ci.org/xiaoda/xdhelper)
 
+这是一个精简的 JS 帮助方法库，大多数方法提取自实际的开发项目，新项目可直接引入使用而不是再 copy paste 一份 helper 文件。与 underscore / lodash 等类库不同的是：xdhelper 专注于操作和判断，并提供额外的实用方法。建议在复杂项目中与 underscore 或 lodash 搭配使用。xdhelper 仍在开发中，API 可能会改变。
+
 Focus on operation & judgement, fundamental functions. Under development. Apis will change.
 
 ## modules
 
-### array（数组）
+### array - 数组
 
-[isArrEmpty](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L13) (arr: array): boolean
+[isArrEmpty](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L12) (arr: array): boolean
 > 判断数组是否为空
 
-[addArrUniqItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L17) (array: array, item: mixed): array
+[addArrUniqItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L16) (array: array, item: mixed): array
 > 数组添加唯一元素
 
-[removeArrItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L22) (array: array, item: mixed): array
-> 数组安全删除元素
+[removeArrItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L21) (array: array, item: mixed): array
+> 数组删除元素
 
-[toggleArrItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L29) (array: array, item: mixed): array
+[toggleArrItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L28) (array: array, item: mixed): array
 > 数组切换元素
 
-### device（设备）
+### device - 设备
 
 [getUserAgent](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L11) (): string
 > 获取用户代理信息
@@ -47,12 +49,12 @@ Focus on operation & judgement, fundamental functions. Under development. Apis w
 [isiPod](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L43) (userAgent: string = this.getUserAgent()): boolean
 > 判断是否 iPod
 
-### function（函数）
+### function - 函数
 
 [execFunc](https://github.com/xiaoda/xdhelper/blob/master/src/modules/function.js#L12) (func: mixed, ...args: array): boolean
 > 安全执行函数
 
-### mask（模糊格式）
+### mask - 模糊格式
 
 [mobileMask](https://github.com/xiaoda/xdhelper/blob/master/src/modules/mask.js#L12) (mobile: string | number): string
 > 手机号模糊格式
@@ -63,7 +65,7 @@ Focus on operation & judgement, fundamental functions. Under development. Apis w
 [idNumMask](https://github.com/xiaoda/xdhelper/blob/master/src/modules/mask.js#L24) (id: string | number): string
 > 身份证号码模糊格式
 
-### math（算术）
+### math - 算术
 
 [multiply1k](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L15) (num: number | string, times: number | string = 1): number
 > 乘以 1000
@@ -80,7 +82,7 @@ Focus on operation & judgement, fundamental functions. Under development. Apis w
 [fillZero](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L32) (num: number | string, width: number, direction: string = 'left'): string
 > 补零
 
-### object（对象）
+### object - 对象
 
 [isObjEmpty](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L11) (obj: object): boolean
 > 判断对象是否为空
@@ -94,7 +96,7 @@ Focus on operation & judgement, fundamental functions. Under development. Apis w
 [loopObj](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L24) (obj: object, callback: mixed): boolean
 > 遍历对象
 
-### string（字符串）
+### string - 字符串
 
 [capitalize](https://github.com/xiaoda/xdhelper/blob/master/src/modules/string.js#L11) (str: string): str
 > 首字母大写
@@ -105,12 +107,12 @@ Focus on operation & judgement, fundamental functions. Under development. Apis w
 [kebabCase](https://github.com/xiaoda/xdhelper/blob/master/src/modules/string.js#L19) (strs: array): str
 > 中划线连接
 
-### support（支持）
+### support - 支持
 
 [sseSupport](https://github.com/xiaoda/xdhelper/blob/master/src/modules/support.js#L11) (): boolean
 > 判断浏览器是否支持服务器推送事件
 
-### type（类型）
+### type - 类型
 
 [getType](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L12) (obj: mixed): string
 > 获取类型
@@ -157,7 +159,7 @@ Focus on operation & judgement, fundamental functions. Under development. Apis w
 [objToArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L74) (obj: object): array
 > 对象转换为数组
 
-### url（网址）
+### url - 网址
 
 [buildQueryStr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/url.js#L11) (data: object): string
 > 构造 url 参数
