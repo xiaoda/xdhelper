@@ -3,6 +3,15 @@ let xd = require('../../dist')
 
 describe('xdObject', function () {
 
+  describe('#getObjLen()', function () {
+    it('object', function () {
+      assert.equal(
+        xd.getObjLen({a: 1, b: 2}),
+        2
+      )
+    })
+  })
+
   describe('#isObjEmpty()', function () {
     it('empty object', function () {
       assert.equal(
@@ -66,17 +75,17 @@ describe('xdObject', function () {
     })
   })
 
-  describe('#loopObj()', function () {
+  describe('#forEachObj()', function () {
     it('empty object', function () {
       assert.equal(
-        xd.loopObj({}),
+        xd.forEachObj({}),
         0
       )
     })
     it('not empty object', function (done) {
       let objA = {a: 1, b: 2}
       let objB = {}
-      xd.loopObj(objA, (value, key) => {
+      xd.forEachObj(objA, (value, key) => {
         objB[key] = value
       }, 1)
       if (JSON.stringify(objA) === JSON.stringify(objB)) done()

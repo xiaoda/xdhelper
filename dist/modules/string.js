@@ -215,10 +215,18 @@ var _2 = _interopRequireDefault(_);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var xdString = new _2.default({
+  getStrLen: function getStrLen(str) {
+    return str.length;
+  },
   capitalize: function capitalize(str) {
-    return str.toLowerCase().replace(/^a-z/, function (s) {
+    return str.replace(/\b[a-z]/g, function (s) {
       return s.toUpperCase();
     });
+  },
+  kebabCase: function kebabCase(strs) {
+    return strs.map(function (str) {
+      return str;
+    }).join('-');
   },
   camelCase: function camelCase(strs) {
     var _this = this;
@@ -227,10 +235,12 @@ var xdString = new _2.default({
       return index ? _this.capitalize(str) : str;
     }).join('');
   },
-  kebabCase: function kebabCase(strs) {
+  capitalCamelCase: function capitalCamelCase(strs) {
+    var _this2 = this;
+
     return strs.map(function (str) {
-      return str.toLowerCase();
-    }).join('-');
+      return _this2.capitalize(str);
+    }).join('');
   }
 }); /**
      * 字符串模块

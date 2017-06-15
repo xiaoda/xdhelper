@@ -3,6 +3,33 @@ let xd = require('../../dist')
 
 describe('xdMath', function () {
 
+  describe('#sum()', function () {
+    it('sum', function () {
+      assert.equal(
+        xd.sum([1, 2, 3, 4]),
+        10
+      )
+    })
+  })
+
+  describe('#mean()', function () {
+    it('mean', function () {
+      assert.equal(
+        xd.mean([1, 2, 3, 4]),
+        2.5
+      )
+    })
+  })
+
+  describe('#multiply()', function () {
+    it('number type', function () {
+      assert.equal(
+        xd.multiply(3, 3),
+        9
+      )
+    })
+  })
+
   describe('#multiply1k()', function () {
     it('number type', function () {
       assert.equal(
@@ -12,20 +39,29 @@ describe('xdMath', function () {
     })
   })
 
-  describe('#devide1k()', function () {
-    it('number type', function () {
-      assert.equal(
-        xd.devide1k(2000),
-        2
-      )
-    })
-  })
-
   describe('#multiply1024()', function () {
     it('number type', function () {
       assert.equal(
         xd.multiply1024(2),
         2048
+      )
+    })
+  })
+
+  describe('#devide()', function () {
+    it('number type', function () {
+      assert.equal(
+        xd.devide(9, 3),
+        3
+      )
+    })
+  })
+
+  describe('#devide1k()', function () {
+    it('number type', function () {
+      assert.equal(
+        xd.devide1k(2000),
+        2
       )
     })
   })

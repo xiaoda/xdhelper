@@ -8,9 +8,12 @@ import XdModule from './'
 
 let xdObject = new XdModule({
 
+  getObjLen (obj: object): number {
+    return Object.keys(obj).length
+  },
+
   isObjEmpty (obj: object): boolean {
-    let keys = Object.keys(obj)
-    return !keys.length
+    return !this.getObjLen(obj)
   },
 
   isObjEqual (objA: object, objB: object): boolean {
@@ -21,7 +24,7 @@ let xdObject = new XdModule({
     return JSON.parse(JSON.stringify(obj))
   },
 
-  loopObj (obj: object, callback: mixed): boolean {
+  forEachObj (obj: object, callback: mixed): boolean {
     let keys = Object.keys(obj)
     keys.forEach((key: string) => {
       callback(obj[key], key)

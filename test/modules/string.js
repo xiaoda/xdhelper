@@ -3,11 +3,29 @@ let xd = require('../../dist')
 
 describe('xdString', function () {
 
+  describe('#getStrLen()', function () {
+    it('word', function () {
+      assert.equal(
+        xd.getStrLen('fire in the hole'),
+        16
+      )
+    })
+  })
+
   describe('#capitalize()', function () {
     it('capitalize word', function () {
       assert.equal(
-        xd.capitalize('word'),
-        'String'
+        xd.capitalize('fire in the hole'),
+        'Fire In The Hole'
+      )
+    })
+  })
+
+  describe('#kebabCase()', function () {
+    it('kebabCase words', function () {
+      assert.equal(
+        xd.kebabCase(['fire', 'in', 'the', 'hole']),
+        'fire-in-the-hole'
       )
     })
   })
@@ -21,11 +39,11 @@ describe('xdString', function () {
     })
   })
 
-  describe('#kebabCase()', function () {
-    it('kebabCase words', function () {
+  describe('#capitalCamelCase()', function () {
+    it('capitalCamelCase words', function () {
       assert.equal(
-        xd.kebabCase(['fire', 'in', 'the', 'hole']),
-        'fire-in-the-hole'
+        xd.capitalCamelCase(['fire', 'in', 'the', 'hole']),
+        'FireInTheHole'
       )
     })
   })

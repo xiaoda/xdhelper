@@ -215,9 +215,11 @@ var _2 = _interopRequireDefault(_);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var xdObject = new _2.default({
+  getObjLen: function getObjLen(obj) {
+    return Object.keys(obj).length;
+  },
   isObjEmpty: function isObjEmpty(obj) {
-    var keys = Object.keys(obj);
-    return !keys.length;
+    return !this.getObjLen(obj);
   },
   isObjEqual: function isObjEqual(objA, objB) {
     return JSON.stringify(objA) === JSON.stringify(objB);
@@ -225,7 +227,7 @@ var xdObject = new _2.default({
   cloneObj: function cloneObj(obj) {
     return JSON.parse(JSON.stringify(obj));
   },
-  loopObj: function loopObj(obj, callback) {
+  forEachObj: function forEachObj(obj, callback) {
     var keys = Object.keys(obj);
     keys.forEach(function (key) {
       callback(obj[key], key);

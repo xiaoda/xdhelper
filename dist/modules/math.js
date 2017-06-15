@@ -310,25 +310,45 @@ var NUM_1000 = 1000;
 var NUM_1024 = 1024;
 
 var xdMath = new _2.default({
+  sum: function sum(arr) {
+    return arr.reduce(function (acc, val) {
+      return acc + _type2.default.toNum(val);
+    });
+  },
+  mean: function mean(arr) {
+    var sum = this.sum(arr);
+    var count = arr.length;
+    return sum / count;
+  },
+  multiply: function multiply(numA, numB) {
+    var times = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+
+    return _type2.default.toNum(numA) * Math.pow(numB, _type2.default.toNum(times));
+  },
   multiply1k: function multiply1k(num) {
     var times = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
-    return _type2.default.toNum(num) * Math.pow(NUM_1000, _type2.default.toNum(times));
-  },
-  devide1k: function devide1k(num) {
-    var times = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-
-    return _type2.default.toNum(num) / Math.pow(NUM_1000, _type2.default.toNum(times));
+    return this.multiply(num, 1000, times);
   },
   multiply1024: function multiply1024(num) {
     var times = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
-    return _type2.default.toNum(num) * Math.pow(NUM_1024, _type2.default.toNum(times));
+    return this.multiply(num, 1024, times);
+  },
+  devide: function devide(numA, numB) {
+    var times = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+
+    return _type2.default.toNum(numA) / Math.pow(numB, _type2.default.toNum(times));
+  },
+  devide1k: function devide1k(num) {
+    var times = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+
+    return this.devide(num, 1000, times);
   },
   devide1024: function devide1024(num) {
     var times = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
-    return _type2.default.toNum(num) / Math.pow(NUM_1024, _type2.default.toNum(times));
+    return this.devide(num, 1024, times);
   },
 
 

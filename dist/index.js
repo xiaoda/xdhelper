@@ -293,8 +293,11 @@ var _2 = _interopRequireDefault(_);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var xdArray = new _2.default({
+  getArrLen: function getArrLen(arr) {
+    return arr.length;
+  },
   isArrEmpty: function isArrEmpty(arr) {
-    return !arr.length;
+    return !this.getArrLen(arr);
   },
   addArrUniqItem: function addArrUniqItem(arr, item) {
     if (!arr.includes(item)) arr.push(item);
@@ -310,6 +313,61 @@ var xdArray = new _2.default({
     var index = arr.indexOf(item);
     if (index === -1) arr.push(item);else arr.splice(index, 1);
     return arr;
+  },
+  uniqArr: function uniqArr(arr) {
+    var targetArr = [];
+    arr.forEach(function (item) {
+      if (!targetArr.includes(item)) targetArr.push(item);
+    });
+    return targetArr;
+  },
+  unionArr: function unionArr(arrA, arrB) {
+    return this.uniqArr(arrA.concat(arrB));
+  },
+  intersectArr: function intersectArr(arrA, arrB) {
+    var targetArr = [];
+    arrA.forEach(function (item) {
+      if (arrB.includes(item)) targetArr.push(item);
+    });
+    return targetArr;
+  },
+  complementArr: function complementArr(arrA, arrB) {
+    var targetArr = [];
+    arrA.forEach(function (item) {
+      if (!arrB.includes(item)) targetArr.push(item);
+    });
+    return targetArr;
+  },
+  sortArr: function sortArr(arr) {
+    var order = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'asc';
+
+    var targetArr = arr.sort();
+    if (order === 'desc') targetArr = targetArr.reverse();
+    return targetArr;
+  },
+  sortArrBy: function sortArrBy(arr, field) {
+    var order = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'asc';
+
+    var targetArr = arr.sort(function (itemA, itemB) {
+      if (itemA[field] > itemB[field]) return 1;else if (itemA[field] < itemB[field]) return -1;else return 0;
+    });
+    if (order === 'desc') targetArr = targetArr.reverse();
+    return targetArr;
+  },
+  getArrSample: function getArrSample(arr) {
+    var arrLen = this.getArrLen(arr);
+    var randomIndex = Math.floor(Math.random() * arrLen);
+    return arr[randomIndex];
+  },
+  shuffleArr: function shuffleArr(arr) {
+    var copyArr = JSON.parse(JSON.stringify(arr));
+    var targetArr = [];
+    while (copyArr.length) {
+      var randomIndex = Math.floor(Math.random() * copyArr.length);
+      targetArr.push(copyArr[randomIndex]);
+      copyArr.splice(randomIndex, 1);
+    }
+    return targetArr;
   }
 }); /**
      * 数组模块
@@ -510,25 +568,45 @@ var NUM_1000 = 1000;
 var NUM_1024 = 1024;
 
 var xdMath = new _2.default({
+  sum: function sum(arr) {
+    return arr.reduce(function (acc, val) {
+      return acc + _type2.default.toNum(val);
+    });
+  },
+  mean: function mean(arr) {
+    var sum = this.sum(arr);
+    var count = arr.length;
+    return sum / count;
+  },
+  multiply: function multiply(numA, numB) {
+    var times = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+
+    return _type2.default.toNum(numA) * Math.pow(numB, _type2.default.toNum(times));
+  },
   multiply1k: function multiply1k(num) {
     var times = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
-    return _type2.default.toNum(num) * Math.pow(NUM_1000, _type2.default.toNum(times));
-  },
-  devide1k: function devide1k(num) {
-    var times = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-
-    return _type2.default.toNum(num) / Math.pow(NUM_1000, _type2.default.toNum(times));
+    return this.multiply(num, 1000, times);
   },
   multiply1024: function multiply1024(num) {
     var times = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
-    return _type2.default.toNum(num) * Math.pow(NUM_1024, _type2.default.toNum(times));
+    return this.multiply(num, 1024, times);
+  },
+  devide: function devide(numA, numB) {
+    var times = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+
+    return _type2.default.toNum(numA) / Math.pow(numB, _type2.default.toNum(times));
+  },
+  devide1k: function devide1k(num) {
+    var times = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+
+    return this.devide(num, 1000, times);
   },
   devide1024: function devide1024(num) {
     var times = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
-    return _type2.default.toNum(num) / Math.pow(NUM_1024, _type2.default.toNum(times));
+    return this.devide(num, 1024, times);
   },
 
 
@@ -560,9 +638,11 @@ var _2 = _interopRequireDefault(_);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var xdObject = new _2.default({
+  getObjLen: function getObjLen(obj) {
+    return Object.keys(obj).length;
+  },
   isObjEmpty: function isObjEmpty(obj) {
-    var keys = Object.keys(obj);
-    return !keys.length;
+    return !this.getObjLen(obj);
   },
   isObjEqual: function isObjEqual(objA, objB) {
     return JSON.stringify(objA) === JSON.stringify(objB);
@@ -570,7 +650,7 @@ var xdObject = new _2.default({
   cloneObj: function cloneObj(obj) {
     return JSON.parse(JSON.stringify(obj));
   },
-  loopObj: function loopObj(obj, callback) {
+  forEachObj: function forEachObj(obj, callback) {
     var keys = Object.keys(obj);
     keys.forEach(function (key) {
       callback(obj[key], key);
@@ -599,10 +679,18 @@ var _2 = _interopRequireDefault(_);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var xdString = new _2.default({
+  getStrLen: function getStrLen(str) {
+    return str.length;
+  },
   capitalize: function capitalize(str) {
-    return str.toLowerCase().replace(/^a-z/, function (s) {
+    return str.replace(/\b[a-z]/g, function (s) {
       return s.toUpperCase();
     });
+  },
+  kebabCase: function kebabCase(strs) {
+    return strs.map(function (str) {
+      return str;
+    }).join('-');
   },
   camelCase: function camelCase(strs) {
     var _this = this;
@@ -611,10 +699,12 @@ var xdString = new _2.default({
       return index ? _this.capitalize(str) : str;
     }).join('');
   },
-  kebabCase: function kebabCase(strs) {
+  capitalCamelCase: function capitalCamelCase(strs) {
+    var _this2 = this;
+
     return strs.map(function (str) {
-      return str.toLowerCase();
-    }).join('-');
+      return _this2.capitalize(str);
+    }).join('');
   }
 }); /**
      * 字符串模块

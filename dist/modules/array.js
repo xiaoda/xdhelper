@@ -213,8 +213,11 @@ var _2 = _interopRequireDefault(_);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var xdArray = new _2.default({
+  getArrLen: function getArrLen(arr) {
+    return arr.length;
+  },
   isArrEmpty: function isArrEmpty(arr) {
-    return !arr.length;
+    return !this.getArrLen(arr);
   },
   addArrUniqItem: function addArrUniqItem(arr, item) {
     if (!arr.includes(item)) arr.push(item);
@@ -230,6 +233,61 @@ var xdArray = new _2.default({
     var index = arr.indexOf(item);
     if (index === -1) arr.push(item);else arr.splice(index, 1);
     return arr;
+  },
+  uniqArr: function uniqArr(arr) {
+    var targetArr = [];
+    arr.forEach(function (item) {
+      if (!targetArr.includes(item)) targetArr.push(item);
+    });
+    return targetArr;
+  },
+  unionArr: function unionArr(arrA, arrB) {
+    return this.uniqArr(arrA.concat(arrB));
+  },
+  intersectArr: function intersectArr(arrA, arrB) {
+    var targetArr = [];
+    arrA.forEach(function (item) {
+      if (arrB.includes(item)) targetArr.push(item);
+    });
+    return targetArr;
+  },
+  complementArr: function complementArr(arrA, arrB) {
+    var targetArr = [];
+    arrA.forEach(function (item) {
+      if (!arrB.includes(item)) targetArr.push(item);
+    });
+    return targetArr;
+  },
+  sortArr: function sortArr(arr) {
+    var order = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'asc';
+
+    var targetArr = arr.sort();
+    if (order === 'desc') targetArr = targetArr.reverse();
+    return targetArr;
+  },
+  sortArrBy: function sortArrBy(arr, field) {
+    var order = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'asc';
+
+    var targetArr = arr.sort(function (itemA, itemB) {
+      if (itemA[field] > itemB[field]) return 1;else if (itemA[field] < itemB[field]) return -1;else return 0;
+    });
+    if (order === 'desc') targetArr = targetArr.reverse();
+    return targetArr;
+  },
+  getArrSample: function getArrSample(arr) {
+    var arrLen = this.getArrLen(arr);
+    var randomIndex = Math.floor(Math.random() * arrLen);
+    return arr[randomIndex];
+  },
+  shuffleArr: function shuffleArr(arr) {
+    var copyArr = JSON.parse(JSON.stringify(arr));
+    var targetArr = [];
+    while (copyArr.length) {
+      var randomIndex = Math.floor(Math.random() * copyArr.length);
+      targetArr.push(copyArr[randomIndex]);
+      copyArr.splice(randomIndex, 1);
+    }
+    return targetArr;
   }
 }); /**
      * 数组模块
