@@ -1,6 +1,6 @@
 {
   "name": "xdhelper",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "js helper",
   "scripts": {
     "start": "NODE_ENV='dev' webpack-dev-server --config webpack.dev.config.js",
