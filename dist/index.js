@@ -246,7 +246,7 @@ var xdType = new _2.default({
   isRegExp: function isRegExp(obj) {
     return this.getType(obj) === 'regexp';
   },
-  isBoolean: function isBoolean(obj) {
+  isBool: function isBool(obj) {
     return this.getType(obj) === 'boolean';
   },
   isDate: function isDate(obj) {
@@ -267,7 +267,7 @@ var xdType = new _2.default({
   toNum: function toNum(obj) {
     return Number(obj);
   },
-  toBoolean: function toBoolean(obj) {
+  toBool: function toBool(obj) {
     return !!obj;
   },
   objToArr: function objToArr(obj) {
@@ -641,6 +641,9 @@ var xdObject = new _2.default({
   getObjLen: function getObjLen(obj) {
     return Object.keys(obj).length;
   },
+  hasObjKey: function hasObjKey(obj, key) {
+    return obj[key] !== undefined;
+  },
   isObjEmpty: function isObjEmpty(obj) {
     return !this.getObjLen(obj);
   },
@@ -787,11 +790,11 @@ module.exports = xdUrl;
 "use strict";
 
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /**
-                                                                                                                                                                                                                                                                   * 入口文件
-                                                                                                                                                                                                                                                                   *
-                                                                                                                                                                                                                                                                   * 
-                                                                                                                                                                                                                                                                   */
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _modules = __webpack_require__(0);
+
+var _modules2 = _interopRequireDefault(_modules);
 
 var _array = __webpack_require__(3);
 
@@ -835,7 +838,32 @@ var _url2 = _interopRequireDefault(_url);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var xd = _extends({}, _array2.default, _device2.default, _function2.default, _mask2.default, _math2.default, _object2.default, _string2.default, _support2.default, _type2.default, _url2.default);
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } } /**
+                                                                                                                                                                                                     * 入口文件
+                                                                                                                                                                                                     *
+                                                                                                                                                                                                     * 
+                                                                                                                                                                                                     */
+
+var xdOverview = new _modules2.default({
+  chain: function chain() {
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    if (args.length < 2) return null;
+    var superStar = args.shift();
+    args.forEach(function (ring) {
+      if (_type2.default.isArr(ring)) {
+        superStar = xd[ring.shift()].apply(xd, [superStar].concat(_toConsumableArray(ring)));
+      } else if (_type2.default.isStr(ring)) {
+        superStar = xd[ring](superStar);
+      }
+    });
+    return superStar;
+  }
+});
+
+var xd = _extends({}, _array2.default, _device2.default, _function2.default, _mask2.default, _math2.default, _object2.default, _string2.default, _support2.default, _type2.default, _url2.default, xdOverview);
 
 Object.freeze(xd);
 

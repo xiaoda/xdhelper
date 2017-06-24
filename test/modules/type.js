@@ -8,7 +8,7 @@ let testData = [
   {value: {a: 1, b: 2}, type: 'object', isObj: true},
   {value: () => {}, type: 'function', isFunc: true},
   {value: /a-z1-9/, type: 'regexp', isRegExp: true},
-  {value: true, type: 'boolean', isBoolean: true},
+  {value: true, type: 'boolean', isBool: true},
   {value: new Date(), type: 'date', isDate: true},
   {value: null, type: 'null', isNull: true},
   {value: undefined, type: 'undefined', isUndefined: true},
@@ -62,28 +62,28 @@ describe('xdType', function () {
     })
   })
 
-  describe('#toBoolean()', function () {
+  describe('#toBool()', function () {
     it('string to true', function () {
       assert.equal(
-        xd.toBoolean('abc'),
+        xd.toBool('abc'),
         true
       )
     })
     it('string to false', function () {
       assert.equal(
-        xd.toBoolean(''),
+        xd.toBool(''),
         false
       )
     })
     it('number to true', function () {
       assert.equal(
-        xd.toBoolean(123),
+        xd.toBool(123),
         true
       )
     })
     it('number to false', function () {
       assert.equal(
-        xd.toBoolean(0),
+        xd.toBool(0),
         false
       )
     })

@@ -12,6 +12,10 @@ let xdObject = new XdModule({
     return Object.keys(obj).length
   },
 
+  hasObjKey (obj: object, key: string): boolean {
+    return obj[key] !== undefined
+  },
+
   isObjEmpty (obj: object): boolean {
     return !this.getObjLen(obj)
   },

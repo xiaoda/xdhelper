@@ -218,6 +218,9 @@ var xdObject = new _2.default({
   getObjLen: function getObjLen(obj) {
     return Object.keys(obj).length;
   },
+  hasObjKey: function hasObjKey(obj, key) {
+    return obj[key] !== undefined;
+  },
   isObjEmpty: function isObjEmpty(obj) {
     return !this.getObjLen(obj);
   },

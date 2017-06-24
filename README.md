@@ -22,6 +22,11 @@ import xdArray from 'xdhelper/modules/array'
 
 ## modules & functions
 
+### overview - 全局
+
+[chain](https://github.com/xiaoda/xdhelper/blob/master/src/index.js#L21) (...args: array): mixed
+> 伪链式操作
+
 ### array - 数组
 
 [getArrLen](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L12) (arr: array): number
@@ -142,16 +147,19 @@ import xdArray from 'xdhelper/modules/array'
 [getObjLen](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L11) (obj: object): number
 > 获取对象长度
 
-[isObjEmpty](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L15) (obj: object): boolean
+[hasObjKey](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L15) (obj: object, key: string): boolean
+> 判断对象是否有指定字段
+
+[isObjEmpty](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L19) (obj: object): boolean
 > 判断对象是否为空
 
-[isObjEqual](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L19) (objA: object, objB: object): boolean
+[isObjEqual](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L23) (objA: object, objB: object): boolean
 > 判断两个对象是否完全相等（包括属性顺序）
 
-[cloneObj](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L23) (obj: object): string
+[cloneObj](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L27) (obj: object): string
 > 复制对象（非引用传值）
 
-[forEachObj](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L27) (obj: object, callback: mixed): boolean
+[forEachObj](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L31) (obj: object, callback: mixed): boolean
 > 遍历对象
 
 ### string - 字符串
@@ -196,7 +204,7 @@ import xdArray from 'xdhelper/modules/array'
 [isRegExp](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L41) (obj: mixed): boolean
 > 判断是否正则表达式
 
-[isBoolean](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L45) (obj: mixed): boolean
+[isBool](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L45) (obj: mixed): boolean
 > 判断是否布尔型
 
 [isDate](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L49) (obj: mixed): boolean
@@ -214,7 +222,7 @@ import xdArray from 'xdhelper/modules/array'
 [toNum](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L66) (obj: mixed): number
 > 转换为数字类型
 
-[toBoolean](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L70) (obj: mixed): boolean
+[toBool](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L70) (obj: mixed): boolean
 > 转换为布尔型
 
 [objToArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L74) (obj: object): array

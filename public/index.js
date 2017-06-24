@@ -1,4 +1,4 @@
 import xd from '../src'
-import xdArray from '../src/modules/array'
 
-xd.mean([1,2,3,4])
+xd.chain(2, 'multiply1k', 'multiply1k')
+xd.chain(2, ['multiply1k'], ['multiply1k', 2])

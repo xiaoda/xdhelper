@@ -4,6 +4,7 @@
  * @flow
  */
 
+import XdModule from './modules'
 import xdArray from './modules/array'
 import xdDevice from './modules/device'
 import xdFunction from './modules/function'
@@ -15,6 +16,23 @@ import xdSupport from './modules/support'
 import xdType from './modules/type'
 import xdUrl from './modules/url'
 
+let xdOverview = new XdModule({
+
+  chain (...args: array): mixed {
+    if (args.length < 2) return null
+    let superStar = args.shift()
+    args.forEach((ring: mixed): mixed => {
+      if (xdType.isArr(ring)) {
+        superStar = xd[ring.shift()](superStar, ...ring)
+      } else if (xdType.isStr(ring)) {
+        superStar = xd[ring](superStar)
+      }
+    })
+    return superStar
+  }
+
+})
+
 let xd = {
   ...xdArray,
   ...xdDevice,
@@ -25,7 +43,8 @@ let xd = {
   ...xdString,
   ...xdSupport,
   ...xdType,
-  ...xdUrl
+  ...xdUrl,
+  ...xdOverview
 }
 
 Object.freeze(xd)

@@ -42,7 +42,7 @@ let xdType = new XdModule({
     return this.getType(obj) === 'regexp'
   },
 
-  isBoolean (obj: mixed): boolean {
+  isBool (obj: mixed): boolean {
     return this.getType(obj) === 'boolean'
   },
 
@@ -67,7 +67,7 @@ let xdType = new XdModule({
     return Number(obj)
   },
 
-  toBoolean (obj: mixed): boolean {
+  toBool (obj: mixed): boolean {
     return !!obj
   },
 

@@ -246,7 +246,7 @@ var xdType = new _2.default({
   isRegExp: function isRegExp(obj) {
     return this.getType(obj) === 'regexp';
   },
-  isBoolean: function isBoolean(obj) {
+  isBool: function isBool(obj) {
     return this.getType(obj) === 'boolean';
   },
   isDate: function isDate(obj) {
@@ -267,7 +267,7 @@ var xdType = new _2.default({
   toNum: function toNum(obj) {
     return Number(obj);
   },
-  toBoolean: function toBoolean(obj) {
+  toBool: function toBool(obj) {
     return !!obj;
   },
   objToArr: function objToArr(obj) {
