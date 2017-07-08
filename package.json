@@ -1,6 +1,6 @@
 {
   "name": "xdhelper",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "js helper",
   "scripts": {
     "start": "NODE_ENV='dev' webpack-dev-server --config webpack.dev.config.js",
@@ -8,8 +8,10 @@
     "prebuild": "npm run clear",
     "clear": "rm -rf dist",
     "test": "node_modules/mocha/bin/mocha",
+    "preparepub": "npm run build && npm run test",
+    "pub:major": "npm version major && npm run copypackfiles && cd dist && npm publish",
+    "pub:minor": "npm version minor && npm run copypackfiles && cd dist && npm publish",
     "pub": "npm version patch && npm run copypackfiles && cd dist && npm publish",
-    "prepub": "npm run clear && npm run build && npm run test",
     "copypackfiles": "/bin/cp package.json dist/package.json && /bin/cp README.md dist/README.md"
   },
   "repository": {
