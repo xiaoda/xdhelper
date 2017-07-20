@@ -103,7 +103,7 @@ describe('xdArray', function () {
     it('complement arrays', function () {
       assert.equal(
         JSON.stringify(xd.complementArr([1, 2, 3], [2, 3, 4])),
-        JSON.stringify([1])
+        JSON.stringify([1, 4])
       )
     })
   })

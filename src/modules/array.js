@@ -6,6 +6,7 @@
  */
 
 import XdModule from './'
+import xdType from './type'
 
 let xdArray = new XdModule({
 
@@ -34,34 +35,6 @@ let xdArray = new XdModule({
     if (index === -1) arr.push(item)
     else arr.splice(index, 1)
     return arr
-  },
-
-  uniqArr (arr: array): array {
-    let targetArr = []
-    arr.forEach((item: mixed) => {
-      if (!targetArr.includes(item)) targetArr.push(item)
-    })
-    return targetArr
-  },
-
-  unionArr (arrA: array, arrB: array): array {
-    return this.uniqArr(arrA.concat(arrB))
-  },
-
-  intersectArr (arrA: array, arrB: array): array {
-    let targetArr = []
-    arrA.forEach((item: mixed) => {
-      if (arrB.includes(item)) targetArr.push(item)
-    })
-    return targetArr
-  },
-
-  complementArr (arrA: array, arrB: array): array {
-    let targetArr = []
-    arrA.forEach((item: mixed) => {
-      if (!arrB.includes(item)) targetArr.push(item)
-    })
-    return targetArr
   },
 
   sortArr (arr: array, order: string = 'asc'): array {
@@ -95,6 +68,51 @@ let xdArray = new XdModule({
       copyArr.splice(randomIndex, 1)
     }
     return targetArr
+  },
+
+  getArrRepeatedItems (arr: array, times: mixed): array {
+    let counter = {}
+    arr.forEach((item: mixed) => {
+      let key = JSON.stringify(item)
+      if (xdType.isUndefined(counter[key])) counter[key] = 1
+      else counter[key] ++
+    })
+    let targetArr = []
+    switch (xdType.getType(times)) {
+      case 'number':
+      case 'string':
+        times = xdType.toNum(times)
+        Object.keys(counter).forEach((key: string) => {
+          if (counter[key] === times) targetArr.push(JSON.parse(key))
+        })
+        break
+      case 'function':
+        Object.keys(counter).forEach((key: string) => {
+          if (times(counter[key])) targetArr.push(JSON.parse(key))
+        })
+        break
+      default:
+        Object.keys(counter).forEach((key: string) => {
+          targetArr.push(JSON.parse(key))
+        })
+    }
+    return targetArr
+  },
+
+  uniqArr (arr: array): array {
+    return this.getArrRepeatedItems(arr)
+  },
+
+  unionArr (...arr: mixed): array {
+    return this.getArrRepeatedItems([].concat(...arr))
+  },
+
+  intersectArr (...arr: mixed): array {
+    return this.getArrRepeatedItems([].concat(...arr), arr.length)
+  },
+
+  complementArr (...arr: mixed): array {
+    return this.getArrRepeatedItems([].concat(...arr), 1)
   }
 
 })

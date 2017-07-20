@@ -160,46 +160,10 @@ XdModule = function () {
 }();
 
 module.exports = XdModule;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * 配置文件
- *
- * 
- */
-
-var ENV = "prod";
-var DEV = 'dev';
-var PROD = 'prod';
-var SHOW_TRACE = true;
-var SHOW_ERROR = true;
-
-var config = {
-  isDev: function isDev() {
-    return ENV === DEV;
-  },
-  isNotDev: function isNotDev() {
-    return ENV !== DEV;
-  },
-  showTrace: function showTrace() {
-    return this.isDev() && !!SHOW_TRACE;
-  },
-  showErr: function showErr() {
-    return this.isDev() && !!SHOW_ERROR;
-  }
-};
-
-module.exports = config;
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -280,6 +244,42 @@ var xdType = new _2.default({
 module.exports = xdType;
 
 /***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * 配置文件
+ *
+ * 
+ */
+
+var ENV = "prod";
+var DEV = 'dev';
+var PROD = 'prod';
+var SHOW_TRACE = true;
+var SHOW_ERROR = true;
+
+var config = {
+  isDev: function isDev() {
+    return ENV === DEV;
+  },
+  isNotDev: function isNotDev() {
+    return ENV !== DEV;
+  },
+  showTrace: function showTrace() {
+    return this.isDev() && !!SHOW_TRACE;
+  },
+  showErr: function showErr() {
+    return this.isDev() && !!SHOW_ERROR;
+  }
+};
+
+module.exports = config;
+
+/***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -290,7 +290,18 @@ var _ = __webpack_require__(0);
 
 var _2 = _interopRequireDefault(_);
 
+var _type = __webpack_require__(1);
+
+var _type2 = _interopRequireDefault(_type);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * 数组模块
+ * 用作 Lodash / underscore 以外的补充
+ *
+ * 
+ */
 
 var xdArray = new _2.default({
   getArrLen: function getArrLen(arr) {
@@ -313,30 +324,6 @@ var xdArray = new _2.default({
     var index = arr.indexOf(item);
     if (index === -1) arr.push(item);else arr.splice(index, 1);
     return arr;
-  },
-  uniqArr: function uniqArr(arr) {
-    var targetArr = [];
-    arr.forEach(function (item) {
-      if (!targetArr.includes(item)) targetArr.push(item);
-    });
-    return targetArr;
-  },
-  unionArr: function unionArr(arrA, arrB) {
-    return this.uniqArr(arrA.concat(arrB));
-  },
-  intersectArr: function intersectArr(arrA, arrB) {
-    var targetArr = [];
-    arrA.forEach(function (item) {
-      if (arrB.includes(item)) targetArr.push(item);
-    });
-    return targetArr;
-  },
-  complementArr: function complementArr(arrA, arrB) {
-    var targetArr = [];
-    arrA.forEach(function (item) {
-      if (!arrB.includes(item)) targetArr.push(item);
-    });
-    return targetArr;
   },
   sortArr: function sortArr(arr) {
     var order = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'asc';
@@ -368,13 +355,53 @@ var xdArray = new _2.default({
       copyArr.splice(randomIndex, 1);
     }
     return targetArr;
+  },
+  getArrRepeatedItems: function getArrRepeatedItems(arr, times) {
+    var counter = {};
+    arr.forEach(function (item) {
+      var key = JSON.stringify(item);
+      if (_type2.default.isUndefined(counter[key])) counter[key] = 1;else counter[key]++;
+    });
+    var targetArr = [];
+    switch (_type2.default.getType(times)) {
+      case 'number':
+      case 'string':
+        times = _type2.default.toNum(times);
+        Object.keys(counter).forEach(function (key) {
+          if (counter[key] === times) targetArr.push(JSON.parse(key));
+        });
+        break;
+      case 'function':
+        Object.keys(counter).forEach(function (key) {
+          if (times(counter[key])) targetArr.push(JSON.parse(key));
+        });
+        break;
+      default:
+        Object.keys(counter).forEach(function (key) {
+          targetArr.push(JSON.parse(key));
+        });
+    }
+    return targetArr;
+  },
+  uniqArr: function uniqArr(arr) {
+    return this.getArrRepeatedItems(arr);
+  },
+  unionArr: function unionArr() {
+    var _ref;
+
+    return this.getArrRepeatedItems((_ref = []).concat.apply(_ref, arguments));
+  },
+  intersectArr: function intersectArr() {
+    var _ref2;
+
+    return this.getArrRepeatedItems((_ref2 = []).concat.apply(_ref2, arguments), arguments.length);
+  },
+  complementArr: function complementArr() {
+    var _ref3;
+
+    return this.getArrRepeatedItems((_ref3 = []).concat.apply(_ref3, arguments), 1);
   }
-}); /**
-     * 数组模块
-     * 用作 Lodash / underscore 以外的补充
-     *
-     * 
-     */
+});
 
 module.exports = xdArray;
 
@@ -460,7 +487,7 @@ var _ = __webpack_require__(0);
 
 var _2 = _interopRequireDefault(_);
 
-var _type = __webpack_require__(2);
+var _type = __webpack_require__(1);
 
 var _type2 = _interopRequireDefault(_type);
 
@@ -499,7 +526,7 @@ var _ = __webpack_require__(0);
 
 var _2 = _interopRequireDefault(_);
 
-var _type = __webpack_require__(2);
+var _type = __webpack_require__(1);
 
 var _type2 = _interopRequireDefault(_type);
 
@@ -552,7 +579,7 @@ var _ = __webpack_require__(0);
 
 var _2 = _interopRequireDefault(_);
 
-var _type = __webpack_require__(2);
+var _type = __webpack_require__(1);
 
 var _type2 = _interopRequireDefault(_type);
 
@@ -568,12 +595,22 @@ var NUM_1000 = 1000;
 var NUM_1024 = 1024;
 
 var xdMath = new _2.default({
-  sum: function sum(arr) {
+  sum: function sum() {
+    for (var _len = arguments.length, arr = Array(_len), _key = 0; _key < _len; _key++) {
+      arr[_key] = arguments[_key];
+    }
+
+    if (_type2.default.isArr(arr[0])) arr = arr[0];
     return arr.reduce(function (acc, val) {
       return acc + _type2.default.toNum(val);
     });
   },
-  mean: function mean(arr) {
+  mean: function mean() {
+    for (var _len2 = arguments.length, arr = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      arr[_key2] = arguments[_key2];
+    }
+
+    if (_type2.default.isArr(arr[0])) arr = arr[0];
     var sum = this.sum(arr);
     var count = arr.length;
     return sum / count;
@@ -635,14 +672,24 @@ var _ = __webpack_require__(0);
 
 var _2 = _interopRequireDefault(_);
 
+var _type = __webpack_require__(1);
+
+var _type2 = _interopRequireDefault(_type);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * 对象模块
+ *
+ * 
+ */
 
 var xdObject = new _2.default({
   getObjLen: function getObjLen(obj) {
     return Object.keys(obj).length;
   },
   hasObjKey: function hasObjKey(obj, key) {
-    return obj[key] !== undefined;
+    return !_type2.default.isUndefined(obj[key]);
   },
   isObjEmpty: function isObjEmpty(obj) {
     return !this.getObjLen(obj);
@@ -660,11 +707,7 @@ var xdObject = new _2.default({
     });
     return keys.length;
   }
-}); /**
-     * 对象模块
-     *
-     * 
-     */
+});
 
 module.exports = xdObject;
 
@@ -728,17 +771,23 @@ var _ = __webpack_require__(0);
 
 var _2 = _interopRequireDefault(_);
 
+var _type = __webpack_require__(1);
+
+var _type2 = _interopRequireDefault(_type);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * 支持模块
+ *
+ * 
+ */
 
 var xdSupport = new _2.default({
   sseSupport: function sseSupport() {
-    return window.EventSource !== undefined;
+    return !_type2.default.isUndefined(window.EventSource);
   }
-}); /**
-     * 支持模块
-     *
-     * 
-     */
+});
 
 module.exports = xdSupport;
 
@@ -828,7 +877,7 @@ var _support = __webpack_require__(10);
 
 var _support2 = _interopRequireDefault(_support);
 
-var _type = __webpack_require__(2);
+var _type = __webpack_require__(1);
 
 var _type2 = _interopRequireDefault(_type);
 

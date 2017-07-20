@@ -29,44 +29,47 @@ import xdArray from 'xdhelper/modules/array'
 
 ### array - 数组
 
-[getArrLen](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L12) (arr: array): number
+[getArrLen](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L13) (arr: array): number
 > 获取数组长度
 
-[isArrEmpty](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L16) (arr: array): boolean
+[isArrEmpty](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L17) (arr: array): boolean
 > 判断数组是否为空
 
-[addArrUniqItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L20) (array: array, item: mixed): array
+[addArrUniqItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L21) (array: array, item: mixed): array
 > 数组添加唯一元素
 
-[removeArrItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L25) (array: array, item: mixed): array
+[removeArrItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L26) (array: array, item: mixed): array
 > 数组删除元素
 
-[toggleArrItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L32) (array: array, item: mixed): array
+[toggleArrItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L33) (array: array, item: mixed): array
 > 数组切换元素
 
-[uniqArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L39) (arr: array): array
-> 数组元素去重
-
-[unionArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L47) (arrA: array, arrB: array): array
-> 获取数组并集
-
-[intersectArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L51) (arrA: array, arrB: array): array
-> 获取数组交集
-
-[complementArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L59) (arrA: array, arrB: array): array
-> 获取数组差集（补集）
-
-[sortArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L67) (arr: array, order: string = 'asc'): array
+[sortArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L40) (arr: array, order: string = 'asc'): array
 > 数组排序
 
-[sortArrBy](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L73) (arr: array, field: string, order: string = 'asc'): array
+[sortArrBy](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L46) (arr: array, field: string, order: string = 'asc'): array
 > 数组排序（根据字段值）
 
-[getArrSample](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L83) (arr: array): mixed
+[getArrSample](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L56) (arr: array): mixed
 > 随机获取一个数组样本
 
-[shuffleArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L89) (arr: array): array
+[shuffleArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L62) (arr: array): array
 > 数组顺序随机化
+
+[getArrRepeatedItems](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L73) (arr: array, times: mixed): array
+> 获取数组重复元素
+
+[uniqArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L102) (arr: array): array
+> 数组元素去重
+
+[unionArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L106) (arrA: array, arrB: array): array
+> 获取数组并集
+
+[intersectArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L110) (arrA: array, arrB: array): array
+> 获取数组交集
+
+[complementArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L114) (arrA: array, arrB: array): array
+> 获取数组差集（补集）
 
 ### device - 设备
 
@@ -115,51 +118,51 @@ import xdArray from 'xdhelper/modules/array'
 
 ### math - 算术
 
-[sum](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L15) (arr: array): number
+[sum](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L15) (...arr: mixed): number
 > 求和
 
-[mean](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L19) (arr: array): number
+[mean](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L20) (...arr: mixed): number
 > 求平均数
 
-[multiply](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L25) (numA: number | string, numB: number | string, times: number | string = 1): number
+[multiply](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L27) (numA: number | string, numB: number | string, times: number | string = 1): number
 > 乘法
 
-[multiply1k](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L29) (num: number | string, times: number | string = 1): number
+[multiply1k](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L31) (num: number | string, times: number | string = 1): number
 > 乘以 1000
 
-[multiply1024](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L33) (num: number | string, times: number | string = 1): number
+[multiply1024](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L35) (num: number | string, times: number | string = 1): number
 > 乘以 1024
 
-[devide](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L37) (numA: number | string, numB: number | string, times: number | string = 1): number
+[devide](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L39) (numA: number | string, numB: number | string, times: number | string = 1): number
 > 除法
 
-[devide1k](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L41) (num: number | string, times: number | string = 1): number
+[devide1k](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L43) (num: number | string, times: number | string = 1): number
 > 除以 1000
 
-[devide1024](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L45) (num: number | string, times: number | string = 1): number
+[devide1024](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L47) (num: number | string, times: number | string = 1): number
 > 除以 1024
 
-[fillZero](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L50) (num: number | string, width: number, direction: string = 'left'): string
+[fillZero](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L52) (num: number | string, width: number, direction: string = 'left'): string
 > 补零
 
 ### object - 对象
 
-[getObjLen](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L11) (obj: object): number
+[getObjLen](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L12) (obj: object): number
 > 获取对象长度
 
-[hasObjKey](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L15) (obj: object, key: string): boolean
+[hasObjKey](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L16) (obj: object, key: string): boolean
 > 判断对象是否有指定字段
 
-[isObjEmpty](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L19) (obj: object): boolean
+[isObjEmpty](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L20) (obj: object): boolean
 > 判断对象是否为空
 
-[isObjEqual](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L23) (objA: object, objB: object): boolean
+[isObjEqual](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L24) (objA: object, objB: object): boolean
 > 判断两个对象是否完全相等（包括属性顺序）
 
-[cloneObj](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L27) (obj: object): string
+[cloneObj](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L28) (obj: object): string
 > 复制对象（非引用传值）
 
-[forEachObj](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L31) (obj: object, callback: mixed): boolean
+[forEachObj](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L32) (obj: object, callback: mixed): boolean
 > 遍历对象
 
 ### string - 字符串
@@ -178,7 +181,7 @@ import xdArray from 'xdhelper/modules/array'
 
 ### support - 支持
 
-[sseSupport](https://github.com/xiaoda/xdhelper/blob/master/src/modules/support.js#L11) (): boolean
+[sseSupport](https://github.com/xiaoda/xdhelper/blob/master/src/modules/support.js#L12) (): boolean
 > 判断浏览器是否支持服务器推送事件
 
 ### type - 类型

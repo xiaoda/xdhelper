@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -160,46 +160,10 @@ XdModule = function () {
 }();
 
 module.exports = XdModule;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * 配置文件
- *
- * 
- */
-
-var ENV = "prod";
-var DEV = 'dev';
-var PROD = 'prod';
-var SHOW_TRACE = true;
-var SHOW_ERROR = true;
-
-var config = {
-  isDev: function isDev() {
-    return ENV === DEV;
-  },
-  isNotDev: function isNotDev() {
-    return ENV !== DEV;
-  },
-  showTrace: function showTrace() {
-    return this.isDev() && !!SHOW_TRACE;
-  },
-  showErr: function showErr() {
-    return this.isDev() && !!SHOW_ERROR;
-  }
-};
-
-module.exports = config;
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -278,6 +242,42 @@ var xdType = new _2.default({
 });
 
 module.exports = xdType;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * 配置文件
+ *
+ * 
+ */
+
+var ENV = "prod";
+var DEV = 'dev';
+var PROD = 'prod';
+var SHOW_TRACE = true;
+var SHOW_ERROR = true;
+
+var config = {
+  isDev: function isDev() {
+    return ENV === DEV;
+  },
+  isNotDev: function isNotDev() {
+    return ENV !== DEV;
+  },
+  showTrace: function showTrace() {
+    return this.isDev() && !!SHOW_TRACE;
+  },
+  showErr: function showErr() {
+    return this.isDev() && !!SHOW_ERROR;
+  }
+};
+
+module.exports = config;
 
 /***/ })
 /******/ ])));

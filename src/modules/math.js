@@ -12,11 +12,13 @@ const NUM_1024 = 1024
 
 let xdMath = new XdModule({
 
-  sum (arr: array): number {
+  sum (...arr: mixed): number {
+    if (xdType.isArr(arr[0])) arr = arr[0]
     return arr.reduce((acc: number, val: number): number => acc + xdType.toNum(val))
   },
 
-  mean (arr: array): number {
+  mean (...arr: mixed): number {
+    if (xdType.isArr(arr[0])) arr = arr[0]
     let sum = this.sum(arr)
     let count = arr.length
     return sum / count

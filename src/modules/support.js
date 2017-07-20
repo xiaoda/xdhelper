@@ -5,11 +5,12 @@
  */
 
 import XdModule from './'
+import xdType from './type'
 
 let xdSupport = new XdModule({
 
   sseSupport (): boolean {
-    return window.EventSource !== undefined
+    return !xdType.isUndefined(window.EventSource)
   }
 
 })

@@ -160,46 +160,10 @@ XdModule = function () {
 }();
 
 module.exports = XdModule;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * 配置文件
- *
- * 
- */
-
-var ENV = "prod";
-var DEV = 'dev';
-var PROD = 'prod';
-var SHOW_TRACE = true;
-var SHOW_ERROR = true;
-
-var config = {
-  isDev: function isDev() {
-    return ENV === DEV;
-  },
-  isNotDev: function isNotDev() {
-    return ENV !== DEV;
-  },
-  showTrace: function showTrace() {
-    return this.isDev() && !!SHOW_TRACE;
-  },
-  showErr: function showErr() {
-    return this.isDev() && !!SHOW_ERROR;
-  }
-};
-
-module.exports = config;
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -280,6 +244,42 @@ var xdType = new _2.default({
 module.exports = xdType;
 
 /***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * 配置文件
+ *
+ * 
+ */
+
+var ENV = "prod";
+var DEV = 'dev';
+var PROD = 'prod';
+var SHOW_TRACE = true;
+var SHOW_ERROR = true;
+
+var config = {
+  isDev: function isDev() {
+    return ENV === DEV;
+  },
+  isNotDev: function isNotDev() {
+    return ENV !== DEV;
+  },
+  showTrace: function showTrace() {
+    return this.isDev() && !!SHOW_TRACE;
+  },
+  showErr: function showErr() {
+    return this.isDev() && !!SHOW_ERROR;
+  }
+};
+
+module.exports = config;
+
+/***/ }),
 /* 3 */,
 /* 4 */,
 /* 5 */,
@@ -294,7 +294,7 @@ var _ = __webpack_require__(0);
 
 var _2 = _interopRequireDefault(_);
 
-var _type = __webpack_require__(2);
+var _type = __webpack_require__(1);
 
 var _type2 = _interopRequireDefault(_type);
 
@@ -310,12 +310,22 @@ var NUM_1000 = 1000;
 var NUM_1024 = 1024;
 
 var xdMath = new _2.default({
-  sum: function sum(arr) {
+  sum: function sum() {
+    for (var _len = arguments.length, arr = Array(_len), _key = 0; _key < _len; _key++) {
+      arr[_key] = arguments[_key];
+    }
+
+    if (_type2.default.isArr(arr[0])) arr = arr[0];
     return arr.reduce(function (acc, val) {
       return acc + _type2.default.toNum(val);
     });
   },
-  mean: function mean(arr) {
+  mean: function mean() {
+    for (var _len2 = arguments.length, arr = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      arr[_key2] = arguments[_key2];
+    }
+
+    if (_type2.default.isArr(arr[0])) arr = arr[0];
     var sum = this.sum(arr);
     var count = arr.length;
     return sum / count;

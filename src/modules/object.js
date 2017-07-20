@@ -5,6 +5,7 @@
  */
 
 import XdModule from './'
+import xdType from './type'
 
 let xdObject = new XdModule({
 
@@ -13,7 +14,7 @@ let xdObject = new XdModule({
   },
 
   hasObjKey (obj: object, key: string): boolean {
-    return obj[key] !== undefined
+    return !xdType.isUndefined(obj[key])
   },
 
   isObjEmpty (obj: object): boolean {

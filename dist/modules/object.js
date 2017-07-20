@@ -66,9 +66,8 @@
 /******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 0:
+/******/ ([
+/* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -161,11 +160,91 @@ XdModule = function () {
 }();
 
 module.exports = XdModule;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
 
-/***/ 1:
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
+                                                                                                                                                                                                                                                                               * 类型模块
+                                                                                                                                                                                                                                                                               *
+                                                                                                                                                                                                                                                                               * 
+                                                                                                                                                                                                                                                                               */
+
+var _ = __webpack_require__(0);
+
+var _2 = _interopRequireDefault(_);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var xdType = new _2.default({
+
+  /* 通用类型判断 */
+  getType: function getType(obj) {
+    if (Number.isNaN(obj)) return 'NaN';
+    if (typeof obj === 'number' && !Number.isFinite(obj)) return 'Infinity';
+    if (obj === null) return String(obj);else if ((typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) !== 'object') return typeof obj === 'undefined' ? 'undefined' : _typeof(obj);else return Object.prototype.toString.call(obj).toLowerCase().match(/\[\s*object\s*([^\]]*)\s*\]/)[1];
+  },
+
+
+  /* 类型判断 */
+  isStr: function isStr(obj) {
+    return this.getType(obj) === 'string';
+  },
+  isNum: function isNum(obj) {
+    return this.getType(obj) === 'number';
+  },
+  isArr: function isArr(obj) {
+    return this.getType(obj) === 'array';
+  },
+  isObj: function isObj(obj) {
+    return this.getType(obj) === 'object';
+  },
+  isFunc: function isFunc(obj) {
+    return this.getType(obj) === 'function';
+  },
+  isRegExp: function isRegExp(obj) {
+    return this.getType(obj) === 'regexp';
+  },
+  isBool: function isBool(obj) {
+    return this.getType(obj) === 'boolean';
+  },
+  isDate: function isDate(obj) {
+    return this.getType(obj) === 'date';
+  },
+  isNull: function isNull(obj) {
+    return this.getType(obj) === 'null';
+  },
+  isUndefined: function isUndefined(obj) {
+    return this.getType(obj) === 'undefined';
+  },
+
+
+  /* 类型转换 */
+  toStr: function toStr(obj) {
+    return obj.toString();
+  },
+  toNum: function toNum(obj) {
+    return Number(obj);
+  },
+  toBool: function toBool(obj) {
+    return !!obj;
+  },
+  objToArr: function objToArr(obj) {
+    return Object.keys(obj).map(function (key) {
+      return obj[key];
+    });
+  }
+});
+
+module.exports = xdType;
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -201,8 +280,12 @@ var config = {
 module.exports = config;
 
 /***/ }),
-
-/***/ 8:
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -212,14 +295,24 @@ var _ = __webpack_require__(0);
 
 var _2 = _interopRequireDefault(_);
 
+var _type = __webpack_require__(1);
+
+var _type2 = _interopRequireDefault(_type);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * 对象模块
+ *
+ * 
+ */
 
 var xdObject = new _2.default({
   getObjLen: function getObjLen(obj) {
     return Object.keys(obj).length;
   },
   hasObjKey: function hasObjKey(obj, key) {
-    return obj[key] !== undefined;
+    return !_type2.default.isUndefined(obj[key]);
   },
   isObjEmpty: function isObjEmpty(obj) {
     return !this.getObjLen(obj);
@@ -237,15 +330,10 @@ var xdObject = new _2.default({
     });
     return keys.length;
   }
-}); /**
-     * 对象模块
-     *
-     * 
-     */
+});
 
 module.exports = xdObject;
 
 /***/ })
-
-/******/ })));
+/******/ ])));
 //# sourceMappingURL=object.js.map

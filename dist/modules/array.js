@@ -160,10 +160,91 @@ XdModule = function () {
 }();
 
 module.exports = XdModule;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
+                                                                                                                                                                                                                                                                               * 类型模块
+                                                                                                                                                                                                                                                                               *
+                                                                                                                                                                                                                                                                               * 
+                                                                                                                                                                                                                                                                               */
+
+var _ = __webpack_require__(0);
+
+var _2 = _interopRequireDefault(_);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var xdType = new _2.default({
+
+  /* 通用类型判断 */
+  getType: function getType(obj) {
+    if (Number.isNaN(obj)) return 'NaN';
+    if (typeof obj === 'number' && !Number.isFinite(obj)) return 'Infinity';
+    if (obj === null) return String(obj);else if ((typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) !== 'object') return typeof obj === 'undefined' ? 'undefined' : _typeof(obj);else return Object.prototype.toString.call(obj).toLowerCase().match(/\[\s*object\s*([^\]]*)\s*\]/)[1];
+  },
+
+
+  /* 类型判断 */
+  isStr: function isStr(obj) {
+    return this.getType(obj) === 'string';
+  },
+  isNum: function isNum(obj) {
+    return this.getType(obj) === 'number';
+  },
+  isArr: function isArr(obj) {
+    return this.getType(obj) === 'array';
+  },
+  isObj: function isObj(obj) {
+    return this.getType(obj) === 'object';
+  },
+  isFunc: function isFunc(obj) {
+    return this.getType(obj) === 'function';
+  },
+  isRegExp: function isRegExp(obj) {
+    return this.getType(obj) === 'regexp';
+  },
+  isBool: function isBool(obj) {
+    return this.getType(obj) === 'boolean';
+  },
+  isDate: function isDate(obj) {
+    return this.getType(obj) === 'date';
+  },
+  isNull: function isNull(obj) {
+    return this.getType(obj) === 'null';
+  },
+  isUndefined: function isUndefined(obj) {
+    return this.getType(obj) === 'undefined';
+  },
+
+
+  /* 类型转换 */
+  toStr: function toStr(obj) {
+    return obj.toString();
+  },
+  toNum: function toNum(obj) {
+    return Number(obj);
+  },
+  toBool: function toBool(obj) {
+    return !!obj;
+  },
+  objToArr: function objToArr(obj) {
+    return Object.keys(obj).map(function (key) {
+      return obj[key];
+    });
+  }
+});
+
+module.exports = xdType;
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -199,7 +280,6 @@ var config = {
 module.exports = config;
 
 /***/ }),
-/* 2 */,
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -210,7 +290,18 @@ var _ = __webpack_require__(0);
 
 var _2 = _interopRequireDefault(_);
 
+var _type = __webpack_require__(1);
+
+var _type2 = _interopRequireDefault(_type);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * 数组模块
+ * 用作 Lodash / underscore 以外的补充
+ *
+ * 
+ */
 
 var xdArray = new _2.default({
   getArrLen: function getArrLen(arr) {
@@ -233,30 +324,6 @@ var xdArray = new _2.default({
     var index = arr.indexOf(item);
     if (index === -1) arr.push(item);else arr.splice(index, 1);
     return arr;
-  },
-  uniqArr: function uniqArr(arr) {
-    var targetArr = [];
-    arr.forEach(function (item) {
-      if (!targetArr.includes(item)) targetArr.push(item);
-    });
-    return targetArr;
-  },
-  unionArr: function unionArr(arrA, arrB) {
-    return this.uniqArr(arrA.concat(arrB));
-  },
-  intersectArr: function intersectArr(arrA, arrB) {
-    var targetArr = [];
-    arrA.forEach(function (item) {
-      if (arrB.includes(item)) targetArr.push(item);
-    });
-    return targetArr;
-  },
-  complementArr: function complementArr(arrA, arrB) {
-    var targetArr = [];
-    arrA.forEach(function (item) {
-      if (!arrB.includes(item)) targetArr.push(item);
-    });
-    return targetArr;
   },
   sortArr: function sortArr(arr) {
     var order = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'asc';
@@ -288,13 +355,53 @@ var xdArray = new _2.default({
       copyArr.splice(randomIndex, 1);
     }
     return targetArr;
+  },
+  getArrRepeatedItems: function getArrRepeatedItems(arr, times) {
+    var counter = {};
+    arr.forEach(function (item) {
+      var key = JSON.stringify(item);
+      if (_type2.default.isUndefined(counter[key])) counter[key] = 1;else counter[key]++;
+    });
+    var targetArr = [];
+    switch (_type2.default.getType(times)) {
+      case 'number':
+      case 'string':
+        times = _type2.default.toNum(times);
+        Object.keys(counter).forEach(function (key) {
+          if (counter[key] === times) targetArr.push(JSON.parse(key));
+        });
+        break;
+      case 'function':
+        Object.keys(counter).forEach(function (key) {
+          if (times(counter[key])) targetArr.push(JSON.parse(key));
+        });
+        break;
+      default:
+        Object.keys(counter).forEach(function (key) {
+          targetArr.push(JSON.parse(key));
+        });
+    }
+    return targetArr;
+  },
+  uniqArr: function uniqArr(arr) {
+    return this.getArrRepeatedItems(arr);
+  },
+  unionArr: function unionArr() {
+    var _ref;
+
+    return this.getArrRepeatedItems((_ref = []).concat.apply(_ref, arguments));
+  },
+  intersectArr: function intersectArr() {
+    var _ref2;
+
+    return this.getArrRepeatedItems((_ref2 = []).concat.apply(_ref2, arguments), arguments.length);
+  },
+  complementArr: function complementArr() {
+    var _ref3;
+
+    return this.getArrRepeatedItems((_ref3 = []).concat.apply(_ref3, arguments), 1);
   }
-}); /**
-     * 数组模块
-     * 用作 Lodash / underscore 以外的补充
-     *
-     * 
-     */
+});
 
 module.exports = xdArray;
 

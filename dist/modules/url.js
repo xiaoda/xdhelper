@@ -161,44 +161,7 @@ XdModule = function () {
 }();
 
 module.exports = XdModule;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-
-/***/ 1:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * 配置文件
- *
- * 
- */
-
-var ENV = "prod";
-var DEV = 'dev';
-var PROD = 'prod';
-var SHOW_TRACE = true;
-var SHOW_ERROR = true;
-
-var config = {
-  isDev: function isDev() {
-    return ENV === DEV;
-  },
-  isNotDev: function isNotDev() {
-    return ENV !== DEV;
-  },
-  showTrace: function showTrace() {
-    return this.isDev() && !!SHOW_TRACE;
-  },
-  showErr: function showErr() {
-    return this.isDev() && !!SHOW_ERROR;
-  }
-};
-
-module.exports = config;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
 
@@ -241,6 +204,43 @@ var xdUrl = new _2.default({
      */
 
 module.exports = xdUrl;
+
+/***/ }),
+
+/***/ 2:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * 配置文件
+ *
+ * 
+ */
+
+var ENV = "prod";
+var DEV = 'dev';
+var PROD = 'prod';
+var SHOW_TRACE = true;
+var SHOW_ERROR = true;
+
+var config = {
+  isDev: function isDev() {
+    return ENV === DEV;
+  },
+  isNotDev: function isNotDev() {
+    return ENV !== DEV;
+  },
+  showTrace: function showTrace() {
+    return this.isDev() && !!SHOW_TRACE;
+  },
+  showErr: function showErr() {
+    return this.isDev() && !!SHOW_ERROR;
+  }
+};
+
+module.exports = config;
 
 /***/ })
 
