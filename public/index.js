@@ -1,3 +1,3 @@
 import xd from '../src'
 
-xd.getArrRepeatedItems([1, 2, 2, 3])
+xd.intersectArr([2, 2, 3, 3, 7], [3, 5, 7])

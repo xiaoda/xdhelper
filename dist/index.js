@@ -389,36 +389,42 @@ var xdArray = new _2.default({
   unionArr: function unionArr() {
     var _this = this;
 
+    var tmpArr = [];
+
     for (var _len = arguments.length, arr = Array(_len), _key = 0; _key < _len; _key++) {
       arr[_key] = arguments[_key];
     }
 
-    var tmpArr = arr.reduce(function (sum, value) {
-      return sum.concat(_this.uniqArr(value));
+    arr.forEach(function (singleArr) {
+      tmpArr = tmpArr.concat(_this.uniqArr(singleArr));
     });
     return this.getArrRepeatedItems(tmpArr);
   },
   intersectArr: function intersectArr() {
     var _this2 = this;
 
+    var tmpArr = [];
+
     for (var _len2 = arguments.length, arr = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
       arr[_key2] = arguments[_key2];
     }
 
-    var tmpArr = arr.reduce(function (sum, value) {
-      return sum.concat(_this2.uniqArr(value));
+    arr.forEach(function (singleArr) {
+      tmpArr = tmpArr.concat(_this2.uniqArr(singleArr));
     });
     return this.getArrRepeatedItems(tmpArr, arr.length);
   },
   complementArr: function complementArr() {
     var _this3 = this;
 
+    var tmpArr = [];
+
     for (var _len3 = arguments.length, arr = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
       arr[_key3] = arguments[_key3];
     }
 
-    var tmpArr = arr.reduce(function (sum, value) {
-      return sum.concat(_this3.uniqArr(value));
+    arr.forEach(function (singleArr) {
+      tmpArr = tmpArr.concat(_this3.uniqArr(singleArr));
     });
     return this.getArrRepeatedItems(tmpArr, 1);
   }
