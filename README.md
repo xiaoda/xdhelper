@@ -35,40 +35,43 @@ import xdArray from 'xdhelper/modules/array'
 [isArrEmpty](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L17) (arr: array): boolean
 > 判断数组是否为空
 
-[addArrUniqItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L21) (array: array, item: mixed): array
+[countArrItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L21) (arr: array, item: mixed): number
+> 数组元素计数
+
+[addArrUniqItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L25) (array: array, item: mixed): array
 > 数组添加唯一元素
 
-[removeArrItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L26) (array: array, item: mixed): array
+[removeArrItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L30) (array: array, item: mixed): array
 > 数组删除元素
 
-[toggleArrItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L33) (array: array, item: mixed): array
+[toggleArrItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L37) (array: array, item: mixed): array
 > 数组切换元素
 
-[sortArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L40) (arr: array, order: string = 'asc'): array
+[sortArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L44) (arr: array, order: string = 'asc'): array
 > 数组排序
 
-[sortArrBy](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L46) (arr: array, field: string, order: string = 'asc'): array
+[sortArrBy](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L50) (arr: array, field: string, order: string = 'asc'): array
 > 数组排序（根据字段值）
 
-[getArrSample](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L56) (arr: array): mixed
+[getArrSample](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L60) (arr: array): mixed
 > 随机获取一个数组样本
 
-[shuffleArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L62) (arr: array): array
+[shuffleArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L66) (arr: array): array
 > 数组顺序随机化
 
-[getArrRepeatedItems](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L73) (arr: array, times: mixed): array
+[getArrRepeatedItems](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L77) (arr: array, times: mixed): array
 > 获取数组重复元素
 
-[uniqArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L102) (arr: array): array
+[uniqArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L106) (arr: array): array
 > 数组元素去重
 
-[unionArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L106) (arrA: array, arrB: array): array
+[unionArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L110) (arrA: array, arrB: array): array
 > 获取数组并集
 
-[intersectArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L111) (arrA: array, arrB: array): array
+[intersectArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L118) (arrA: array, arrB: array): array
 > 获取数组交集
 
-[complementArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L116) (arrA: array, arrB: array): array
+[complementArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L126) (arrA: array, arrB: array): array
 > 获取数组差集（补集）
 
 ### device - 设备

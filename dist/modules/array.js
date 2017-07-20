@@ -310,6 +310,11 @@ var xdArray = new _2.default({
   isArrEmpty: function isArrEmpty(arr) {
     return !this.getArrLen(arr);
   },
+  countArrItem: function countArrItem(arr, item) {
+    return arr.filter(function (i) {
+      return i === item;
+    }).length;
+  },
   addArrUniqItem: function addArrUniqItem(arr, item) {
     if (!arr.includes(item)) arr.push(item);
     return arr;

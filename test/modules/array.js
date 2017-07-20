@@ -27,6 +27,21 @@ describe('xdArray', function () {
     })
   })
 
+  describe('#countArrItem()', function () {
+    it('2 counts', function () {
+      assert.equal(
+        xd.countArrItem([1, 2, 2], 2),
+        2
+      )
+    })
+    it('0 count', function () {
+      assert.equal(
+        xd.countArrItem([1, 2, 2], 3),
+        0
+      )
+    })
+  })
+
   describe('#addArrUniqItem()', function () {
     it('add item', function () {
       assert.equal(
@@ -72,6 +87,52 @@ describe('xdArray', function () {
     })
   })
 
+  describe('#sortArr()', function () {
+    it('sort array asc', function () {
+      assert.equal(
+        JSON.stringify(xd.sortArr([2, 4, 3, 1])),
+        JSON.stringify([1, 2, 3, 4])
+      )
+    })
+    it('sort array desc', function () {
+      assert.equal(
+        JSON.stringify(xd.sortArr([2, 4, 3, 1], 'desc')),
+        JSON.stringify([4, 3, 2, 1])
+      )
+    })
+  })
+
+  describe('#sortArrBy()', function () {
+    it('sort array by specified field asc', function () {
+      assert.equal(
+        JSON.stringify(xd.sortArrBy([{a: 2}, {a: 4}, {a: 3}, {a: 1}], 'a')),
+        JSON.stringify([{a: 1}, {a: 2}, {a: 3}, {a: 4}])
+      )
+    })
+    it('sort array by specified field desc', function () {
+      assert.equal(
+        JSON.stringify(xd.sortArrBy([{a: 2}, {a: 4}, {a: 3}, {a: 1}], 'a', 'desc')),
+        JSON.stringify([{a: 4}, {a: 3}, {a: 2}, {a: 1}])
+      )
+    })
+  })
+
+  describe('#getArrRepeatedItems()', function () {
+    it('2 counts', function () {
+      assert.equal(
+        JSON.stringify(xd.getArrRepeatedItems([1, 2, 2], 2)),
+        JSON.stringify([2])
+      )
+    })
+
+    it('0 count', function () {
+      assert.equal(
+        JSON.stringify(xd.getArrRepeatedItems([1, 2, 2], 3)),
+        JSON.stringify([])
+      )
+    })
+  })
+
   describe('#uniqArr()', function () {
     it('array with unique items', function () {
       assert.equal(
@@ -104,36 +165,6 @@ describe('xdArray', function () {
       assert.equal(
         JSON.stringify(xd.complementArr([1, 2, 3], [2, 3, 4])),
         JSON.stringify([1, 4])
-      )
-    })
-  })
-
-  describe('#sortArr()', function () {
-    it('sort array asc', function () {
-      assert.equal(
-        JSON.stringify(xd.sortArr([2, 4, 3, 1])),
-        JSON.stringify([1, 2, 3, 4])
-      )
-    })
-    it('sort array desc', function () {
-      assert.equal(
-        JSON.stringify(xd.sortArr([2, 4, 3, 1], 'desc')),
-        JSON.stringify([4, 3, 2, 1])
-      )
-    })
-  })
-
-  describe('#sortArrBy()', function () {
-    it('sort array by specified field asc', function () {
-      assert.equal(
-        JSON.stringify(xd.sortArrBy([{a: 2}, {a: 4}, {a: 3}, {a: 1}], 'a')),
-        JSON.stringify([{a: 1}, {a: 2}, {a: 3}, {a: 4}])
-      )
-    })
-    it('sort array by specified field desc', function () {
-      assert.equal(
-        JSON.stringify(xd.sortArrBy([{a: 2}, {a: 4}, {a: 3}, {a: 1}], 'a', 'desc')),
-        JSON.stringify([{a: 4}, {a: 3}, {a: 2}, {a: 1}])
       )
     })
   })

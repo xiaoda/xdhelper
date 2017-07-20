@@ -18,6 +18,10 @@ let xdArray = new XdModule({
     return !this.getArrLen(arr)
   },
 
+  countArrItem (arr: array, item: mixed): number {
+    return arr.filter((i: mixed): array => i === item).length
+  },
+
   addArrUniqItem (arr: array, item: mixed): array {
     if (!arr.includes(item)) arr.push(item)
     return arr
