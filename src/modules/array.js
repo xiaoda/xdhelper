@@ -104,7 +104,8 @@ let xdArray = new XdModule({
   },
 
   unionArr (...arr: mixed): array {
-    return this.getArrRepeatedItems([].concat(...arr))
+    let tmpArr = arr.reduce((sum: array, value: array): array => sum.concat(this.uniqArr(value)))
+    return this.getArrRepeatedItems(tmpArr)
   },
 
   intersectArr (...arr: mixed): array {

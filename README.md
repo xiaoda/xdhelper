@@ -65,10 +65,10 @@ import xdArray from 'xdhelper/modules/array'
 [unionArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L106) (arrA: array, arrB: array): array
 > 获取数组并集
 
-[intersectArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L110) (arrA: array, arrB: array): array
+[intersectArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L111) (arrA: array, arrB: array): array
 > 获取数组交集
 
-[complementArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L115) (arrA: array, arrB: array): array
+[complementArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L116) (arrA: array, arrB: array): array
 > 获取数组差集（补集）
 
 ### device - 设备
