@@ -392,14 +392,28 @@ var xdArray = new _2.default({
     return this.getArrRepeatedItems((_ref = []).concat.apply(_ref, arguments));
   },
   intersectArr: function intersectArr() {
-    var _ref2;
+    var _this = this;
 
-    return this.getArrRepeatedItems((_ref2 = []).concat.apply(_ref2, arguments), arguments.length);
+    for (var _len = arguments.length, arr = Array(_len), _key = 0; _key < _len; _key++) {
+      arr[_key] = arguments[_key];
+    }
+
+    var tmpArr = arr.reduce(function (sum, value) {
+      return sum.concat(_this.uniqArr(value));
+    });
+    return this.getArrRepeatedItems(tmpArr, arr.length);
   },
   complementArr: function complementArr() {
-    var _ref3;
+    var _this2 = this;
 
-    return this.getArrRepeatedItems((_ref3 = []).concat.apply(_ref3, arguments), 1);
+    for (var _len2 = arguments.length, arr = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      arr[_key2] = arguments[_key2];
+    }
+
+    var tmpArr = arr.reduce(function (sum, value) {
+      return sum.concat(_this2.uniqArr(value));
+    });
+    return this.getArrRepeatedItems(tmpArr, 1);
   }
 });
 

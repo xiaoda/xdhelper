@@ -68,7 +68,7 @@ import xdArray from 'xdhelper/modules/array'
 [intersectArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L110) (arrA: array, arrB: array): array
 > 获取数组交集
 
-[complementArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L114) (arrA: array, arrB: array): array
+[complementArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L115) (arrA: array, arrB: array): array
 > 获取数组差集（补集）
 
 ### device - 设备

@@ -108,11 +108,13 @@ let xdArray = new XdModule({
   },
 
   intersectArr (...arr: mixed): array {
-    return this.getArrRepeatedItems([].concat(...arr), arr.length)
+    let tmpArr = arr.reduce((sum: array, value: array): array => sum.concat(this.uniqArr(value)))
+    return this.getArrRepeatedItems(tmpArr, arr.length)
   },
 
   complementArr (...arr: mixed): array {
-    return this.getArrRepeatedItems([].concat(...arr), 1)
+    let tmpArr = arr.reduce((sum: array, value: array): array => sum.concat(this.uniqArr(value)))
+    return this.getArrRepeatedItems(tmpArr, 1)
   }
 
 })
