@@ -1,8 +1,8 @@
 # xdhelper
 
 [![Build Status](https://travis-ci.org/xiaoda/xdhelper.svg?branch=master)](https://travis-ci.org/xiaoda/xdhelper)
-[![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/xdhelper)
 [![npm](https://img.shields.io/npm/dy/localeval.svg)](https://www.npmjs.com/package/xdhelper)
+[![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/xdhelper)
 
 这是一个精简的 JS 帮助方法库，大多数方法提取自实际的开发项目，新项目可直接引入使用而不需要再 copy paste 一份 helper 文件。与 underscore / lodash 等知名类库不同的是：xdhelper 专注于原生的 JS API 无法直接解决的操作和判断，并提供了一些日常开发中超级实用的方法。在复杂项目中建议与 underscore 或 lodash 搭配使用。xdhelper 仍在活跃开发中，API 可能会改变。
 
