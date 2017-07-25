@@ -2,6 +2,9 @@
   "name": "xdhelper",
   "version": "0.2.7",
   "description": "js helper",
+  "engines": {
+    "node": ">=6"
+  },
   "scripts": {
     "start": "NODE_ENV='dev' webpack-dev-server --config webpack.dev.config.js",
     "build": "NODE_ENV='prod' webpack --config webpack.build.config.js",
