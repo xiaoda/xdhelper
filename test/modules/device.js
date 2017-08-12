@@ -7,8 +7,9 @@ const IPOD_USER_AGENT = 'Mozilla/5.0 (iPod touch; CPU iPhone OS 7_0_3 like Mac O
 const ANDROID_USER_AGENT = 'Mozilla/5.0 (Linux; U; Android 4.4.4; zh-cn; HTC_D820u Build/KTU84P) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30'
 const CHROME_USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
 
-const testData = {
-  iPhone: {
+const testData = [
+  {
+    device: 'iPhone',
     userAgent: IPHONE_USER_AGENT,
     expect: {
       isMobile: true,
@@ -21,7 +22,8 @@ const testData = {
       isiPod: false
     }
   },
-  iPad: {
+  {
+    device: 'iPad',
     userAgent: IPAD_USER_AGENT,
     expect: {
       isMobile: true,
@@ -34,7 +36,8 @@ const testData = {
       isiPod: false
     }
   },
-  iPod: {
+  {
+    device: 'iPod',
     userAgent: IPOD_USER_AGENT,
     expect: {
       isMobile: true,
@@ -47,7 +50,8 @@ const testData = {
       isiPod: true
     }
   },
-  Android: {
+  {
+    device: 'Android',
     userAgent: ANDROID_USER_AGENT,
     expect: {
       isMobile: true,
@@ -60,7 +64,8 @@ const testData = {
       isiPod: false
     }
   },
-  Chrome: {
+  {
+    device: 'Chrome',
     userAgent: CHROME_USER_AGENT,
     expect: {
       isMobile: false,
@@ -72,8 +77,8 @@ const testData = {
       isiPad: false,
       isiPod: false
     }
-  },
-}
+  }
+]
 const detectFuncs = [
   'isMobile', 'isPhone', 'isPad', 'isAndroid',
   'isiOS', 'isiPhone', 'isiPad', 'isiPod'
@@ -83,11 +88,11 @@ describe('xdDevice', function () {
 
   detectFuncs.forEach((item, key) => {
     describe(`#${item}()`, function () {
-      Object.keys(testData).forEach((k, i) => {
-        it(k, function () {
+      testData.forEach((i, k) => {
+        it(i.device, function () {
           assert.equal(
-            xd[item](testData[k]['userAgent']),
-            testData[k]['expect'][item]
+            xd[item](i['userAgent']),
+            i['expect'][item]
           )
         })
       })
