@@ -1,7 +1,7 @@
-let assert = require('assert')
-let xd = require('../../dist')
+const assert = require('assert')
+const xd = require('../../dist')
 
-let testData = [
+const testData = [
   {value: 'string', type: 'string', isStr: true},
   {value: 1, type: 'number', isNum: true},
   {value: [1, 2], type: 'array', isArr: true},
@@ -13,7 +13,7 @@ let testData = [
   {value: null, type: 'null', isNull: true},
   {value: undefined, type: 'undefined', isUndefined: true},
 ]
-let detectFuncs = [
+const detectFuncs = [
   'isStr', 'isNum', 'isArr',
   'isObj', 'isFunc', 'isRegExp'
 ]

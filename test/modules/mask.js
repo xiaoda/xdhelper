@@ -1,5 +1,5 @@
-let assert = require('assert')
-let xd = require('../../dist')
+const assert = require('assert')
+const xd = require('../../dist')
 
 describe('xdMask', function () {
 
