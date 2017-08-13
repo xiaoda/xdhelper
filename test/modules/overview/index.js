@@ -1,5 +1,5 @@
 const assert = require('assert')
-const xd = require('../../dist')
+const xd = require('../../../dist')
 
 describe('xdOverview', function () {
 

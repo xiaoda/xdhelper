@@ -1,27 +1,11 @@
 const assert = require('assert')
-const xd = require('../../dist')
-
-const testData = [
-  {value: 'string', type: 'string', isStr: true},
-  {value: 1, type: 'number', isNum: true},
-  {value: [1, 2], type: 'array', isArr: true},
-  {value: {a: 1, b: 2}, type: 'object', isObj: true},
-  {value: () => {}, type: 'function', isFunc: true},
-  {value: /a-z1-9/, type: 'regexp', isRegExp: true},
-  {value: true, type: 'boolean', isBool: true},
-  {value: new Date(), type: 'date', isDate: true},
-  {value: null, type: 'null', isNull: true},
-  {value: undefined, type: 'undefined', isUndefined: true},
-]
-const detectFuncs = [
-  'isStr', 'isNum', 'isArr',
-  'isObj', 'isFunc', 'isRegExp'
-]
+const xd = require('../../../dist')
+const data = require('./data')
 
 describe('xdType', function () {
 
   describe('#getType()', function () {
-    testData.forEach((item, key) => {
+    data.list.forEach((item, key) => {
       it(`${item.type}`, function () {
         assert.equal(
           xd.getType(item.value),
@@ -31,9 +15,9 @@ describe('xdType', function () {
     })
   })
 
-  detectFuncs.forEach((item, key) => {
+  data.funcs.forEach((item, key) => {
     describe(`#${item}()`, function () {
-      testData.forEach((i, k) => {
+      data.list.forEach((i, k) => {
         it(`${i.type}`, function () {
           assert.equal(
             xd[item](i.value),
