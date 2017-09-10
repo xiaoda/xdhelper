@@ -17,6 +17,15 @@ describe('xdOverview', function () {
         2000000000
       )
     })
+
+    it('custom chain', function () {
+      let custom = (num, times = 1) => num * times * 10
+
+      assert.equal(
+        xd.chain(2, custom, [custom, 2]),
+        400
+      )
+    })
   })
 
 })

@@ -16,23 +16,6 @@ import xdSupport from './modules/support'
 import xdType from './modules/type'
 import xdUrl from './modules/url'
 
-let xdOverview = new XdModule({
-
-  chain (...args: array): mixed {
-    if (args.length < 2) return null
-    let superStar = args.shift()
-    args.forEach((ring: mixed): mixed => {
-      if (xdType.isArr(ring)) {
-        superStar = xd[ring.shift()](superStar, ...ring)
-      } else if (xdType.isStr(ring)) {
-        superStar = xd[ring](superStar)
-      }
-    })
-    return superStar
-  }
-
-})
-
 let xd = {
   ...xdArray,
   ...xdDevice,
@@ -43,7 +26,36 @@ let xd = {
   ...xdString,
   ...xdSupport,
   ...xdType,
-  ...xdUrl,
+  ...xdUrl
+}
+
+let xdOverview = new XdModule({
+
+  chain (...args: array): mixed {
+    if (args.length < 2) return args[0]
+    let major = args.shift()
+    args.forEach((ring: mixed): mixed => {
+      let func
+      let params
+      if (xdType.isArr(ring)) {
+        func = ring.shift()
+        params = [major, ...ring]
+      } else {
+        func = ring
+        params = [major]
+      }
+      if (xd[func] !== undefined) {
+        func = xd[func].bind(xd)
+      }
+      major = func(...params)
+    })
+    return major
+  }
+
+})
+
+xd = {
+  ...xd,
   ...xdOverview
 }
 

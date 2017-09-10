@@ -1,3 +1,5 @@
 import xd from '../src'
 
-xd.countArrItem([1,2,3,2,3,3], 4)
+let custom = (num, times) => num * times
+
+xd.chain(2, 'multiply1k', [custom, 2])

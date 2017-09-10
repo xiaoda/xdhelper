@@ -6,9 +6,9 @@
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-/******/
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -79,12 +79,12 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var /**
-     * 构造类
-     * 
-     */
+/**
+ * 构造类
+ * 
+ */
 
-XdModule = function () {
+var XdModule = function () {
   function XdModule() {
     var funcs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
@@ -871,7 +871,11 @@ module.exports = xdUrl;
 "use strict";
 
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /**
+                                                                                                                                                                                                                                                                   * 入口文件
+                                                                                                                                                                                                                                                                   *
+                                                                                                                                                                                                                                                                   * 
+                                                                                                                                                                                                                                                                   */
 
 var _modules = __webpack_require__(0);
 
@@ -919,11 +923,9 @@ var _url2 = _interopRequireDefault(_url);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } } /**
-                                                                                                                                                                                                     * 入口文件
-                                                                                                                                                                                                     *
-                                                                                                                                                                                                     * 
-                                                                                                                                                                                                     */
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var xd = _extends({}, _array2.default, _device2.default, _function2.default, _mask2.default, _math2.default, _object2.default, _string2.default, _support2.default, _type2.default, _url2.default);
 
 var xdOverview = new _modules2.default({
   chain: function chain() {
@@ -931,20 +933,28 @@ var xdOverview = new _modules2.default({
       args[_key] = arguments[_key];
     }
 
-    if (args.length < 2) return null;
-    var superStar = args.shift();
+    if (args.length < 2) return args[0];
+    var major = args.shift();
     args.forEach(function (ring) {
+      var func = void 0;
+      var params = void 0;
       if (_type2.default.isArr(ring)) {
-        superStar = xd[ring.shift()].apply(xd, [superStar].concat(_toConsumableArray(ring)));
-      } else if (_type2.default.isStr(ring)) {
-        superStar = xd[ring](superStar);
+        func = ring.shift();
+        params = [major].concat(_toConsumableArray(ring));
+      } else {
+        func = ring;
+        params = [major];
       }
+      if (xd[func] !== undefined) {
+        func = xd[func].bind(xd);
+      }
+      major = func.apply(undefined, _toConsumableArray(params));
     });
-    return superStar;
+    return major;
   }
 });
 
-var xd = _extends({}, _array2.default, _device2.default, _function2.default, _mask2.default, _math2.default, _object2.default, _string2.default, _support2.default, _type2.default, _url2.default, xdOverview);
+xd = _extends({}, xd, xdOverview);
 
 Object.freeze(xd);
 
