@@ -36,6 +36,12 @@ import xdArray from 'xdhelper/modules/array'
 xd.chain('text', 'funcA', ['funcB', 'param'], customFuncA, [customFuncB, 'param'])
 ```
 
+跟常规的链式操作方式相比，xdhelper 提供了一个函数而不是对象来完成链式操作的工作，好处是：
+
+1. xdhelper 所有方法以纯函数的方式交付，更符合函数式编程的思想
+2. 不需要在末尾调用额外的取值方法（如 _.value() 等）
+3. 支持自定义函数
+
 ### array - 数组
 
 [getArrLen](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L13) (arr: array): number
