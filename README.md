@@ -28,7 +28,7 @@ import xdArray from 'xdhelper/modules/array'
 
 ### overview - 全局
 
-[chain](https://github.com/xiaoda/xdhelper/blob/master/src/index.js#L21) (...args: array): mixed
+[chain](https://github.com/xiaoda/xdhelper/blob/master/src/index.js#L34) (...args: array): mixed
 > 伪链式操作
 
 ``` javascript
