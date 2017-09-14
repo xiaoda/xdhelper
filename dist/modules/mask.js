@@ -1,4 +1,14 @@
-(function(e, a) { for(var i in a) e[i] = a[i]; }(exports, /******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["xd"] = factory();
+	else
+		root["xd"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -336,5 +346,6 @@ var xdMask = new _2.default({
 module.exports = xdMask;
 
 /***/ })
-/******/ ])));
+/******/ ]);
+});
 //# sourceMappingURL=mask.js.map

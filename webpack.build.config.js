@@ -11,7 +11,8 @@ let webpackConf = {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    libraryTarget: 'commonjs'
+    library: 'xd',
+    libraryTarget: 'umd'
   },
   module: {
     rules: [
