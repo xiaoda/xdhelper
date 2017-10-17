@@ -26,6 +26,8 @@ import xdArray from 'xdhelper/modules/array'
 
 ## modules & functions
 
+大部分方法采用了“动词 [+ 名词 [+ 属性/形容词]]”的命名方式，为的是在想用某个方法时可以依靠直觉快速地搜索到这个方法。
+
 ### overview - 全局
 
 [chain](https://github.com/xiaoda/xdhelper/blob/master/src/index.js#L34) (...args: array): mixed
@@ -181,7 +183,7 @@ xd.chain('text', 'funcA', ['funcB', 'param'], customFuncA, [customFuncB, 'param'
 > 复制对象（非引用传值）
 
 [forEachObj](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L32) (obj: object, callback: mixed): boolean
-> 遍历对象
+> 遍历对象，获得类似数组的 forEach 体验
 
 ### string - 字符串
 
