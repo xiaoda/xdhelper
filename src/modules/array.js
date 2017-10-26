@@ -42,7 +42,10 @@ let xdArray = new XdModule({
   },
 
   sortArr (arr: array, order: string = 'asc'): array {
-    let targetArr = arr.sort()
+    let targetArr
+    let isItemsAllNum = arr.every((item: mixed): boolean => xdType.isNum(item))
+    if (isItemsAllNum) targetArr = arr.sort((a: number, b: number): boolean => a - b)
+    else targetArr = arr.sort()
     if (order === 'desc') targetArr = targetArr.reverse()
     return targetArr
   },

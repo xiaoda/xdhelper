@@ -65,30 +65,30 @@ xd.chain('text', 'funcA', ['funcB', 'param'], customFuncA, [customFuncB, 'param'
 > 数组切换元素
 
 [sortArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L44) (arr: array, order: string = 'asc'): array
-> 数组排序
+> 数组排序（字符串类型根据 unicode 码点排序，数字类型根据数字大小排序）
 
-[sortArrBy](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L50) (arr: array, field: string, order: string = 'asc'): array
-> 数组排序（根据字段值）
+[sortArrBy](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L53) (arr: array, field: string, order: string = 'asc'): array
+> 数组排序（根据字段值排序）
 
-[getArrSample](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L60) (arr: array): mixed
+[getArrSample](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L63) (arr: array): mixed
 > 随机获取一个数组样本
 
-[shuffleArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L66) (arr: array): array
+[shuffleArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L69) (arr: array): array
 > 数组顺序随机化
 
-[getArrRepeatedItems](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L77) (arr: array, times: mixed): array
+[getArrRepeatedItems](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L80) (arr: array, times: mixed): array
 > 获取数组重复元素
 
-[uniqArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L106) (arr: array): array
+[uniqArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L109) (arr: array): array
 > 数组元素去重
 
-[unionArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L110) (arrA: array, arrB: array): array
+[unionArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L113) (arrA: array, arrB: array): array
 > 获取数组并集
 
-[intersectArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L118) (arrA: array, arrB: array): array
+[intersectArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L121) (arrA: array, arrB: array): array
 > 获取数组交集
 
-[complementArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L126) (arrA: array, arrB: array): array
+[complementArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L129) (arrA: array, arrB: array): array
 > 获取数组差集（补集）
 
 ### device - 设备
