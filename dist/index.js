@@ -343,7 +343,13 @@ var xdArray = new _2.default({
   sortArr: function sortArr(arr) {
     var order = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'asc';
 
-    var targetArr = arr.sort();
+    var targetArr = void 0;
+    var isItemsAllNum = arr.every(function (item) {
+      return _type2.default.isNum(item);
+    });
+    if (isItemsAllNum) targetArr = arr.sort(function (a, b) {
+      return a - b;
+    });else targetArr = arr.sort();
     if (order === 'desc') targetArr = targetArr.reverse();
     return targetArr;
   },
