@@ -60,6 +60,26 @@ let xdArray = new XdModule({
     return targetArr
   },
 
+  getArrGreatestItem (arr: array): mixed {
+    let sortedArr = this.sortArr(arr, 'desc')
+    return sortedArr[0]
+  },
+
+  getArrLeastItem (arr: array): mixed {
+    let sortedArr = this.sortArr(arr)
+    return sortedArr[0]
+  },
+
+  getArrGreatestItemBy (arr: array, field: string): object {
+    let sortedArr = this.sortArrBy(arr, field, 'desc')
+    return sortedArr[0]
+  },
+
+  getArrLeastItemBy (arr: array, field: string): object {
+    let sortedArr = this.sortArrBy(arr, field)
+    return sortedArr[0]
+  },
+
   getArrSample (arr: array): mixed {
     let arrLen = this.getArrLen(arr)
     let randomIndex = Math.floor(Math.random() * arrLen)

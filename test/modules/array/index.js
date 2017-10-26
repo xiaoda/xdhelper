@@ -117,6 +117,42 @@ describe('xdArray', function () {
     })
   })
 
+  describe('#getArrGreatestItem()', function () {
+    it('get greatest item', function () {
+      assert.equal(
+        xd.getArrGreatestItem([1, 2, 3]),
+        3
+      )
+    })
+  })
+
+  describe('#getArrLeastItem()', function () {
+    it('get least item', function () {
+      assert.equal(
+        xd.getArrLeastItem([1, 2, 3]),
+        1
+      )
+    })
+  })
+
+  describe('#getArrGreatestItemBy()', function () {
+    it('get greatest item', function () {
+      assert.equal(
+        JSON.stringify(xd.getArrGreatestItemBy([{a: 1}, {a: 2}, {a: 3}], 'a')),
+        JSON.stringify({a: 3})
+      )
+    })
+  })
+
+  describe('#getArrLeastItemBy()', function () {
+    it('get least item', function () {
+      assert.equal(
+        JSON.stringify(xd.getArrLeastItemBy([{a: 1}, {a: 2}, {a: 3}], 'a')),
+        JSON.stringify({a: 1})
+      )
+    })
+  })
+
   describe('#getArrRepeatedItems()', function () {
     it('2 counts', function () {
       assert.equal(

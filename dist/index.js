@@ -362,6 +362,22 @@ var xdArray = new _2.default({
     if (order === 'desc') targetArr = targetArr.reverse();
     return targetArr;
   },
+  getArrGreatestItem: function getArrGreatestItem(arr) {
+    var sortedArr = this.sortArr(arr, 'desc');
+    return sortedArr[0];
+  },
+  getArrLeastItem: function getArrLeastItem(arr) {
+    var sortedArr = this.sortArr(arr);
+    return sortedArr[0];
+  },
+  getArrGreatestItemBy: function getArrGreatestItemBy(arr, field) {
+    var sortedArr = this.sortArrBy(arr, field, 'desc');
+    return sortedArr[0];
+  },
+  getArrLeastItemBy: function getArrLeastItemBy(arr, field) {
+    var sortedArr = this.sortArrBy(arr, field);
+    return sortedArr[0];
+  },
   getArrSample: function getArrSample(arr) {
     var arrLen = this.getArrLen(arr);
     var randomIndex = Math.floor(Math.random() * arrLen);
