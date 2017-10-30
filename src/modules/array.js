@@ -80,6 +80,11 @@ let xdArray = new XdModule({
     return sortedArr[0]
   },
 
+  getArrLastItem (arr: array): mixed {
+    let arrLen = this.getArrLen(arr)
+    return arr[arrLen - 1]
+  },
+
   getArrSample (arr: array): mixed {
     let arrLen = this.getArrLen(arr)
     let randomIndex = Math.floor(Math.random() * arrLen)

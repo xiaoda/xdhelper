@@ -378,6 +378,10 @@ var xdArray = new _2.default({
     var sortedArr = this.sortArrBy(arr, field);
     return sortedArr[0];
   },
+  getArrLastItem: function getArrLastItem(arr) {
+    var arrLen = this.getArrLen(arr);
+    return arr[arrLen - 1];
+  },
   getArrSample: function getArrSample(arr) {
     var arrLen = this.getArrLen(arr);
     var randomIndex = Math.floor(Math.random() * arrLen);

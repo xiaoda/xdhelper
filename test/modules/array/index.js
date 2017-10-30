@@ -153,6 +153,15 @@ describe('xdArray', function () {
     })
   })
 
+  describe('#getArrLastItem()', function () {
+    it('get last item', function () {
+      assert.equal(
+        xd.getArrLastItem([1, 2, 3]),
+        3
+      )
+    })
+  })
+
   describe('#getArrRepeatedItems()', function () {
     it('2 counts', function () {
       assert.equal(

@@ -82,25 +82,28 @@ xd.chain('text', 'funcA', ['funcB', 'param'], customFuncA, [customFuncB, 'param'
 [getArrLeastItemBy](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L78) (arr: array): mixed
 > 获取数组中最小元素（根据字段值排序）
 
-[getArrSample](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L83) (arr: array): mixed
+[getArrLastItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L83) (arr: array): mixed
+> 获取数组中最后一个元素
+
+[getArrSample](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L88) (arr: array): mixed
 > 随机获取一个数组样本
 
-[shuffleArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L89) (arr: array): array
+[shuffleArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L94) (arr: array): array
 > 数组顺序随机化
 
-[getArrRepeatedItems](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L100) (arr: array, times: mixed): array
+[getArrRepeatedItems](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L105) (arr: array, times: mixed): array
 > 获取数组重复元素
 
-[uniqArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L129) (arr: array): array
+[uniqArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L134) (arr: array): array
 > 数组元素去重
 
-[unionArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L133) (arrA: array, arrB: array): array
+[unionArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L138) (arrA: array, arrB: array): array
 > 获取数组并集
 
-[intersectArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L141) (arrA: array, arrB: array): array
+[intersectArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L146) (arrA: array, arrB: array): array
 > 获取数组交集
 
-[complementArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L149) (arrA: array, arrB: array): array
+[complementArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L154) (arrA: array, arrB: array): array
 > 获取数组差集（补集）
 
 ### device - 设备
