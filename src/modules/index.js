@@ -40,6 +40,7 @@ class XdModule {
             }
             return result
           } catch (e) {
+            console.error(e)
             if (config.showErr()) {
               let errMsg = [`[error] ${key}`]
               if (copyArgs.length) {
