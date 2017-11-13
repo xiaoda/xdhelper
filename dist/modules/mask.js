@@ -144,6 +144,7 @@ var XdModule = function () {
               }
               return result;
             } catch (e) {
+              console.error(e);
               if (config.showErr()) {
                 var _console2;
 
