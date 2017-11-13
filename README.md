@@ -10,18 +10,29 @@ Focus on operation & judgement, fundamental functions. Under development. Apis w
 
 ## install
 
-install with npm or cnpm
+### install with npm or cnpm
+
 ```
 npm install xdhelper
 ```
 
-then import it
-``` javascript
+``` js
 // import whole xdhelper
 import xd from 'xdhelper'
 
 // or import part of it
 import xdArray from 'xdhelper/modules/array'
+```
+
+### install with script
+
+``` html
+<script src="xdhelper.js"></script>
+```
+
+``` js
+xd.capitalize('hello world')
+// output: Hello World
 ```
 
 ## modules & functions
@@ -33,7 +44,7 @@ import xdArray from 'xdhelper/modules/array'
 [chain](https://github.com/xiaoda/xdhelper/blob/master/src/index.js#L34) (...args: array): mixed
 > 伪链式操作
 
-``` javascript
+``` js
 // support xdhelper functions & custom functions with or without params
 xd.chain('text', 'funcA', ['funcB', 'param'], customFuncA, [customFuncB, 'param'])
 ```
