@@ -27,6 +27,33 @@ describe('xdArray', function () {
     })
   })
 
+  describe('#isArrEqual()', function () {
+    it('array equal', function () {
+      assert.equal(
+        xd.isObjEqual([1, 2], [1, 2]),
+        true
+      )
+    })
+    it('array not equal', function () {
+      assert.equal(
+        xd.isObjEqual([1, 2], [3, 4]),
+        false
+      )
+    })
+  })
+
+  describe('#cloneArr()', function () {
+    it('clone array', function () {
+      let arr = [1, 2]
+      let cloneArr = xd.cloneObj(arr)
+      cloneArr[0] = 99
+      assert.equal(
+        arr[0],
+        1
+      )
+    })
+  })
+
   describe('#countArrItem()', function () {
     it('2 counts', function () {
       assert.equal(

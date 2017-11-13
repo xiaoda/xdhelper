@@ -52,6 +52,12 @@ xd.chain('text', 'funcA', ['funcB', 'param'], customFuncA, [customFuncB, 'param'
 [isArrEmpty](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L17) (arr: array): boolean
 > 判断数组是否为空
 
+[isArrEqual](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L17) (arrA: array, arrB: array): boolean
+> 判断两个数组是否完全相等（包括元素顺序）
+
+[cloneArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L17) (arr: array): array
+> 复制数组（非引用传值）
+
 [countArrItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L21) (arr: array, item: mixed): number
 > 数组元素计数
 

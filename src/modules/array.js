@@ -18,6 +18,14 @@ let xdArray = new XdModule({
     return !this.getArrLen(arr)
   },
 
+  isArrEqual (arrA: array, arrB: array): boolean {
+    return JSON.stringify(arrA) === JSON.stringify(arrB)
+  },
+
+  cloneArr (arr: array): array {
+    return JSON.parse(JSON.stringify(arr))
+  },
+
   countArrItem (arr: array, item: mixed): number {
     return arr.filter((i: mixed): array => i === item).length
   },

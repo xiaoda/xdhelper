@@ -43,18 +43,6 @@ describe('xdObject', function () {
   })
 
   describe('#isObjEqual()', function () {
-    it('array equal', function () {
-      assert.equal(
-        xd.isObjEqual([1, 2], [1, 2]),
-        true
-      )
-    })
-    it('array not equal', function () {
-      assert.equal(
-        xd.isObjEqual([1, 2], [3, 4]),
-        false
-      )
-    })
     it('object equal', function () {
       assert.equal(
         xd.isObjEqual({a: 1, b: 2}, {a: 1, b: 2}),
@@ -70,15 +58,6 @@ describe('xdObject', function () {
   })
 
   describe('#cloneObj()', function () {
-    it('clone array', function () {
-      let arr = [1, 2]
-      let cloneArr = xd.cloneObj(arr)
-      cloneArr[0] = 99
-      assert.equal(
-        arr[0],
-        1
-      )
-    })
     it('clone object', function () {
       let obj = {a: 1, b: 2}
       let cloneObj = xd.cloneObj(obj)

@@ -321,6 +321,12 @@ var xdArray = new _2.default({
   isArrEmpty: function isArrEmpty(arr) {
     return !this.getArrLen(arr);
   },
+  isArrEqual: function isArrEqual(arrA, arrB) {
+    return JSON.stringify(arrA) === JSON.stringify(arrB);
+  },
+  cloneArr: function cloneArr(arr) {
+    return JSON.parse(JSON.stringify(arr));
+  },
   countArrItem: function countArrItem(arr, item) {
     return arr.filter(function (i) {
       return i === item;
