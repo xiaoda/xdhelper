@@ -4,8 +4,6 @@
  * @flow
  */
 
-import XdModule from './'
-
 let xdUrl = {
 
   buildQueryStr (data: object): string {
