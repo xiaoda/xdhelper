@@ -6,7 +6,7 @@
 
 import XdModule from './'
 
-let xdUrl = new XdModule({
+let xdUrl = {
 
   buildQueryStr (data: object): string {
     let queries = []
@@ -29,6 +29,6 @@ let xdUrl = new XdModule({
     return resultObj
   }
 
-})
+}
 
 module.exports = xdUrl

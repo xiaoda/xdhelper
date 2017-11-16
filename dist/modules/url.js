@@ -73,12 +73,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 11);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 0:
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -172,23 +172,23 @@ var XdModule = function () {
 }();
 
 module.exports = XdModule;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ }),
 
-/***/ 11:
+/***/ 10:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _ = __webpack_require__(0);
+var _ = __webpack_require__(1);
 
 var _2 = _interopRequireDefault(_);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var xdUrl = new _2.default({
+var xdUrl = {
   buildQueryStr: function buildQueryStr(data) {
     var queries = [];
     Object.keys(data).forEach(function (key, index) {
@@ -208,17 +208,17 @@ var xdUrl = new _2.default({
     });
     return resultObj;
   }
-}); /**
-     * url模块
-     *
-     * 
-     */
+}; /**
+    * url模块
+    *
+    * 
+    */
 
 module.exports = xdUrl;
 
 /***/ }),
 
-/***/ 2:
+/***/ 11:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

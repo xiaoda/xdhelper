@@ -4,9 +4,7 @@
  * @flow
  */
 
-import XdModule from './'
-
-let xdDevice = new XdModule({
+let xdDevice = {
 
   getUserAgent (): string {
     return window.navigator.userAgent
@@ -44,6 +42,6 @@ let xdDevice = new XdModule({
     return /iPod/.test(userAgent)
   }
 
-})
+}
 
 module.exports = xdDevice

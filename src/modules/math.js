@@ -4,13 +4,12 @@
  * @flow
  */
 
-import XdModule from './'
 import xdType from './type'
 
 const NUM_1000 = 1000
 const NUM_1024 = 1024
 
-let xdMath = new XdModule({
+let xdMath = {
 
   sum (...arr: mixed): number {
     if (xdType.isArr(arr[0])) arr = arr[0]
@@ -59,6 +58,6 @@ let xdMath = new XdModule({
     }
   }
 
-})
+}
 
 module.exports = xdMath

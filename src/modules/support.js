@@ -4,15 +4,14 @@
  * @flow
  */
 
-import XdModule from './'
 import xdType from './type'
 
-let xdSupport = new XdModule({
+let xdSupport = {
 
   sseSupport (): boolean {
     return !xdType.isUndefined(window.EventSource)
   }
 
-})
+}
 
 module.exports = xdSupport

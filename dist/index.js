@@ -81,6 +81,83 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * 类型模块
+ *
+ * 
+ */
+
+var xdType = {
+
+  /* 通用类型判断 */
+  getType: function getType(obj) {
+    if (Number.isNaN(obj)) return 'NaN';
+    if (typeof obj === 'number' && !Number.isFinite(obj)) return 'Infinity';
+    if (obj === null) return String(obj);else if ((typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) !== 'object') return typeof obj === 'undefined' ? 'undefined' : _typeof(obj);else return Object.prototype.toString.call(obj).toLowerCase().match(/\[\s*object\s*([^\]]*)\s*\]/)[1];
+  },
+
+
+  /* 类型判断 */
+  isStr: function isStr(obj) {
+    return this.getType(obj) === 'string';
+  },
+  isNum: function isNum(obj) {
+    return this.getType(obj) === 'number';
+  },
+  isArr: function isArr(obj) {
+    return this.getType(obj) === 'array';
+  },
+  isObj: function isObj(obj) {
+    return this.getType(obj) === 'object';
+  },
+  isFunc: function isFunc(obj) {
+    return this.getType(obj) === 'function';
+  },
+  isRegExp: function isRegExp(obj) {
+    return this.getType(obj) === 'regexp';
+  },
+  isBool: function isBool(obj) {
+    return this.getType(obj) === 'boolean';
+  },
+  isDate: function isDate(obj) {
+    return this.getType(obj) === 'date';
+  },
+  isNull: function isNull(obj) {
+    return this.getType(obj) === 'null';
+  },
+  isUndefined: function isUndefined(obj) {
+    return this.getType(obj) === 'undefined';
+  },
+
+
+  /* 类型转换 */
+  toStr: function toStr(obj) {
+    return obj.toString();
+  },
+  toNum: function toNum(obj) {
+    return Number(obj);
+  },
+  toBool: function toBool(obj) {
+    return !!obj;
+  },
+  objToArr: function objToArr(obj) {
+    return Object.keys(obj).map(function (key) {
+      return obj[key];
+    });
+  }
+};
+
+module.exports = xdType;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(config) {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -171,88 +248,7 @@ var XdModule = function () {
 }();
 
 module.exports = XdModule;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
-                                                                                                                                                                                                                                                                               * 类型模块
-                                                                                                                                                                                                                                                                               *
-                                                                                                                                                                                                                                                                               * 
-                                                                                                                                                                                                                                                                               */
-
-var _ = __webpack_require__(0);
-
-var _2 = _interopRequireDefault(_);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var xdType = new _2.default({
-
-  /* 通用类型判断 */
-  getType: function getType(obj) {
-    if (Number.isNaN(obj)) return 'NaN';
-    if (typeof obj === 'number' && !Number.isFinite(obj)) return 'Infinity';
-    if (obj === null) return String(obj);else if ((typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) !== 'object') return typeof obj === 'undefined' ? 'undefined' : _typeof(obj);else return Object.prototype.toString.call(obj).toLowerCase().match(/\[\s*object\s*([^\]]*)\s*\]/)[1];
-  },
-
-
-  /* 类型判断 */
-  isStr: function isStr(obj) {
-    return this.getType(obj) === 'string';
-  },
-  isNum: function isNum(obj) {
-    return this.getType(obj) === 'number';
-  },
-  isArr: function isArr(obj) {
-    return this.getType(obj) === 'array';
-  },
-  isObj: function isObj(obj) {
-    return this.getType(obj) === 'object';
-  },
-  isFunc: function isFunc(obj) {
-    return this.getType(obj) === 'function';
-  },
-  isRegExp: function isRegExp(obj) {
-    return this.getType(obj) === 'regexp';
-  },
-  isBool: function isBool(obj) {
-    return this.getType(obj) === 'boolean';
-  },
-  isDate: function isDate(obj) {
-    return this.getType(obj) === 'date';
-  },
-  isNull: function isNull(obj) {
-    return this.getType(obj) === 'null';
-  },
-  isUndefined: function isUndefined(obj) {
-    return this.getType(obj) === 'undefined';
-  },
-
-
-  /* 类型转换 */
-  toStr: function toStr(obj) {
-    return obj.toString();
-  },
-  toNum: function toNum(obj) {
-    return Number(obj);
-  },
-  toBool: function toBool(obj) {
-    return !!obj;
-  },
-  objToArr: function objToArr(obj) {
-    return Object.keys(obj).map(function (key) {
-      return obj[key];
-    });
-  }
-});
-
-module.exports = xdType;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ }),
 /* 2 */
@@ -261,60 +257,13 @@ module.exports = xdType;
 "use strict";
 
 
-/**
- * 配置文件
- *
- * 
- */
-
-var ENV = "prod";
-var DEV = 'dev';
-var PROD = 'prod';
-var SHOW_TRACE = true;
-var SHOW_ERROR = true;
-
-var config = {
-  isDev: function isDev() {
-    return ENV === DEV;
-  },
-  isNotDev: function isNotDev() {
-    return ENV !== DEV;
-  },
-  showTrace: function showTrace() {
-    return this.isDev() && !!SHOW_TRACE;
-  },
-  showErr: function showErr() {
-    return this.isDev() && !!SHOW_ERROR;
-  }
-};
-
-module.exports = config;
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _ = __webpack_require__(0);
-
-var _2 = _interopRequireDefault(_);
-
-var _type = __webpack_require__(1);
+var _type = __webpack_require__(0);
 
 var _type2 = _interopRequireDefault(_type);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/**
- * 数组模块
- * 用作 Lodash / underscore 以外的补充
- *
- * 
- */
-
-var xdArray = new _2.default({
+var xdArray = {
   getArrLen: function getArrLen(arr) {
     return arr.length;
   },
@@ -476,24 +425,29 @@ var xdArray = new _2.default({
     });
     return this.getArrRepeatedItems(tmpArr, 1);
   }
-});
+}; /**
+    * 数组模块
+    * 用作 Lodash / underscore 以外的补充
+    *
+    * 
+    */
 
 module.exports = xdArray;
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _ = __webpack_require__(0);
+/**
+ * 设备类型模块
+ *
+ * 
+ */
 
-var _2 = _interopRequireDefault(_);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var xdDevice = new _2.default({
+var xdDevice = {
   getUserAgent: function getUserAgent() {
     return window.navigator.userAgent;
   },
@@ -543,26 +497,18 @@ var xdDevice = new _2.default({
     return (/iPod/.test(userAgent)
     );
   }
-}); /**
-     * 设备类型模块
-     *
-     * 
-     */
+};
 
 module.exports = xdDevice;
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _ = __webpack_require__(0);
-
-var _2 = _interopRequireDefault(_);
-
-var _type = __webpack_require__(1);
+var _type = __webpack_require__(0);
 
 var _type2 = _interopRequireDefault(_type);
 
@@ -574,7 +520,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
                                                                                                                                                                                                      * 
                                                                                                                                                                                                      */
 
-var xdFunction = new _2.default({
+var xdFunction = {
   execFunc: function execFunc(func) {
     if (_type2.default.isFunc(func)) {
       for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
@@ -586,34 +532,24 @@ var xdFunction = new _2.default({
       return null;
     }
   }
-});
+};
 
 module.exports = xdFunction;
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _ = __webpack_require__(0);
-
-var _2 = _interopRequireDefault(_);
-
-var _type = __webpack_require__(1);
+var _type = __webpack_require__(0);
 
 var _type2 = _interopRequireDefault(_type);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/**
- * 格式模块
- *
- * 
- */
-
-var xdMask = new _2.default({
+var xdMask = {
   mobileMask: function mobileMask(mobile) {
     mobile = _type2.default.toStr(mobile);
     return '' + mobile.slice(0, 3) + '*'.repeat(4) + mobile.slice(-4);
@@ -639,37 +575,36 @@ var xdMask = new _2.default({
       return '' + id.slice(0, start) + '*'.repeat(id.length - reduce) + id.slice(end);
     }
   }
-});
+}; /**
+    * 格式模块
+    *
+    * 
+    */
 
 module.exports = xdMask;
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _ = __webpack_require__(0);
-
-var _2 = _interopRequireDefault(_);
-
-var _type = __webpack_require__(1);
+var _type = __webpack_require__(0);
 
 var _type2 = _interopRequireDefault(_type);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/**
- * 算术模块
- *
- * 
- */
+var NUM_1000 = 1000; /**
+                      * 算术模块
+                      *
+                      * 
+                      */
 
-var NUM_1000 = 1000;
 var NUM_1024 = 1024;
 
-var xdMath = new _2.default({
+var xdMath = {
   sum: function sum() {
     for (var _len = arguments.length, arr = Array(_len), _key = 0; _key < _len; _key++) {
       arr[_key] = arguments[_key];
@@ -732,34 +667,24 @@ var xdMath = new _2.default({
       if (direction === 'right') return '' + num + '0'.repeat(width - len);else return '' + '0'.repeat(width - len) + num;
     }
   }
-});
+};
 
 module.exports = xdMath;
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _ = __webpack_require__(0);
-
-var _2 = _interopRequireDefault(_);
-
-var _type = __webpack_require__(1);
+var _type = __webpack_require__(0);
 
 var _type2 = _interopRequireDefault(_type);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/**
- * 对象模块
- *
- * 
- */
-
-var xdObject = new _2.default({
+var xdObject = {
   getObjLen: function getObjLen(obj) {
     return Object.keys(obj).length;
   },
@@ -782,24 +707,28 @@ var xdObject = new _2.default({
     });
     return keys.length;
   }
-});
+}; /**
+    * 对象模块
+    *
+    * 
+    */
 
 module.exports = xdObject;
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _ = __webpack_require__(0);
+/**
+ * 字符串模块
+ *
+ * 
+ */
 
-var _2 = _interopRequireDefault(_);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var xdString = new _2.default({
+var xdString = {
   getStrLen: function getStrLen(str) {
     return str.length;
   },
@@ -827,13 +756,34 @@ var xdString = new _2.default({
       return _this2.capitalize(str);
     }).join('');
   }
-}); /**
-     * 字符串模块
-     *
-     * 
-     */
+};
 
 module.exports = xdString;
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _type = __webpack_require__(0);
+
+var _type2 = _interopRequireDefault(_type);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var xdSupport = {
+  sseSupport: function sseSupport() {
+    return !_type2.default.isUndefined(window.EventSource);
+  }
+}; /**
+    * 支持模块
+    *
+    * 
+    */
+
+module.exports = xdSupport;
 
 /***/ }),
 /* 10 */
@@ -842,44 +792,13 @@ module.exports = xdString;
 "use strict";
 
 
-var _ = __webpack_require__(0);
-
-var _2 = _interopRequireDefault(_);
-
-var _type = __webpack_require__(1);
-
-var _type2 = _interopRequireDefault(_type);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * 支持模块
- *
- * 
- */
-
-var xdSupport = new _2.default({
-  sseSupport: function sseSupport() {
-    return !_type2.default.isUndefined(window.EventSource);
-  }
-});
-
-module.exports = xdSupport;
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _ = __webpack_require__(0);
+var _ = __webpack_require__(1);
 
 var _2 = _interopRequireDefault(_);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var xdUrl = new _2.default({
+var xdUrl = {
   buildQueryStr: function buildQueryStr(data) {
     var queries = [];
     Object.keys(data).forEach(function (key, index) {
@@ -899,13 +818,49 @@ var xdUrl = new _2.default({
     });
     return resultObj;
   }
-}); /**
-     * url模块
-     *
-     * 
-     */
+}; /**
+    * url模块
+    *
+    * 
+    */
 
 module.exports = xdUrl;
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * 配置文件
+ *
+ * 
+ */
+
+var ENV = "prod";
+var DEV = 'dev';
+var PROD = 'prod';
+var SHOW_TRACE = true;
+var SHOW_ERROR = true;
+
+var config = {
+  isDev: function isDev() {
+    return ENV === DEV;
+  },
+  isNotDev: function isNotDev() {
+    return ENV !== DEV;
+  },
+  showTrace: function showTrace() {
+    return this.isDev() && !!SHOW_TRACE;
+  },
+  showErr: function showErr() {
+    return this.isDev() && !!SHOW_ERROR;
+  }
+};
+
+module.exports = config;
 
 /***/ }),
 /* 12 */
@@ -920,47 +875,47 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                                                                                                                                                                                                                                                                    * 
                                                                                                                                                                                                                                                                    */
 
-var _modules = __webpack_require__(0);
+var _modules = __webpack_require__(1);
 
 var _modules2 = _interopRequireDefault(_modules);
 
-var _array = __webpack_require__(3);
+var _array = __webpack_require__(2);
 
 var _array2 = _interopRequireDefault(_array);
 
-var _device = __webpack_require__(4);
+var _device = __webpack_require__(3);
 
 var _device2 = _interopRequireDefault(_device);
 
-var _function = __webpack_require__(5);
+var _function = __webpack_require__(4);
 
 var _function2 = _interopRequireDefault(_function);
 
-var _mask = __webpack_require__(6);
+var _mask = __webpack_require__(5);
 
 var _mask2 = _interopRequireDefault(_mask);
 
-var _math = __webpack_require__(7);
+var _math = __webpack_require__(6);
 
 var _math2 = _interopRequireDefault(_math);
 
-var _object = __webpack_require__(8);
+var _object = __webpack_require__(7);
 
 var _object2 = _interopRequireDefault(_object);
 
-var _string = __webpack_require__(9);
+var _string = __webpack_require__(8);
 
 var _string2 = _interopRequireDefault(_string);
 
-var _support = __webpack_require__(10);
+var _support = __webpack_require__(9);
 
 var _support2 = _interopRequireDefault(_support);
 
-var _type = __webpack_require__(1);
+var _type = __webpack_require__(0);
 
 var _type2 = _interopRequireDefault(_type);
 
-var _url = __webpack_require__(11);
+var _url = __webpack_require__(10);
 
 var _url2 = _interopRequireDefault(_url);
 

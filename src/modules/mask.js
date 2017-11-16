@@ -4,10 +4,9 @@
  * @flow
  */
 
-import XdModule from './'
 import xdType from './type'
 
-let xdMask = new XdModule({
+let xdMask = {
 
   mobileMask (mobile: string | number): string {
     mobile = xdType.toStr(mobile)
@@ -38,6 +37,6 @@ let xdMask = new XdModule({
     }
   }
 
-})
+}
 
 module.exports = xdMask

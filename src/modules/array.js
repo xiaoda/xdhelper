@@ -5,10 +5,9 @@
  * @flow
  */
 
-import XdModule from './'
 import xdType from './type'
 
-let xdArray = new XdModule({
+let xdArray = {
 
   getArrLen (arr: array): number {
     return arr.length
@@ -167,6 +166,6 @@ let xdArray = new XdModule({
     return this.getArrRepeatedItems(tmpArr, 1)
   }
 
-})
+}
 
 module.exports = xdArray

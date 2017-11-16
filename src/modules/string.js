@@ -4,9 +4,7 @@
  * @flow
  */
 
-import XdModule from './'
-
-let xdString = new XdModule({
+let xdString = {
 
   getStrLen (str: string): number {
     return str.length
@@ -28,6 +26,6 @@ let xdString = new XdModule({
     return strs.map((str: string): string => this.capitalize(str)).join('')
   }
 
-})
+}
 
 module.exports = xdString

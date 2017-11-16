@@ -4,10 +4,9 @@
  * @flow
  */
 
-import XdModule from './'
 import xdType from './type'
 
-let xdFunction = new XdModule({
+let xdFunction = {
 
   execFunc (func: mixed, ...args: array): boolean {
     if (xdType.isFunc(func)) {
@@ -17,6 +16,6 @@ let xdFunction = new XdModule({
     }
   }
 
-})
+}
 
 module.exports = xdFunction

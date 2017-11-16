@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -81,118 +81,17 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(config) {
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 /**
- * 构造类
+ * 类型模块
+ *
  * 
  */
 
-var XdModule = function () {
-  function XdModule() {
-    var funcs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-    _classCallCheck(this, XdModule);
-
-    this.funcs = funcs;
-    this.outputModule = {};
-
-    this.injectFuncs();
-    this.freezeFuncs();
-
-    return this.outputModule;
-  }
-
-  _createClass(XdModule, [{
-    key: 'injectFuncs',
-    value: function injectFuncs() {
-      var _this = this;
-
-      Object.keys(this.funcs).forEach(function (key, index) {
-        _this['outputModule'][key] = function () {
-          for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-          }
-
-          if (args[0] === undefined) args = [];
-          var copyArgs = args.map(function (i, k) {
-            if (typeof i === 'function') return i;else return JSON.parse(JSON.stringify(i));
-          });
-          if (copyArgs.length) {
-            for (var i = copyArgs.length - 1; i > 0; i--) {
-              copyArgs.splice(i, 0, ',');
-            }
-          }
-          return function () {
-            try {
-              var result = _this['funcs'][key].apply(_this.outputModule, args);
-              if (config.showTrace()) {
-                var _console;
-
-                var infoMsg = ['[trace] ' + key];
-                if (copyArgs.length) {
-                  infoMsg = [infoMsg[0] + ' | params >'].concat(_toConsumableArray(copyArgs));
-                }
-                infoMsg = [].concat(_toConsumableArray(infoMsg), ['| result >', result]);
-                (_console = console).info.apply(_console, _toConsumableArray(infoMsg));
-              }
-              return result;
-            } catch (e) {
-              console.error(e);
-              if (config.showErr()) {
-                var _console2;
-
-                var errMsg = ['[error] ' + key];
-                if (copyArgs.length) {
-                  errMsg = [errMsg[0] + ' | params >'].concat(_toConsumableArray(copyArgs));
-                }
-                (_console2 = console).error.apply(_console2, _toConsumableArray(errMsg));
-              }
-              return null;
-            }
-          }();
-        };
-      });
-    }
-  }, {
-    key: 'freezeFuncs',
-    value: function freezeFuncs() {
-      Object.freeze(this.outputModule);
-    }
-  }]);
-
-  return XdModule;
-}();
-
-module.exports = XdModule;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
-                                                                                                                                                                                                                                                                               * 类型模块
-                                                                                                                                                                                                                                                                               *
-                                                                                                                                                                                                                                                                               * 
-                                                                                                                                                                                                                                                                               */
-
-var _ = __webpack_require__(0);
-
-var _2 = _interopRequireDefault(_);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var xdType = new _2.default({
+var xdType = {
 
   /* 通用类型判断 */
   getType: function getType(obj) {
@@ -250,45 +149,9 @@ var xdType = new _2.default({
       return obj[key];
     });
   }
-});
-
-module.exports = xdType;
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * 配置文件
- *
- * 
- */
-
-var ENV = "prod";
-var DEV = 'dev';
-var PROD = 'prod';
-var SHOW_TRACE = true;
-var SHOW_ERROR = true;
-
-var config = {
-  isDev: function isDev() {
-    return ENV === DEV;
-  },
-  isNotDev: function isNotDev() {
-    return ENV !== DEV;
-  },
-  showTrace: function showTrace() {
-    return this.isDev() && !!SHOW_TRACE;
-  },
-  showErr: function showErr() {
-    return this.isDev() && !!SHOW_ERROR;
-  }
 };
 
-module.exports = config;
+module.exports = xdType;
 
 /***/ })
 /******/ ]);

@@ -4,10 +4,9 @@
  * @flow
  */
 
-import XdModule from './'
 import xdType from './type'
 
-let xdObject = new XdModule({
+let xdObject = {
 
   getObjLen (obj: object): number {
     return Object.keys(obj).length
@@ -37,6 +36,6 @@ let xdObject = new XdModule({
     return keys.length
   }
 
-})
+}
 
 module.exports = xdObject

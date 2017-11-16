@@ -4,9 +4,7 @@
  * @flow
  */
 
-import XdModule from './'
-
-let xdType = new XdModule({
+let xdType = {
 
   /* 通用类型判断 */
   getType (obj: mixed): string {
@@ -75,6 +73,6 @@ let xdType = new XdModule({
     return Object.keys(obj).map((key: string): mixed => obj[key])
   }
 
-})
+}
 
 module.exports = xdType
