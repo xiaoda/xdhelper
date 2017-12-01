@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 12);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -558,9 +558,20 @@ var xdMath = {
 
     return this.devide(num, 1024, times);
   },
+  map: function map(num, rangeA, rangeB) {
+    var startA = _type2.default.toNum(rangeA[0]);
+    var endA = _type2.default.toNum(rangeA[1]);
+    var startB = _type2.default.toNum(rangeB[0]);
+    var endB = _type2.default.toNum(rangeB[1]);
+    num = _type2.default.toNum(num);
+    return startB + Math.abs(num - startA) / Math.abs(endA - startA) * Math.abs(endB - startB) * (endB >= startB ? 1 : -1);
+  },
+  random: function random(start, end) {
+    var decimal = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : -1;
 
-
-  /* 补零 */
+    var random = this.map(Math.random(), [0, 1], [_type2.default.toNum(start), _type2.default.toNum(end)]);
+    return decimal === -1 ? random : random.toFixed(decimal);
+  },
   fillZero: function fillZero(num, width) {
     var direction = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'left';
 
@@ -730,139 +741,6 @@ module.exports = xdUrl;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(config) {
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/**
- * 构造类
- * 
- */
-
-var XdModule = function () {
-  function XdModule() {
-    var funcs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-    _classCallCheck(this, XdModule);
-
-    this.funcs = funcs;
-    this.outputModule = {};
-
-    this.injectFuncs();
-    this.freezeFuncs();
-
-    return this.outputModule;
-  }
-
-  _createClass(XdModule, [{
-    key: 'injectFuncs',
-    value: function injectFuncs() {
-      var _this = this;
-
-      Object.keys(this.funcs).forEach(function (key, index) {
-        _this['outputModule'][key] = function () {
-          for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-          }
-
-          if (args[0] === undefined) args = [];
-          var copyArgs = args.map(function (i, k) {
-            if (typeof i === 'function') return i;else return JSON.parse(JSON.stringify(i));
-          });
-          if (copyArgs.length) {
-            for (var i = copyArgs.length - 1; i > 0; i--) {
-              copyArgs.splice(i, 0, ',');
-            }
-          }
-          return function () {
-            try {
-              var result = _this['funcs'][key].apply(_this.outputModule, args);
-              if (config.showTrace()) {
-                var _console;
-
-                var infoMsg = ['[trace] ' + key];
-                if (copyArgs.length) {
-                  infoMsg = [infoMsg[0] + ' | params >'].concat(_toConsumableArray(copyArgs));
-                }
-                infoMsg = [].concat(_toConsumableArray(infoMsg), ['| result >', result]);
-                (_console = console).info.apply(_console, _toConsumableArray(infoMsg));
-              }
-              return result;
-            } catch (e) {
-              console.error(e);
-              if (config.showErr()) {
-                var _console2;
-
-                var errMsg = ['[error] ' + key];
-                if (copyArgs.length) {
-                  errMsg = [errMsg[0] + ' | params >'].concat(_toConsumableArray(copyArgs));
-                }
-                (_console2 = console).error.apply(_console2, _toConsumableArray(errMsg));
-              }
-              return null;
-            }
-          }();
-        };
-      });
-    }
-  }, {
-    key: 'freezeFuncs',
-    value: function freezeFuncs() {
-      Object.freeze(this.outputModule);
-    }
-  }]);
-
-  return XdModule;
-}();
-
-module.exports = XdModule;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * 配置文件
- *
- * 
- */
-
-var ENV = "prod";
-var DEV = 'dev';
-var PROD = 'prod';
-var SHOW_TRACE = true;
-var SHOW_ERROR = true;
-
-var config = {
-  isDev: function isDev() {
-    return ENV === DEV;
-  },
-  isNotDev: function isNotDev() {
-    return ENV !== DEV;
-  },
-  showTrace: function showTrace() {
-    return this.isDev() && !!SHOW_TRACE;
-  },
-  showErr: function showErr() {
-    return this.isDev() && !!SHOW_ERROR;
-  }
-};
-
-module.exports = config;
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
 
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /**
@@ -870,10 +748,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                                                                                                                                                                                                                                                                    *
                                                                                                                                                                                                                                                                    * 
                                                                                                                                                                                                                                                                    */
-
-var _modules = __webpack_require__(10);
-
-var _modules2 = _interopRequireDefault(_modules);
 
 var _array = __webpack_require__(1);
 
@@ -921,7 +795,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 var xd = _extends({}, _array2.default, _device2.default, _function2.default, _mask2.default, _math2.default, _object2.default, _string2.default, _support2.default, _type2.default, _url2.default);
 
-var xdOverview = new _modules2.default({
+var xdOverview = {
   chain: function chain() {
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -946,11 +820,14 @@ var xdOverview = new _modules2.default({
     });
     return major;
   }
-});
+};
 
 xd = _extends({}, xd, xdOverview);
 
 Object.freeze(xd);
+Object.keys(xd).forEach(function (key) {
+  Object.freeze(xd[key]);
+});
 
 module.exports = xd;
 

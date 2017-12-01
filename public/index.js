@@ -1,3 +1,5 @@
 import xd from '../src'
 
-xd.sortArr([-1, -2, 0])
+let num = xd.random(0, 100)
+
+console.log(num)

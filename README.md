@@ -57,236 +57,242 @@ xd.chain('text', 'funcA', ['funcB', 'param'], customFuncA, [customFuncB, 'param'
 
 ### array - 数组
 
-[getArrLen](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L13) (arr: array): number
+[getArrLen](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L12) (arr: array): number
 > 获取数组长度
 
-[isArrEmpty](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L17) (arr: array): boolean
+[isArrEmpty](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L16) (arr: array): boolean
 > 判断数组是否为空
 
-[isArrEqual](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L21) (arrA: array, arrB: array): boolean
+[isArrEqual](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L20) (arrA: array, arrB: array): boolean
 > 判断两个数组是否完全相等（包括元素顺序）
 
-[cloneArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L25) (arr: array): array
+[cloneArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L24) (arr: array): array
 > 复制数组（非引用传值）
 
-[countArrItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L29) (arr: array, item: mixed): number
+[countArrItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L28) (arr: array, item: mixed): number
 > 数组元素计数
 
-[addArrUniqItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L33) (array: array, item: mixed): array
+[addArrUniqItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L32) (array: array, item: mixed): array
 > 数组添加唯一元素
 
-[removeArrItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L38) (array: array, item: mixed): array
+[removeArrItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L37) (array: array, item: mixed): array
 > 数组删除元素
 
-[toggleArrItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L45) (array: array, item: mixed): array
+[toggleArrItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L44) (array: array, item: mixed): array
 > 数组切换元素
 
-[sortArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L52) (arr: array, order: string = 'asc'): array
+[sortArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L51) (arr: array, order: string = 'asc'): array
 > 数组排序（字符串类型根据 unicode 码点排序，数字类型根据数字大小排序）
 
-[sortArrBy](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L61) (arr: array, field: string, order: string = 'asc'): array
+[sortArrBy](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L60) (arr: array, field: string, order: string = 'asc'): array
 > 数组排序（根据字段值排序）
 
-[getArrGreatestItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L71) (arr: array): mixed
+[getArrGreatestItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L70) (arr: array): mixed
 > 获取数组中最大元素
 
-[getArrLeastItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L76) (arr: array): mixed
+[getArrLeastItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L75) (arr: array): mixed
 > 获取数组中最小元素
 
-[getArrGreatestItemBy](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L81) (arr: array): mixed
+[getArrGreatestItemBy](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L80) (arr: array): mixed
 > 获取数组中最大元素（根据字段值排序）
 
-[getArrLeastItemBy](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L86) (arr: array): mixed
+[getArrLeastItemBy](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L85) (arr: array): mixed
 > 获取数组中最小元素（根据字段值排序）
 
-[getArrLastItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L91) (arr: array): mixed
+[getArrLastItem](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L90) (arr: array): mixed
 > 获取数组中最后一个元素
 
-[getArrSample](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L96) (arr: array): mixed
+[getArrSample](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L95) (arr: array): mixed
 > 随机获取一个数组样本
 
-[shuffleArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L102) (arr: array): array
+[shuffleArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L101) (arr: array): array
 > 数组顺序随机化
 
-[getArrRepeatedItems](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L113) (arr: array, times: mixed): array
+[getArrRepeatedItems](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L112) (arr: array, times: mixed): array
 > 获取数组重复元素
 
-[uniqArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L142) (arr: array): array
+[uniqArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L141) (arr: array): array
 > 数组元素去重
 
-[unionArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L146) (arrA: array, arrB: array): array
+[unionArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L145) (arrA: array, arrB: array): array
 > 获取数组并集
 
-[intersectArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L154) (arrA: array, arrB: array): array
+[intersectArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L153) (arrA: array, arrB: array): array
 > 获取数组交集
 
-[complementArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L162) (arrA: array, arrB: array): array
+[complementArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/array.js#L161) (arrA: array, arrB: array): array
 > 获取数组差集（补集）
 
 ### device - 设备
 
-[getUserAgent](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L11) (): string
+[getUserAgent](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L10) (): string
 > 获取用户代理信息
 
-[isMobile](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L15) (userAgent: string = this.getUserAgent()): boolean
+[isMobile](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L14) (userAgent: string = this.getUserAgent()): boolean
 > 判断是否移动设备
 
-[isPhone](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L19) (userAgent: string = this.getUserAgent()): boolean
+[isPhone](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L18) (userAgent: string = this.getUserAgent()): boolean
 > 判断是否手机
 
-[isPad](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L23) (userAgent: string = this.getUserAgent()): boolean
+[isPad](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L22) (userAgent: string = this.getUserAgent()): boolean
 > 判断是否平板电脑
 
-[isAndroid](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L27) (userAgent: string = this.getUserAgent()): boolean
+[isAndroid](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L26) (userAgent: string = this.getUserAgent()): boolean
 > 判断是否 Android 系统
 
-[isiOS](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L31) (userAgent: string = this.getUserAgent()): boolean
+[isiOS](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L30) (userAgent: string = this.getUserAgent()): boolean
 > 判断是否 iOS 系统
 
-[isiPhone](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L35) (userAgent: string = this.getUserAgent()): boolean
+[isiPhone](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L34) (userAgent: string = this.getUserAgent()): boolean
 > 判断是否 iPhone
 
-[isiPad](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L39) (userAgent: string = this.getUserAgent()): boolean
+[isiPad](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L38) (userAgent: string = this.getUserAgent()): boolean
 > 判断是否 iPad
 
-[isiPod](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L43) (userAgent: string = this.getUserAgent()): boolean
+[isiPod](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L42) (userAgent: string = this.getUserAgent()): boolean
 > 判断是否 iPod
 
 ### function - 函数
 
-[execFunc](https://github.com/xiaoda/xdhelper/blob/master/src/modules/function.js#L12) (func: mixed, ...args: array): boolean
+[execFunc](https://github.com/xiaoda/xdhelper/blob/master/src/modules/function.js#L11) (func: mixed, ...args: array): boolean
 > 安全执行函数
 
 ### mask - 模糊格式
 
-[mobileMask](https://github.com/xiaoda/xdhelper/blob/master/src/modules/mask.js#L12) (mobile: string | number): string
+[mobileMask](https://github.com/xiaoda/xdhelper/blob/master/src/modules/mask.js#L11) (mobile: string | number): string
 > 手机号模糊格式
 
-[emailMask](https://github.com/xiaoda/xdhelper/blob/master/src/modules/mask.js#L17) (email: string): string
+[emailMask](https://github.com/xiaoda/xdhelper/blob/master/src/modules/mask.js#L16) (email: string): string
 > 邮箱模糊格式
 
-[idNumMask](https://github.com/xiaoda/xdhelper/blob/master/src/modules/mask.js#L24) (id: string | number): string
+[idNumMask](https://github.com/xiaoda/xdhelper/blob/master/src/modules/mask.js#L23) (id: string | number): string
 > 身份证号码模糊格式
 
 ### math - 算术
 
-[sum](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L15) (...arr: mixed): number
+[sum](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L14) (...arr: mixed): number
 > 求和
 
-[mean](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L20) (...arr: mixed): number
+[mean](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L19) (...arr: mixed): number
 > 求平均数
 
-[multiply](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L27) (numA: number | string, numB: number | string, times: number | string = 1): number
+[multiply](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L26) (numA: number | string, numB: number | string, times: number | string = 1): number
 > 乘法
 
-[multiply1k](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L31) (num: number | string, times: number | string = 1): number
+[multiply1k](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L30) (num: number | string, times: number | string = 1): number
 > 乘以 1000
 
-[multiply1024](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L35) (num: number | string, times: number | string = 1): number
+[multiply1024](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L34) (num: number | string, times: number | string = 1): number
 > 乘以 1024
 
-[devide](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L39) (numA: number | string, numB: number | string, times: number | string = 1): number
+[devide](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L38) (numA: number | string, numB: number | string, times: number | string = 1): number
 > 除法
 
-[devide1k](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L43) (num: number | string, times: number | string = 1): number
+[devide1k](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L42) (num: number | string, times: number | string = 1): number
 > 除以 1000
 
-[devide1024](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L47) (num: number | string, times: number | string = 1): number
+[devide1024](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L46) (num: number | string, times: number | string = 1): number
 > 除以 1024
 
-[fillZero](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L52) (num: number | string, width: number, direction: string = 'left'): string
+[map](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L50) (num: number | string, rangeA: array, rangeB: array): number
+> 数值映射
+
+[random](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L59) (start: number | string, end: number | string, decimal: number = -1): number
+> 获取随机数
+
+[fillZero](https://github.com/xiaoda/xdhelper/blob/master/src/modules/math.js#L64) (num: number | string, width: number, direction: string = 'left'): string
 > 补零
 
 ### object - 对象
 
-[getObjLen](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L12) (obj: object): number
+[getObjLen](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L11) (obj: object): number
 > 获取对象长度
 
-[hasObjKey](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L16) (obj: object, key: string): boolean
+[hasObjKey](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L15) (obj: object, key: string): boolean
 > 判断对象是否有指定字段
 
-[isObjEmpty](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L20) (obj: object): boolean
+[isObjEmpty](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L19) (obj: object): boolean
 > 判断对象是否为空
 
-[isObjEqual](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L24) (objA: object, objB: object): boolean
+[isObjEqual](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L23) (objA: object, objB: object): boolean
 > 判断两个对象是否完全相等（包括属性顺序）
 
-[cloneObj](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L28) (obj: object): string
+[cloneObj](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L27) (obj: object): string
 > 复制对象（非引用传值）
 
-[forEachObj](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L32) (obj: object, callback: mixed): boolean
+[forEachObj](https://github.com/xiaoda/xdhelper/blob/master/src/modules/object.js#L31) (obj: object, callback: mixed): boolean
 > 遍历对象，获得类似数组的 forEach 体验
 
 ### string - 字符串
 
-[capitalize](https://github.com/xiaoda/xdhelper/blob/master/src/modules/string.js#L11) (str: string): string
+[capitalize](https://github.com/xiaoda/xdhelper/blob/master/src/modules/string.js#L10) (str: string): string
 > 首字母大写
 
-[kebabCase](https://github.com/xiaoda/xdhelper/blob/master/src/modules/string.js#L15) (strs: array): string
+[kebabCase](https://github.com/xiaoda/xdhelper/blob/master/src/modules/string.js#L14) (strs: array): string
 > 中划线连接
 
-[camelCase](https://github.com/xiaoda/xdhelper/blob/master/src/modules/string.js#L19) (strs: array): string
+[camelCase](https://github.com/xiaoda/xdhelper/blob/master/src/modules/string.js#L18) (strs: array): string
 > 驼峰连接
 
-[capitalCamelCase](https://github.com/xiaoda/xdhelper/blob/master/src/modules/string.js#L23) (strs: array): string
+[capitalCamelCase](https://github.com/xiaoda/xdhelper/blob/master/src/modules/string.js#L22) (strs: array): string
 > 驼峰连接（首字母大写）
 
 ### support - 支持
 
-[sseSupport](https://github.com/xiaoda/xdhelper/blob/master/src/modules/support.js#L12) (): boolean
+[sseSupport](https://github.com/xiaoda/xdhelper/blob/master/src/modules/support.js#L11) (): boolean
 > 判断浏览器是否支持服务器推送事件
 
 ### type - 类型
 
-[getType](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L12) (obj: mixed): string
+[getType](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L11) (obj: mixed): string
 > 获取类型
 
-[isStr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L21) (obj: mixed): boolean
+[isStr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L20) (obj: mixed): boolean
 > 判断是否字符串
 
-[isNum](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L25) (obj: mixed): boolean
+[isNum](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L24) (obj: mixed): boolean
 > 判断是否数字
 
-[isArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L29) (obj: mixed): boolean
+[isArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L28) (obj: mixed): boolean
 > 判断是否数组
 
-[isObj](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L33) (obj: mixed): boolean
+[isObj](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L32) (obj: mixed): boolean
 > 判断是否对象
 
-[isFunc](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L37) (obj: mixed): boolean
+[isFunc](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L36) (obj: mixed): boolean
 > 判断是否函数
 
-[isRegExp](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L41) (obj: mixed): boolean
+[isRegExp](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L40) (obj: mixed): boolean
 > 判断是否正则表达式
 
-[isBool](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L45) (obj: mixed): boolean
+[isBool](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L44) (obj: mixed): boolean
 > 判断是否布尔型
 
-[isDate](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L49) (obj: mixed): boolean
+[isDate](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L48) (obj: mixed): boolean
 > 判断是否日期
 
-[isNull](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L53) (obj: mixed): boolean
+[isNull](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L52) (obj: mixed): boolean
 > 判断是否 null
 
-[isUndefined](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L57) (obj: mixed): boolean
+[isUndefined](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L56) (obj: mixed): boolean
 > 判断是否 undefined
 
-[toStr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L62) (obj: mixed): string
+[toStr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L61) (obj: mixed): string
 > 转换为字符串类型
 
-[toNum](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L66) (obj: mixed): number
+[toNum](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L65) (obj: mixed): number
 > 转换为数字类型
 
-[toBool](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L70) (obj: mixed): boolean
+[toBool](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L69) (obj: mixed): boolean
 > 转换为布尔型
 
-[objToArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L74) (obj: object): array
+[objToArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L73) (obj: object): array
 > 对象转换为数组
 
 ### url - 网址
 
-[buildQueryStr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/url.js#L11) (data: object): string
+[buildQueryStr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/url.js#L10) (data: object): string
 > 构造 url 参数
 
-[getQueryParams](https://github.com/xiaoda/xdhelper/blob/master/src/modules/url.js#L19) (url: string = window.location.search): object
+[getQueryParams](https://github.com/xiaoda/xdhelper/blob/master/src/modules/url.js#L18) (url: string = window.location.search): object
 > 获取 url 参数

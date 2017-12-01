@@ -4,7 +4,6 @@
  * @flow
  */
 
-import XdModule from './modules'
 import xdArray from './modules/array'
 import xdDevice from './modules/device'
 import xdFunction from './modules/function'
@@ -29,7 +28,7 @@ let xd = {
   ...xdUrl
 }
 
-let xdOverview = new XdModule({
+let xdOverview = {
 
   chain (...args: array): mixed {
     if (args.length < 2) return args[0]
@@ -52,7 +51,7 @@ let xdOverview = new XdModule({
     return major
   }
 
-})
+}
 
 xd = {
   ...xd,
@@ -60,5 +59,8 @@ xd = {
 }
 
 Object.freeze(xd)
+Object.keys(xd).forEach((key: string) => {
+  Object.freeze(xd[key])
+})
 
 module.exports = xd

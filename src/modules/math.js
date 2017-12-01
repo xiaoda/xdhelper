@@ -47,7 +47,20 @@ let xdMath = {
     return this.devide(num, 1024, times)
   },
 
-  /* 补零 */
+  map (num: number | string, rangeA: array, rangeB: array): number {
+    let startA = xdType.toNum(rangeA[0])
+    let endA = xdType.toNum(rangeA[1])
+    let startB = xdType.toNum(rangeB[0])
+    let endB = xdType.toNum(rangeB[1])
+    num = xdType.toNum(num)
+    return startB + Math.abs(num - startA) / Math.abs(endA - startA) * Math.abs(endB - startB) * (endB >= startB ? 1 : -1)
+  },
+
+  random (start: number | string, end: number | string, decimal: number = -1): number {
+    let random = this.map(Math.random(), [0, 1], [xdType.toNum(start), xdType.toNum(end)])
+    return decimal === -1 ? random : random.toFixed(decimal)
+  },
+
   fillZero (num: number | string, width: number, direction: string = 'left'): string {
     num = xdType.toStr(num)
     let len = num.length

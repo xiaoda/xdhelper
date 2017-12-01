@@ -227,9 +227,20 @@ var xdMath = {
 
     return this.devide(num, 1024, times);
   },
+  map: function map(num, rangeA, rangeB) {
+    var startA = _type2.default.toNum(rangeA[0]);
+    var endA = _type2.default.toNum(rangeA[1]);
+    var startB = _type2.default.toNum(rangeB[0]);
+    var endB = _type2.default.toNum(rangeB[1]);
+    num = _type2.default.toNum(num);
+    return startB + Math.abs(num - startA) / Math.abs(endA - startA) * Math.abs(endB - startB) * (endB >= startB ? 1 : -1);
+  },
+  random: function random(start, end) {
+    var decimal = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : -1;
 
-
-  /* 补零 */
+    var random = this.map(Math.random(), [0, 1], [_type2.default.toNum(start), _type2.default.toNum(end)]);
+    return decimal === -1 ? random : random.toFixed(decimal);
+  },
   fillZero: function fillZero(num, width) {
     var direction = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'left';
 

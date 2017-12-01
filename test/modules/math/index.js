@@ -75,6 +75,15 @@ describe('xdMath', function () {
     })
   })
 
+  describe('#map()', function () {
+    it('number type', function () {
+      assert.equal(
+        xd.map(5, [0, 10], [-100, -200]),
+        -150
+      )
+    })
+  })
+
   describe('#fillZero()', function () {
     it('need fill', function () {
       assert.equal(
