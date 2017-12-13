@@ -225,16 +225,19 @@ xd.chain('text', 'funcA', ['funcB', 'param'], customFuncA, [customFuncB, 'param'
 
 ### string - 字符串
 
-[capitalize](https://github.com/xiaoda/xdhelper/blob/master/src/modules/string.js#L10) (str: string): string
+[getStrLen](https://github.com/xiaoda/xdhelper/blob/master/src/modules/string.js#L9) (str: string): number
+> 获取字符串长度
+
+[capitalize](https://github.com/xiaoda/xdhelper/blob/master/src/modules/string.js#L13) (str: string): string
 > 首字母大写
 
-[kebabCase](https://github.com/xiaoda/xdhelper/blob/master/src/modules/string.js#L14) (strs: array): string
+[kebabCase](https://github.com/xiaoda/xdhelper/blob/master/src/modules/string.js#L17) (strs: array): string
 > 中划线连接
 
-[camelCase](https://github.com/xiaoda/xdhelper/blob/master/src/modules/string.js#L18) (strs: array): string
+[camelCase](https://github.com/xiaoda/xdhelper/blob/master/src/modules/string.js#L21) (strs: array): string
 > 驼峰连接
 
-[capitalCamelCase](https://github.com/xiaoda/xdhelper/blob/master/src/modules/string.js#L22) (strs: array): string
+[capitalCamelCase](https://github.com/xiaoda/xdhelper/blob/master/src/modules/string.js#L25) (strs: array): string
 > 驼峰连接（首字母大写）
 
 ### support - 支持
