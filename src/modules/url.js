@@ -11,7 +11,7 @@ let xdUrl = {
     Object.keys(data).forEach((key: number, index: string) => {
       queries.push(`${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
     })
-    return queries.join('&')
+    return queries.length ? `?${queries.join('&')}` : ''
   },
 
   getQueryParams (url: string = window.location.search): object {

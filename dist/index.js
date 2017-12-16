@@ -718,7 +718,7 @@ var xdUrl = {
     Object.keys(data).forEach(function (key, index) {
       queries.push(encodeURIComponent(key) + '=' + encodeURIComponent(data[key]));
     });
-    return queries.join('&');
+    return queries.length ? '?' + queries.join('&') : '';
   },
   getQueryParams: function getQueryParams() {
     var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window.location.search;

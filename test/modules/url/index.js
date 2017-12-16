@@ -7,7 +7,7 @@ describe('xdUrl', function () {
     it('object type', function () {
       assert.equal(
         xd.buildQueryStr({a: 'x', b: 'y'}),
-        'a=x&b=y'
+        '?a=x&b=y'
       )
     })
   })
