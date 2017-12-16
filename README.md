@@ -41,7 +41,7 @@ xd.capitalize('hello world')
 
 ### overview - 全局
 
-[chain](https://github.com/xiaoda/xdhelper/blob/master/src/index.js#L34) (...args: array): mixed
+[chain](https://github.com/xiaoda/xdhelper/blob/master/src/index.js#L33) (...args: array): mixed
 > 伪链式操作
 
 ``` js
@@ -125,31 +125,31 @@ xd.chain('text', 'funcA', ['funcB', 'param'], customFuncA, [customFuncB, 'param'
 
 ### device - 设备
 
-[getUserAgent](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L10) (): string
+[getUserAgent](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L9) (): string
 > 获取用户代理信息
 
-[isMobile](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L14) (userAgent: string = this.getUserAgent()): boolean
+[isMobile](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L13) (userAgent: string = this.getUserAgent()): boolean
 > 判断是否移动设备
 
-[isPhone](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L18) (userAgent: string = this.getUserAgent()): boolean
+[isPhone](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L17) (userAgent: string = this.getUserAgent()): boolean
 > 判断是否手机
 
-[isPad](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L22) (userAgent: string = this.getUserAgent()): boolean
+[isPad](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L21) (userAgent: string = this.getUserAgent()): boolean
 > 判断是否平板电脑
 
-[isAndroid](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L26) (userAgent: string = this.getUserAgent()): boolean
+[isAndroid](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L25) (userAgent: string = this.getUserAgent()): boolean
 > 判断是否 Android 系统
 
-[isiOS](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L30) (userAgent: string = this.getUserAgent()): boolean
+[isiOS](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L29) (userAgent: string = this.getUserAgent()): boolean
 > 判断是否 iOS 系统
 
-[isiPhone](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L34) (userAgent: string = this.getUserAgent()): boolean
+[isiPhone](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L33) (userAgent: string = this.getUserAgent()): boolean
 > 判断是否 iPhone
 
-[isiPad](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L38) (userAgent: string = this.getUserAgent()): boolean
+[isiPad](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L37) (userAgent: string = this.getUserAgent()): boolean
 > 判断是否 iPad
 
-[isiPod](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L42) (userAgent: string = this.getUserAgent()): boolean
+[isiPod](https://github.com/xiaoda/xdhelper/blob/master/src/modules/device.js#L41) (userAgent: string = this.getUserAgent()): boolean
 > 判断是否 iPod
 
 ### function - 函数
@@ -247,55 +247,55 @@ xd.chain('text', 'funcA', ['funcB', 'param'], customFuncA, [customFuncB, 'param'
 
 ### type - 类型
 
-[getType](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L11) (obj: mixed): string
+[getType](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L10) (obj: mixed): string
 > 获取类型
 
-[isStr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L20) (obj: mixed): boolean
+[isStr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L19) (obj: mixed): boolean
 > 判断是否字符串
 
-[isNum](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L24) (obj: mixed): boolean
+[isNum](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L23) (obj: mixed): boolean
 > 判断是否数字
 
-[isArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L28) (obj: mixed): boolean
+[isArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L27) (obj: mixed): boolean
 > 判断是否数组
 
-[isObj](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L32) (obj: mixed): boolean
+[isObj](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L31) (obj: mixed): boolean
 > 判断是否对象
 
-[isFunc](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L36) (obj: mixed): boolean
+[isFunc](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L35) (obj: mixed): boolean
 > 判断是否函数
 
-[isRegExp](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L40) (obj: mixed): boolean
+[isRegExp](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L39) (obj: mixed): boolean
 > 判断是否正则表达式
 
-[isBool](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L44) (obj: mixed): boolean
+[isBool](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L43) (obj: mixed): boolean
 > 判断是否布尔型
 
-[isDate](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L48) (obj: mixed): boolean
+[isDate](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L47) (obj: mixed): boolean
 > 判断是否日期
 
-[isNull](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L52) (obj: mixed): boolean
+[isNull](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L51) (obj: mixed): boolean
 > 判断是否 null
 
-[isUndefined](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L56) (obj: mixed): boolean
+[isUndefined](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L55) (obj: mixed): boolean
 > 判断是否 undefined
 
-[toStr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L61) (obj: mixed): string
+[toStr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L60) (obj: mixed): string
 > 转换为字符串类型
 
-[toNum](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L65) (obj: mixed): number
+[toNum](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L64) (obj: mixed): number
 > 转换为数字类型
 
-[toBool](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L69) (obj: mixed): boolean
+[toBool](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L68) (obj: mixed): boolean
 > 转换为布尔型
 
-[objToArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L73) (obj: object): array
+[objToArr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/type.js#L72) (obj: object): array
 > 对象转换为数组
 
 ### url - 网址
 
-[buildQueryStr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/url.js#L10) (data: object): string
+[buildQueryStr](https://github.com/xiaoda/xdhelper/blob/master/src/modules/url.js#L9) (data: object): string
 > 构造 url 参数
 
-[getQueryParams](https://github.com/xiaoda/xdhelper/blob/master/src/modules/url.js#L18) (url: string = window.location.search): object
+[getQueryParams](https://github.com/xiaoda/xdhelper/blob/master/src/modules/url.js#L17) (url: string = window.location.search): object
 > 获取 url 参数
