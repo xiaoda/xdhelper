@@ -3,5 +3,3 @@ node_modules
 npm-debug.log
 npm-debug.log.*
 test.log
-dist/package.json
-dist/README.md

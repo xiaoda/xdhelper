@@ -13,13 +13,16 @@ let xdMath = {
 
   sum (...arr: mixed): number {
     if (xdType.isArr(arr[0])) arr = arr[0]
+
     return arr.reduce((acc: number, val: number): number => acc + xdType.toNum(val))
   },
 
   mean (...arr: mixed): number {
     if (xdType.isArr(arr[0])) arr = arr[0]
+
     let sum = this.sum(arr)
     let count = arr.length
+
     return sum / count
   },
 
@@ -53,17 +56,20 @@ let xdMath = {
     let startB = xdType.toNum(rangeB[0])
     let endB = xdType.toNum(rangeB[1])
     num = xdType.toNum(num)
+
     return startB + Math.abs(num - startA) / Math.abs(endA - startA) * Math.abs(endB - startB) * (endB >= startB ? 1 : -1)
   },
 
   random (start: number | string, end: number | string, decimal: number = -1): number {
     let random = this.map(Math.random(), [0, 1], [xdType.toNum(start), xdType.toNum(end)])
+
     return decimal === -1 ? random : random.toFixed(decimal)
   },
 
   fillZero (num: number | string, width: number, direction: string = 'left'): string {
     num = xdType.toStr(num)
     let len = num.length
+
     if (len >= width) return num
     else {
       if (direction === 'right') return `${num}${'0'.repeat(width - len)}`

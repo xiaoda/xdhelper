@@ -30,9 +30,11 @@ let xdObject = {
 
   forEachObj (obj: object, callback: mixed): boolean {
     let keys = Object.keys(obj)
+
     keys.forEach((key: string) => {
       callback(obj[key], key)
     })
+
     return keys.length
   }
 

@@ -87,7 +87,6 @@ module.exports = {
       'onlyFilesWithFlowAnnotation': false
     }
   },
-  globals: {
-    config: true
-  }
+  failOnWarning: false,
+  failOnError: true
 }

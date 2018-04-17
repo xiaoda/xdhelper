@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -186,17 +186,21 @@ var xdArray = {
   },
   addArrUniqItem: function addArrUniqItem(arr, item) {
     if (!arr.includes(item)) arr.push(item);
+
     return arr;
   },
   removeArrItem: function removeArrItem(arr, item) {
     if (arr.includes(item)) {
       arr.splice(arr.indexOf(item), 1);
     }
+
     return arr;
   },
   toggleArrItem: function toggleArrItem(arr, item) {
     var index = arr.indexOf(item);
+
     if (index === -1) arr.push(item);else arr.splice(index, 1);
+
     return arr;
   },
   sortArr: function sortArr(arr) {
@@ -206,10 +210,13 @@ var xdArray = {
     var isItemsAllNum = arr.every(function (item) {
       return _type2.default.isNum(item);
     });
+
     if (isItemsAllNum) targetArr = arr.sort(function (a, b) {
       return a - b;
     });else targetArr = arr.sort();
+
     if (order === 'desc') targetArr = targetArr.reverse();
+
     return targetArr;
   },
   sortArrBy: function sortArrBy(arr, field) {
@@ -218,51 +225,66 @@ var xdArray = {
     var targetArr = arr.sort(function (itemA, itemB) {
       if (itemA[field] > itemB[field]) return 1;else if (itemA[field] < itemB[field]) return -1;else return 0;
     });
+
     if (order === 'desc') targetArr = targetArr.reverse();
+
     return targetArr;
   },
   getArrGreatestItem: function getArrGreatestItem(arr) {
     var sortedArr = this.sortArr(arr, 'desc');
+
     return sortedArr[0];
   },
   getArrLeastItem: function getArrLeastItem(arr) {
     var sortedArr = this.sortArr(arr);
+
     return sortedArr[0];
   },
   getArrGreatestItemBy: function getArrGreatestItemBy(arr, field) {
     var sortedArr = this.sortArrBy(arr, field, 'desc');
+
     return sortedArr[0];
   },
   getArrLeastItemBy: function getArrLeastItemBy(arr, field) {
     var sortedArr = this.sortArrBy(arr, field);
+
     return sortedArr[0];
   },
   getArrLastItem: function getArrLastItem(arr) {
     var arrLen = this.getArrLen(arr);
+
     return arr[arrLen - 1];
   },
   getArrSample: function getArrSample(arr) {
     var arrLen = this.getArrLen(arr);
     var randomIndex = Math.floor(Math.random() * arrLen);
+
     return arr[randomIndex];
   },
   shuffleArr: function shuffleArr(arr) {
     var copyArr = JSON.parse(JSON.stringify(arr));
     var targetArr = [];
+
     while (copyArr.length) {
       var randomIndex = Math.floor(Math.random() * copyArr.length);
+
       targetArr.push(copyArr[randomIndex]);
       copyArr.splice(randomIndex, 1);
     }
+
     return targetArr;
   },
   getArrRepeatedItems: function getArrRepeatedItems(arr, times) {
     var counter = {};
+
     arr.forEach(function (item) {
       var key = JSON.stringify(item);
+
       if (_type2.default.isUndefined(counter[key])) counter[key] = 1;else counter[key]++;
     });
+
     var targetArr = [];
+
     switch (_type2.default.getType(times)) {
       case 'number':
       case 'string':
@@ -271,16 +293,19 @@ var xdArray = {
           if (counter[key] === times) targetArr.push(JSON.parse(key));
         });
         break;
+
       case 'function':
         Object.keys(counter).forEach(function (key) {
           if (times(counter[key])) targetArr.push(JSON.parse(key));
         });
         break;
+
       default:
         Object.keys(counter).forEach(function (key) {
           targetArr.push(JSON.parse(key));
         });
     }
+
     return targetArr;
   },
   uniqArr: function uniqArr(arr) {
@@ -298,6 +323,7 @@ var xdArray = {
     arr.forEach(function (singleArr) {
       tmpArr = tmpArr.concat(_this.uniqArr(singleArr));
     });
+
     return this.getArrRepeatedItems(tmpArr);
   },
   intersectArr: function intersectArr() {
@@ -312,6 +338,7 @@ var xdArray = {
     arr.forEach(function (singleArr) {
       tmpArr = tmpArr.concat(_this2.uniqArr(singleArr));
     });
+
     return this.getArrRepeatedItems(tmpArr, arr.length);
   },
   complementArr: function complementArr() {
@@ -326,6 +353,7 @@ var xdArray = {
     arr.forEach(function (singleArr) {
       tmpArr = tmpArr.concat(_this3.uniqArr(singleArr));
     });
+
     return this.getArrRepeatedItems(tmpArr, 1);
   }
 }; /**
@@ -455,11 +483,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var xdMask = {
   mobileMask: function mobileMask(mobile) {
     mobile = _type2.default.toStr(mobile);
+
     return '' + mobile.slice(0, 3) + '*'.repeat(4) + mobile.slice(-4);
   },
   emailMask: function emailMask(email) {
     var emailArray = email.split('@');
+
     if (emailArray[0].length > 4) email = emailArray[0].slice(0, -4) + '****@' + emailArray[1];else email = '' + emailArray[0].charAt(0) + '*'.repeat(emailArray[0].length - 1) + '@' + emailArray[1];
+
     return email;
   },
   idNumMask: function idNumMask(id) {
@@ -467,6 +498,7 @@ var xdMask = {
     var start = 3;
     var end = -4;
     var reduce = 7;
+
     if (id.length <= 4) {
       return '' + id.slice(0, 1) + '*'.repeat(id.length - 1);
     } else {
@@ -475,6 +507,7 @@ var xdMask = {
         end = -2;
         reduce = 3;
       }
+
       return '' + id.slice(0, start) + '*'.repeat(id.length - reduce) + id.slice(end);
     }
   }
@@ -514,6 +547,7 @@ var xdMath = {
     }
 
     if (_type2.default.isArr(arr[0])) arr = arr[0];
+
     return arr.reduce(function (acc, val) {
       return acc + _type2.default.toNum(val);
     });
@@ -524,8 +558,10 @@ var xdMath = {
     }
 
     if (_type2.default.isArr(arr[0])) arr = arr[0];
+
     var sum = this.sum(arr);
     var count = arr.length;
+
     return sum / count;
   },
   multiply: function multiply(numA, numB) {
@@ -564,12 +600,14 @@ var xdMath = {
     var startB = _type2.default.toNum(rangeB[0]);
     var endB = _type2.default.toNum(rangeB[1]);
     num = _type2.default.toNum(num);
+
     return startB + Math.abs(num - startA) / Math.abs(endA - startA) * Math.abs(endB - startB) * (endB >= startB ? 1 : -1);
   },
   random: function random(start, end) {
     var decimal = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : -1;
 
     var random = this.map(Math.random(), [0, 1], [_type2.default.toNum(start), _type2.default.toNum(end)]);
+
     return decimal === -1 ? random : random.toFixed(decimal);
   },
   fillZero: function fillZero(num, width) {
@@ -577,6 +615,7 @@ var xdMath = {
 
     num = _type2.default.toStr(num);
     var len = num.length;
+
     if (len >= width) return num;else {
       if (direction === 'right') return '' + num + '0'.repeat(width - len);else return '' + '0'.repeat(width - len) + num;
     }
@@ -616,9 +655,11 @@ var xdObject = {
   },
   forEachObj: function forEachObj(obj, callback) {
     var keys = Object.keys(obj);
+
     keys.forEach(function (key) {
       callback(obj[key], key);
     });
+
     return keys.length;
   }
 }; /**
@@ -681,31 +722,6 @@ module.exports = xdString;
 "use strict";
 
 
-var _type = __webpack_require__(0);
-
-var _type2 = _interopRequireDefault(_type);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var xdSupport = {
-  sseSupport: function sseSupport() {
-    return !_type2.default.isUndefined(window.EventSource);
-  }
-}; /**
-    * 支持模块
-    *
-    * 
-    */
-
-module.exports = xdSupport;
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 /**
  * url模块
  *
@@ -715,9 +731,11 @@ module.exports = xdSupport;
 var xdUrl = {
   buildQueryStr: function buildQueryStr(data) {
     var queries = [];
+
     Object.keys(data).forEach(function (key, index) {
       queries.push(encodeURIComponent(key) + '=' + encodeURIComponent(data[key]));
     });
+
     return queries.length ? '?' + queries.join('&') : '';
   },
   getQueryParams: function getQueryParams() {
@@ -725,11 +743,14 @@ var xdUrl = {
 
     var urlArray = void 0;
     var resultObj = {};
+
     if (!url) urlArray = [];else if (url.charAt(0) === '?') urlArray = url.slice(1).split('&');else urlArray = url.split('&');
+
     urlArray.forEach(function (item, key) {
       var array = item.split('=');
       resultObj[array[0]] = array[1];
     });
+
     return resultObj;
   }
 };
@@ -737,7 +758,7 @@ var xdUrl = {
 module.exports = xdUrl;
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -777,15 +798,11 @@ var _string = __webpack_require__(7);
 
 var _string2 = _interopRequireDefault(_string);
 
-var _support = __webpack_require__(8);
-
-var _support2 = _interopRequireDefault(_support);
-
 var _type = __webpack_require__(0);
 
 var _type2 = _interopRequireDefault(_type);
 
-var _url = __webpack_require__(9);
+var _url = __webpack_require__(8);
 
 var _url2 = _interopRequireDefault(_url);
 
@@ -793,7 +810,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-var xd = _extends({}, _array2.default, _device2.default, _function2.default, _mask2.default, _math2.default, _object2.default, _string2.default, _support2.default, _type2.default, _url2.default);
+var xd = _extends({}, _array2.default, _device2.default, _function2.default, _mask2.default, _math2.default, _object2.default, _string2.default, _type2.default, _url2.default);
 
 var xdOverview = {
   chain: function chain() {
@@ -802,10 +819,13 @@ var xdOverview = {
     }
 
     if (args.length < 2) return args[0];
+
     var major = args.shift();
+
     args.forEach(function (ring) {
       var func = void 0;
       var params = void 0;
+
       if (_type2.default.isArr(ring)) {
         func = ring.shift();
         params = [major].concat(_toConsumableArray(ring));
@@ -813,11 +833,14 @@ var xdOverview = {
         func = ring;
         params = [major];
       }
+
       if (xd[func] !== undefined) {
         func = xd[func].bind(xd);
       }
+
       major = func.apply(undefined, _toConsumableArray(params));
     });
+
     return major;
   }
 };
@@ -825,6 +848,7 @@ var xdOverview = {
 xd = _extends({}, xd, xdOverview);
 
 Object.freeze(xd);
+
 Object.keys(xd).forEach(function (key) {
   Object.freeze(xd[key]);
 });
