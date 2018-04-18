@@ -1,20 +1,15 @@
 /**
  * 数组模块
- * 用作 Lodash / underscore 以外的补充
  *
  * @flow
  */
 
-import xdType from './type'
+const xdType = require('./type')
 
-let xdArray = {
-
-  getArrLen (arr: array): number {
-    return arr.length
-  },
+const xdArray = {
 
   isArrEmpty (arr: array): boolean {
-    return !this.getArrLen(arr)
+    return !arr.length
   },
 
   isArrEqual (arrA: array, arrB: array): boolean {
@@ -25,109 +20,86 @@ let xdArray = {
     return JSON.parse(JSON.stringify(arr))
   },
 
+  getArrFirstItem (arr: array, num: number = 1): mixed {
+    let result = []
+
+    for (let i = 0; i < num; i++) {
+      result.push(arr[i])
+    }
+
+    return result.length === 1 ? result[0] : result
+  },
+
+  getArrLastItem (arr: array, num: number = 1): mixed {
+    let result = []
+
+    for (let i = arr.length - num; i < arr.length; i++) {
+      result.push(arr[i])
+    }
+
+    return result.length === 1 ? result[0] : result
+  },
+
   countArrItem (arr: array, item: mixed): number {
     return arr.filter((i: mixed): array => i === item).length
   },
 
-  addArrUniqItem (arr: array, item: mixed): array {
-    if (!arr.includes(item)) arr.push(item)
+  addArrUniqItem (arr: array, items: mixed): array {
+    if (!xdType.isArr(items)) items = [items]
 
-    return arr
-  },
-
-  removeArrItem (arr: array, item: mixed): array {
-    if (arr.includes(item)) {
-      arr.splice(arr.indexOf(item), 1)
-    }
-
-    return arr
-  },
-
-  toggleArrItem (arr: array, item: mixed): array {
-    let index = arr.indexOf(item)
-
-    if (index === -1) arr.push(item)
-    else arr.splice(index, 1)
-
-    return arr
-  },
-
-  sortArr (arr: array, order: string = 'asc'): array {
-    let targetArr
-    let isItemsAllNum = arr.every((item: mixed): boolean => xdType.isNum(item))
-
-    if (isItemsAllNum) targetArr = arr.sort((a: number, b: number): boolean => a - b)
-    else targetArr = arr.sort()
-
-    if (order === 'desc') targetArr = targetArr.reverse()
-
-    return targetArr
-  },
-
-  sortArrBy (arr: array, field: string, order: string = 'asc'): array {
-    let targetArr = arr.sort((itemA: object, itemB: object): number => {
-      if (itemA[field] > itemB[field]) return 1
-      else if (itemA[field] < itemB[field]) return -1
-      else return 0
+    items.forEach((item: mixed) => {
+      if (!arr.includes(item)) arr.push(item)
     })
 
-    if (order === 'desc') targetArr = targetArr.reverse()
-
-    return targetArr
+    return arr
   },
 
-  getArrGreatestItem (arr: array): mixed {
-    let sortedArr = this.sortArr(arr, 'desc')
+  removeArrItem (arr: array, items: mixed): array {
+    if (!xdType.isArr(items)) items = [items]
 
-    return sortedArr[0]
+    items.forEach((item: mixed) => {
+      if (arr.includes(item)) arr.splice(arr.indexOf(item), 1)
+    })
+
+    return arr
   },
 
-  getArrLeastItem (arr: array): mixed {
+  toggleArrItem (arr: array, items: mixed): array {
+    if (!xdType.isArr(items)) items = [items]
+
+    items.forEach((item: mixed) => {
+      if (arr.includes(item)) arr.splice(arr.indexOf(item), 1)
+      else arr.push(item)
+    })
+
+    return arr
+  },
+
+  getArrGreatestItem (arr: array, num: number = 1): mixed {
     let sortedArr = this.sortArr(arr)
 
-    return sortedArr[0]
+    return this.getArrLastItem(sortedArr, num)
   },
 
-  getArrGreatestItemBy (arr: array, field: string): object {
-    let sortedArr = this.sortArrBy(arr, field, 'desc')
+  getArrLeastItem (arr: array, num: number = 1): mixed {
+    let sortedArr = this.sortArr(arr)
 
-    return sortedArr[0]
+    return this.getArrFirstItem(sortedArr, num)
   },
 
-  getArrLeastItemBy (arr: array, field: string): object {
+  getArrGreatestItemBy (arr: array, field: string, num: number = 1): object {
     let sortedArr = this.sortArrBy(arr, field)
 
-    return sortedArr[0]
+    return this.getArrLastItem(sortedArr, num)
   },
 
-  getArrLastItem (arr: array): mixed {
-    let arrLen = this.getArrLen(arr)
+  getArrLeastItemBy (arr: array, field: string, num: number = 1): object {
+    let sortedArr = this.sortArrBy(arr, field)
 
-    return arr[arrLen - 1]
+    return this.getArrFirstItem(sortedArr, num)
   },
 
-  getArrSample (arr: array): mixed {
-    let arrLen = this.getArrLen(arr)
-    let randomIndex = Math.floor(Math.random() * arrLen)
-
-    return arr[randomIndex]
-  },
-
-  shuffleArr (arr: array): array {
-    let copyArr = JSON.parse(JSON.stringify(arr))
-    let targetArr = []
-
-    while (copyArr.length) {
-      let randomIndex = Math.floor(Math.random() * copyArr.length)
-
-      targetArr.push(copyArr[randomIndex])
-      copyArr.splice(randomIndex, 1)
-    }
-
-    return targetArr
-  },
-
-  getArrRepeatedItems (arr: array, times: mixed): array {
+  getArrRepeatedItem (arr: array, times: mixed): array {
     let counter = {}
 
     arr.forEach((item: mixed) => {
@@ -164,7 +136,7 @@ let xdArray = {
   },
 
   uniqArr (arr: array): array {
-    return this.getArrRepeatedItems(arr)
+    return this.getArrRepeatedItem(arr)
   },
 
   unionArr (...arr: mixed): array {
@@ -174,7 +146,7 @@ let xdArray = {
       tmpArr = tmpArr.concat(this.uniqArr(singleArr))
     })
 
-    return this.getArrRepeatedItems(tmpArr)
+    return this.getArrRepeatedItem(tmpArr)
   },
 
   intersectArr (...arr: mixed): array {
@@ -184,17 +156,49 @@ let xdArray = {
       tmpArr = tmpArr.concat(this.uniqArr(singleArr))
     })
 
-    return this.getArrRepeatedItems(tmpArr, arr.length)
+    return this.getArrRepeatedItem(tmpArr, arr.length)
   },
 
-  complementArr (...arr: mixed): array {
-    let tmpArr = []
+  sortArr (arr: array, order: string = 'asc'): array {
+    let targetArr
+    let isItemsAllNum = arr.every((item: mixed): boolean => xdType.isNum(item))
 
-    arr.forEach((singleArr: array): array => {
-      tmpArr = tmpArr.concat(this.uniqArr(singleArr))
+    if (isItemsAllNum) targetArr = arr.sort((a: number, b: number): boolean => a - b)
+    else targetArr = arr.sort()
+
+    if (order === 'desc') targetArr = targetArr.reverse()
+
+    return targetArr
+  },
+
+  sortArrBy (arr: array, field: string, order: string = 'asc'): array {
+    let targetArr = arr.sort((itemA: object, itemB: object): number => {
+      if (itemA[field] > itemB[field]) return 1
+      else if (itemA[field] < itemB[field]) return -1
+      else return 0
     })
 
-    return this.getArrRepeatedItems(tmpArr, 1)
+    if (order === 'desc') targetArr = targetArr.reverse()
+
+    return targetArr
+  },
+
+  shuffleArr (arr: array): array {
+    let indexArr = arr.map((item: mixed, key: number): number => key)
+    let targetArr = []
+
+    while (indexArr.length > 0) {
+      let randomIndex = Math.floor(Math.random() * indexArr.length)
+
+      targetArr.push(arr[indexArr[randomIndex]])
+      indexArr.splice(randomIndex, 1)
+    }
+
+    return targetArr
+  },
+
+  getArrSample (arr: array, num: number = 1): mixed {
+    return this.getArrFirstItem(this.shuffleArr(arr), num)
   }
 
 }

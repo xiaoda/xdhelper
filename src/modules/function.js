@@ -4,16 +4,18 @@
  * @flow
  */
 
-import xdType from './type'
+const xdType = require('./type')
 
 let xdFunction = {
 
-  execFunc (func: mixed, ...args: array): boolean {
+  safelyRun (func: mixed, ...args: array): boolean {
+    let result = null
+
     if (xdType.isFunc(func)) {
-      return func(...args)
-    } else {
-      return null
+      result = func(...args)
     }
+
+    return result
   }
 
 }

@@ -4,7 +4,7 @@
  * @flow
  */
 
-let xdDevice = {
+const xdDevice = {
 
   getUserAgent (): string {
     return window.navigator.userAgent

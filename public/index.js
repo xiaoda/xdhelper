@@ -1,5 +1,5 @@
 import xd from '../src'
 
-let num = xd.random(0, 100)
+let test = xd.capitalize('aBC')
 
-console.log(num)
+console.log(test)

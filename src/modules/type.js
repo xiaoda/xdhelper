@@ -4,9 +4,8 @@
  * @flow
  */
 
-let xdType = {
+const xdType = {
 
-  /* 通用类型判断 */
   getType (obj: mixed): string {
     if (Number.isNaN(obj)) return 'NaN'
     if (typeof obj === 'number' && !Number.isFinite(obj)) return 'Infinity'
@@ -15,7 +14,6 @@ let xdType = {
     else return Object.prototype.toString.call(obj).toLowerCase().match(/\[\s*object\s*([^\]]*)\s*\]/)[1]
   },
 
-  /* 类型判断 */
   isStr (obj: mixed): boolean {
     return this.getType(obj) === 'string'
   },
@@ -36,7 +34,7 @@ let xdType = {
     return this.getType(obj) === 'function'
   },
 
-  isRegExp (obj: mixed): boolean {
+  isReg (obj: mixed): boolean {
     return this.getType(obj) === 'regexp'
   },
 
@@ -52,13 +50,12 @@ let xdType = {
     return this.getType(obj) === 'null'
   },
 
-  isUndefined (obj: mixed): boolean {
+  isUndef (obj: mixed): boolean {
     return this.getType(obj) === 'undefined'
   },
 
-  /* 类型转换 */
   toStr (obj: mixed): string {
-    return obj.toString()
+    return String(obj)
   },
 
   toNum (obj: mixed): number {
