@@ -1,7 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const defaultConf = require('./webpack.default.config')
+const defaultConf = require('./default.config')
 
 let webpackConf = {
   entry: {
@@ -13,21 +13,18 @@ let webpackConf = {
   },
   module: {
     rules: [
-      defaultConf.module.rules.srcEslint,
-      defaultConf.module.rules.srcBabel,
+      defaultConf.module.rules.eslint,
+      defaultConf.module.rules.babel,
       {
         test: /\.js?$/,
-        include: [path.resolve(__dirname, 'public')],
-        loader: 'babel-loader',
-        options: {
-          presets: ['latest', 'stage-1']
-        }
+        include: [path.resolve(__dirname, '../public')],
+        loader: 'babel-loader'
       }
     ]
   },
   resolve: defaultConf.resolve,
   devtool: 'source-map',
-  context: __dirname,
+  context: path.resolve(__dirname, '../'),
   stats: 'errors-only',
   devServer: {
     contentBase: path.join(__dirname, 'public'),
@@ -39,7 +36,6 @@ let webpackConf = {
   },
   plugins: [
     defaultConf.plugins.define,
-    defaultConf.plugins.provide,
     new CopyWebpackPlugin([
       {from: './public/index.html', to: './'}
     ], {

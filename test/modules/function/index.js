@@ -1,17 +1,17 @@
 const assert = require('assert')
-const xd = require('../../../dist')
+const xd = require('../../../')
 
-describe('xdFunction', function () {
+describe('xdFunction', () => {
 
-  describe('#execFunc()', function () {
-    it('legal function', function (done) {
-      xd.execFunc((param) => {
+  describe('#safelyRun()', () => {
+    it('existent function', (done) => {
+      xd.safelyRun((param) => {
         if (param === 1) done()
       }, 1)
     })
-    it('illegal function', function () {
+    it('nonexistent function', () => {
       assert.equal(
-        xd.execFunc('string'),
+        xd.safelyRun('fake'),
         null
       )
     })

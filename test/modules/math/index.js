@@ -1,10 +1,10 @@
 const assert = require('assert')
-const xd = require('../../../dist')
+const xd = require('../../../')
 
-describe('xdMath', function () {
+describe('xdMath', () => {
 
-  describe('#sum()', function () {
-    it('sum', function () {
+  describe('#sum()', () => {
+    it('sum', () => {
       assert.equal(
         xd.sum([1, 2, 3, 4]),
         10
@@ -12,8 +12,17 @@ describe('xdMath', function () {
     })
   })
 
-  describe('#mean()', function () {
-    it('mean', function () {
+  describe('#product()', () => {
+    it('product', () => {
+      assert.equal(
+        xd.product([1, 2, 3, 4]),
+        24
+      )
+    })
+  })
+
+  describe('#mean()', () => {
+    it('mean', () => {
       assert.equal(
         xd.mean([1, 2, 3, 4]),
         2.5
@@ -21,80 +30,26 @@ describe('xdMath', function () {
     })
   })
 
-  describe('#multiply()', function () {
-    it('number type', function () {
+  describe('#medium()', () => {
+    it('odd number', () => {
       assert.equal(
-        xd.multiply(3, 3),
-        9
+        xd.medium([1, 2, 4]),
+        2
       )
     })
-  })
-
-  describe('#multiply1k()', function () {
-    it('number type', function () {
+    it('even number', () => {
       assert.equal(
-        xd.multiply1k(2),
-        2000
-      )
-    })
-  })
-
-  describe('#multiply1024()', function () {
-    it('number type', function () {
-      assert.equal(
-        xd.multiply1024(2),
-        2048
-      )
-    })
-  })
-
-  describe('#devide()', function () {
-    it('number type', function () {
-      assert.equal(
-        xd.devide(9, 3),
+        xd.medium([1, 2, 4, 8]),
         3
       )
     })
   })
 
-  describe('#devide1k()', function () {
-    it('number type', function () {
-      assert.equal(
-        xd.devide1k(2000),
-        2
-      )
-    })
-  })
-
-  describe('#devide1024()', function () {
-    it('number type', function () {
-      assert.equal(
-        xd.devide1024(2048),
-        2
-      )
-    })
-  })
-
-  describe('#map()', function () {
-    it('number type', function () {
+  describe('#map()', () => {
+    it('number type', () => {
       assert.equal(
         xd.map(5, [0, 10], [-100, -200]),
         -150
-      )
-    })
-  })
-
-  describe('#fillZero()', function () {
-    it('need fill', function () {
-      assert.equal(
-        xd.fillZero(2, 2),
-        '02'
-      )
-    })
-    it('not need fill', function () {
-      assert.equal(
-        xd.fillZero('12', 2),
-        '12'
       )
     })
   })

@@ -1,25 +1,16 @@
 const assert = require('assert')
-const xd = require('../../../dist')
+const xd = require('../../../')
 
-describe('xdArray', function () {
+describe('xdArray', () => {
 
-  describe('#getArrLen()', function () {
-    it('get array length', function () {
-      assert.equal(
-        xd.getArrLen([1, 2]),
-        2
-      )
-    })
-  })
-
-  describe('#isArrEmpty()', function () {
-    it('empty array', function () {
+  describe('#isArrEmpty()', () => {
+    it('array empty', () => {
       assert.equal(
         xd.isArrEmpty([]),
         true
       )
     })
-    it('not empty array', function () {
+    it('array not empty', () => {
       assert.equal(
         xd.isArrEmpty([1, 2]),
         false
@@ -27,216 +18,287 @@ describe('xdArray', function () {
     })
   })
 
-  describe('#isArrEqual()', function () {
-    it('array equal', function () {
+  describe('#isArrEqual()', () => {
+    it('arrays equal', () => {
       assert.equal(
-        xd.isObjEqual([1, 2], [1, 2]),
+        xd.isArrEqual([1, 2], [1, 2]),
         true
       )
     })
-    it('array not equal', function () {
+    it('arrays not equal', () => {
       assert.equal(
-        xd.isObjEqual([1, 2], [3, 4]),
+        xd.isArrEqual([1, 2], [3, 4]),
         false
       )
     })
   })
 
-  describe('#cloneArr()', function () {
-    it('clone array', function () {
-      let arr = [1, 2]
-      let cloneArr = xd.cloneObj(arr)
-      cloneArr[0] = 99
+  describe('#cloneArr()', () => {
+    it('clone array', () => {
       assert.equal(
-        arr[0],
-        1
+        xd.isArrEqual([1, 2], xd.cloneArr([1, 2])),
+        true
       )
     })
   })
 
-  describe('#countArrItem()', function () {
-    it('2 counts', function () {
-      assert.equal(
-        xd.countArrItem([1, 2, 2], 2),
-        2
-      )
-    })
-    it('0 count', function () {
+  describe('#countArrItem()', () => {
+    it('0 count', () => {
       assert.equal(
         xd.countArrItem([1, 2, 2], 3),
         0
       )
     })
-  })
-
-  describe('#addArrUniqItem()', function () {
-    it('add item', function () {
+    it('2 counts', () => {
       assert.equal(
-        JSON.stringify(xd.addArrUniqItem([1, 2], 3)),
-        JSON.stringify([1, 2, 3])
-      )
-    })
-    it('not add item', function () {
-      assert.equal(
-        JSON.stringify(xd.addArrUniqItem([1, 2], 2)),
-        JSON.stringify([1, 2])
+        xd.countArrItem([1, 2, 2], 2),
+        2
       )
     })
   })
 
-  describe('#removeArrItem()', function () {
-    it('remove existent item', function () {
+  describe('#addArrUniqItem()', () => {
+    it('add item', () => {
       assert.equal(
-        JSON.stringify(xd.removeArrItem([1, 2], 2)),
-        JSON.stringify([1])
+        xd.isArrEqual(xd.addArrUniqItem([1, 2], 3), [1, 2, 3]),
+        true
       )
     })
-    it('remove nonexistent item', function () {
+    it('not add item', () => {
       assert.equal(
-        JSON.stringify(xd.removeArrItem([1, 2], 3)),
-        JSON.stringify([1, 2])
-      )
-    })
-  })
-
-  describe('#toggleArrItem()', function () {
-    it('add item', function () {
-      assert.equal(
-        JSON.stringify(xd.toggleArrItem([1, 2], 3)),
-        JSON.stringify([1, 2, 3])
-      )
-    })
-    it('remove item', function () {
-      assert.equal(
-        JSON.stringify(xd.toggleArrItem([1, 2, 3], 3)),
-        JSON.stringify([1, 2])
+        xd.isArrEqual(xd.addArrUniqItem([1, 2], 2), [1, 2]),
+        true
       )
     })
   })
 
-  describe('#sortArr()', function () {
-    it('sort array asc', function () {
+  describe('#removeArrItem()', () => {
+    it('remove item', () => {
       assert.equal(
-        JSON.stringify(xd.sortArr([2, 4, 3, 1])),
-        JSON.stringify([1, 2, 3, 4])
+        xd.isArrEqual(xd.removeArrItem([1, 2], 2), [1]),
+        true
       )
     })
-    it('sort array desc', function () {
+    it('not remove item', () => {
       assert.equal(
-        JSON.stringify(xd.sortArr([2, 4, 3, 1], 'desc')),
-        JSON.stringify([4, 3, 2, 1])
-      )
-    })
-  })
-
-  describe('#sortArrBy()', function () {
-    it('sort array by specified field asc', function () {
-      assert.equal(
-        JSON.stringify(xd.sortArrBy([{a: 2}, {a: 4}, {a: 3}, {a: 1}], 'a')),
-        JSON.stringify([{a: 1}, {a: 2}, {a: 3}, {a: 4}])
-      )
-    })
-    it('sort array by specified field desc', function () {
-      assert.equal(
-        JSON.stringify(xd.sortArrBy([{a: 2}, {a: 4}, {a: 3}, {a: 1}], 'a', 'desc')),
-        JSON.stringify([{a: 4}, {a: 3}, {a: 2}, {a: 1}])
+        xd.isArrEqual(xd.removeArrItem([1, 2], 3), [1, 2]),
+        true
       )
     })
   })
 
-  describe('#getArrGreatestItem()', function () {
-    it('get greatest item', function () {
+  describe('#toggleArrItem()', () => {
+    it('add item', () => {
       assert.equal(
-        xd.getArrGreatestItem([1, 2, 3]),
-        3
+        xd.isArrEqual(xd.toggleArrItem([1, 2], 3), [1, 2, 3]),
+        true
+      )
+    })
+    it('remove item', () => {
+      assert.equal(
+        xd.isArrEqual(xd.toggleArrItem([1, 2, 3], 3), [1, 2]),
+        true
       )
     })
   })
 
-  describe('#getArrLeastItem()', function () {
-    it('get least item', function () {
+  describe('#getArrFirstItem()', () => {
+    it('first item', () => {
       assert.equal(
-        xd.getArrLeastItem([1, 2, 3]),
+        xd.getArrFirstItem([1, 2, 3]),
         1
       )
     })
-  })
-
-  describe('#getArrGreatestItemBy()', function () {
-    it('get greatest item', function () {
+    it('first 2 items', () => {
       assert.equal(
-        JSON.stringify(xd.getArrGreatestItemBy([{a: 1}, {a: 2}, {a: 3}], 'a')),
-        JSON.stringify({a: 3})
+        xd.isArrEqual(xd.getArrFirstItem([1, 2, 3], 2), [1, 2]),
+        true
       )
     })
   })
 
-  describe('#getArrLeastItemBy()', function () {
-    it('get least item', function () {
-      assert.equal(
-        JSON.stringify(xd.getArrLeastItemBy([{a: 1}, {a: 2}, {a: 3}], 'a')),
-        JSON.stringify({a: 1})
-      )
-    })
-  })
-
-  describe('#getArrLastItem()', function () {
-    it('get last item', function () {
+  describe('#getArrLastItem()', () => {
+    it('last item', () => {
       assert.equal(
         xd.getArrLastItem([1, 2, 3]),
         3
       )
     })
-  })
-
-  describe('#getArrRepeatedItems()', function () {
-    it('2 counts', function () {
+    it('last 2 items', () => {
       assert.equal(
-        JSON.stringify(xd.getArrRepeatedItems([1, 2, 2], 2)),
-        JSON.stringify([2])
-      )
-    })
-
-    it('0 count', function () {
-      assert.equal(
-        JSON.stringify(xd.getArrRepeatedItems([1, 2, 2], 3)),
-        JSON.stringify([])
+        xd.isArrEqual(xd.getArrLastItem([1, 2, 3], 2), [2, 3]),
+        true
       )
     })
   })
 
-  describe('#uniqArr()', function () {
-    it('array with unique items', function () {
+  describe('#getArrGreatestItem()', () => {
+    it('greatest item', () => {
       assert.equal(
-        JSON.stringify(xd.uniqArr([1, 2, 2, 3])),
-        JSON.stringify([1, 2, 3])
+        xd.getArrGreatestItem([1, 2, 3]),
+        3
+      )
+    })
+    it('greatest 2 items', () => {
+      assert.equal(
+        xd.isArrEqual(xd.getArrGreatestItem([1, 2, 3], 2), [3, 2]),
+        true
       )
     })
   })
 
-  describe('#unionArr()', function () {
-    it('union arrays', function () {
+  describe('#getArrLeastItem()', () => {
+    it('least item', () => {
       assert.equal(
-        JSON.stringify(xd.unionArr([1, 2], [2, 3])),
-        JSON.stringify([1, 2, 3])
+        xd.getArrLeastItem([1, 2, 3]),
+        1
+      )
+    })
+    it('least 2 items', () => {
+      assert.equal(
+        xd.isArrEqual(xd.getArrLeastItem([1, 2, 3], 2), [1, 2]),
+        true
       )
     })
   })
 
-  describe('#intersectArr()', function () {
-    it('intersect arrays', function () {
+  describe('#getArrGreatestItemBy()', () => {
+    it('greatest item', () => {
       assert.equal(
-        JSON.stringify(xd.intersectArr([1, 2, 3], [2, 3, 4])),
-        JSON.stringify([2, 3])
+        xd.isObjEqual(
+          xd.getArrGreatestItemBy([{a: 1}, {a: 2}, {a: 3}], 'a'),
+          {a: 3}
+        ),
+        true
+      )
+    })
+    it('greatest 2 items', () => {
+      assert.equal(
+        xd.isArrEqual(
+          xd.getArrGreatestItemBy([{a: 1}, {a: 2}, {a: 3}], 'a', 2),
+          [{a: 3}, {a: 2}]
+        ),
+        true
       )
     })
   })
 
-  describe('#complementArr()', function () {
-    it('complement arrays', function () {
+  describe('#getArrLeastItemBy()', () => {
+    it('least item', () => {
       assert.equal(
-        JSON.stringify(xd.complementArr([1, 2, 3], [2, 3, 4])),
-        JSON.stringify([1, 4])
+        xd.isObjEqual(
+          xd.getArrLeastItemBy([{a: 1}, {a: 2}, {a: 3}], 'a'),
+          {a: 1}
+        ),
+        true
+      )
+    })
+    it('least 2 items', () => {
+      assert.equal(
+        xd.isArrEqual(
+          xd.getArrLeastItemBy([{a: 1}, {a: 2}, {a: 3}], 'a', 2),
+          [{a: 1}, {a: 2}]
+        ),
+        true
+      )
+    })
+  })
+
+  describe('#getArrRepeatedItem()', () => {
+    it('0 count', () => {
+      assert.equal(
+        xd.isArrEqual(xd.getArrRepeatedItem([1, 2, 2], 3), []),
+        true
+      )
+    })
+    it('2 counts', () => {
+      assert.equal(
+        xd.isArrEqual(xd.getArrRepeatedItem([1, 2, 2], 2), [2]),
+        true
+      )
+    })
+    it('functions', () => {
+      assert.equal(
+        xd.isArrEqual(xd.getArrRepeatedItem([1, 2, 2], (times) => times > 1), [2]),
+        true
+      )
+    })
+  })
+
+  describe('#uniqArr()', () => {
+    it('array with unique items', () => {
+      assert.equal(
+        xd.isArrEqual(
+          xd.uniqArr([1, 2, 2, 3]),
+          [1, 2, 3]
+        ),
+        true
+      )
+    })
+  })
+
+  describe('#unionArr()', () => {
+    it('union arrays', () => {
+      assert.equal(
+        xd.isArrEqual(
+          xd.unionArr([1, 2], [2, 3]),
+          [1, 2, 3]
+        ),
+        true
+      )
+    })
+  })
+
+  describe('#intersectArr()', () => {
+    it('intersect arrays', () => {
+      assert.equal(
+        xd.isArrEqual(
+          xd.intersectArr([1, 2, 3], [2, 3, 4]),
+          [2, 3]
+        ),
+        true
+      )
+    })
+  })
+
+  describe('#sortArr()', () => {
+    it('sort array asc', () => {
+      assert.equal(
+        xd.isArrEqual(
+          xd.sortArr([2, 4, 3, 1]),
+          [1, 2, 3, 4]
+        ),
+        true
+      )
+    })
+    it('sort array desc', () => {
+      assert.equal(
+        xd.isArrEqual(
+          xd.sortArr([2, 4, 3, 1], 'desc'),
+          [4, 3, 2, 1]
+        ),
+        true
+      )
+    })
+  })
+
+  describe('#sortArrBy()', () => {
+    it('sort array by field asc', () => {
+      assert.equal(
+        xd.isArrEqual(
+          xd.sortArrBy([{a: 2}, {a: 4}, {a: 3}, {a: 1}], 'a'),
+          [{a: 1}, {a: 2}, {a: 3}, {a: 4}]
+        ),
+        true
+      )
+    })
+    it('sort array by field desc', () => {
+      assert.equal(
+        xd.isArrEqual(
+          xd.sortArrBy([{a: 2}, {a: 4}, {a: 3}, {a: 1}], 'a', 'desc'),
+          [{a: 4}, {a: 3}, {a: 2}, {a: 1}]
+        ),
+        true
       )
     })
   })

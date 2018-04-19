@@ -1,5 +1,5 @@
 import xd from '../src'
 
-let num = xd.random(0, 100)
+let test = xd.getArrLeastItem([1, 2, 3], 2)
 
-console.log(num)
+console.log(test)

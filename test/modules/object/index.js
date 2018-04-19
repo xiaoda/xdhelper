@@ -1,10 +1,10 @@
 const assert = require('assert')
-const xd = require('../../../dist')
+const xd = require('../../../')
 
-describe('xdObject', function () {
+describe('xdObject', () => {
 
-  describe('#getObjLen()', function () {
-    it('object', function () {
+  describe('#getObjLen()', () => {
+    it('object', () => {
       assert.equal(
         xd.getObjLen({a: 1, b: 2}),
         2
@@ -12,14 +12,14 @@ describe('xdObject', function () {
     })
   })
 
-  describe('#hasObjKey()', function () {
-    it('object has specific key', function () {
+  describe('#hasObjKey()', () => {
+    it('has key', () => {
       assert.equal(
         xd.hasObjKey({a: 1, b: 2}, 'a'),
         true
       )
     })
-    it('object has not specific key', function () {
+    it('has not key', () => {
       assert.equal(
         xd.hasObjKey({a: 1, b: 2}, 'c'),
         false
@@ -27,14 +27,14 @@ describe('xdObject', function () {
     })
   })
 
-  describe('#isObjEmpty()', function () {
-    it('empty object', function () {
+  describe('#isObjEmpty()', () => {
+    it('object empty', () => {
       assert.equal(
         xd.isObjEmpty({}),
         true
       )
     })
-    it('not empty object', function () {
+    it('object not empty', () => {
       assert.equal(
         xd.isObjEmpty({a: 1, b: 2}),
         false
@@ -42,14 +42,14 @@ describe('xdObject', function () {
     })
   })
 
-  describe('#isObjEqual()', function () {
-    it('object equal', function () {
+  describe('#isObjEqual()', () => {
+    it('object equal', () => {
       assert.equal(
         xd.isObjEqual({a: 1, b: 2}, {a: 1, b: 2}),
         true
       )
     })
-    it('object not equal', function () {
+    it('object not equal', () => {
       assert.equal(
         xd.isObjEqual({a: 1, b: 2}, {a: 3, b: 4}),
         false
@@ -57,32 +57,29 @@ describe('xdObject', function () {
     })
   })
 
-  describe('#cloneObj()', function () {
-    it('clone object', function () {
-      let obj = {a: 1, b: 2}
-      let cloneObj = xd.cloneObj(obj)
-      cloneObj.a = 99
+  describe('#cloneObj()', () => {
+    it('clone object', () => {
       assert.equal(
-        obj.a,
-        1
+        xd.isObjEqual(xd.cloneObj({a: 1, b: 2}), {a: 1, b: 2}),
+        true
       )
     })
   })
 
-  describe('#forEachObj()', function () {
-    it('empty object', function () {
+  describe('#forEachObj()', () => {
+    it('object empty', () => {
       assert.equal(
         xd.forEachObj({}),
         0
       )
     })
-    it('not empty object', function (done) {
+    it('object not empty', (done) => {
       let objA = {a: 1, b: 2}
       let objB = {}
       xd.forEachObj(objA, (value, key) => {
         objB[key] = value
-      }, 1)
-      if (JSON.stringify(objA) === JSON.stringify(objB)) done()
+      })
+      if (xd.isObjEqual(objA, objB)) done()
     })
   })
 

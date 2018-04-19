@@ -4,16 +4,16 @@
  * @flow
  */
 
-import xdType from './type'
+const xdType = require('./type')
 
-let xdObject = {
+const xdObject = {
 
   getObjLen (obj: object): number {
     return Object.keys(obj).length
   },
 
   hasObjKey (obj: object, key: string): boolean {
-    return !xdType.isUndefined(obj[key])
+    return !xdType.isUndef(obj[key])
   },
 
   isObjEmpty (obj: object): boolean {
@@ -30,9 +30,13 @@ let xdObject = {
 
   forEachObj (obj: object, callback: mixed): boolean {
     let keys = Object.keys(obj)
-    keys.forEach((key: string) => {
-      callback(obj[key], key)
+    let index = 0
+
+    keys.forEach((key: string, index: number) => {
+      callback(obj[key], key, index)
+      index++
     })
+
     return keys.length
   }
 

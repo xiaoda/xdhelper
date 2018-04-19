@@ -4,27 +4,35 @@
  * @flow
  */
 
-let xdUrl = {
+const xdObj = require('./object')
+const xdType = require('./type')
 
-  buildQueryStr (data: object): string {
-    let queries = []
-    Object.keys(data).forEach((key: number, index: string) => {
-      queries.push(`${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+const xdUrl = {
+
+  buildQueryStr (queryObj: object): string {
+    let queryArr = []
+
+    xdObj.forEachObj(queryObj, (val: mixed, key: string) => {
+      queryArr.push(`${encodeURIComponent(key)}=${encodeURIComponent(val)}`)
     })
-    return queries.length ? `?${queries.join('&')}` : ''
+
+    return queryArr.length ? `?${queryArr.join('&')}` : ''
   },
 
-  getQueryParams (url: string = window.location.search): object {
-    let urlArray
-    let resultObj = {}
-    if (!url) urlArray = []
-    else if (url.charAt(0) === '?') urlArray = url.slice(1).split('&')
-    else urlArray = url.split('&')
-    urlArray.forEach((item: array, key: number) => {
-      let array = item.split('=')
-      resultObj[array[0]] = array[1]
+  getQueryParam (url: string = window.location.search): object {
+    let queryArr
+    let queryObj = {}
+
+    if (!url) queryArr = []
+    else if (url.charAt(0) === '?') queryArr = url.slice(1).split('&')
+    else queryArr = url.split('&')
+
+    queryArr.forEach((item: string, key: number) => {
+      let arr = item.split('=')
+      queryObj[arr[0]] = xdType.isNum(xdType.toNum(arr[1])) ? xdType.toNum(arr[1]) : arr[1]
     })
-    return resultObj
+
+    return queryObj
   }
 
 }

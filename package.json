@@ -6,16 +6,13 @@
     "node": ">=6"
   },
   "scripts": {
-    "start": "NODE_ENV='dev' webpack-dev-server --config webpack.dev.config.js",
-    "build": "NODE_ENV='prod' webpack --config webpack.build.config.js",
-    "prebuild": "npm run clear",
-    "clear": "rm -rf dist",
+    "start": "NODE_ENV='dev' webpack-dev-server --config webpack/dev.config.js",
+    "build": "NODE_ENV='prod' webpack --config webpack/build.config.js",
     "test": "node_modules/mocha/bin/mocha",
     "preparepub": "npm run build && npm run test",
-    "pub:major": "npm version major && npm run copypackfiles && cd dist && npm publish",
-    "pub:minor": "npm version minor && npm run copypackfiles && cd dist && npm publish",
-    "pub": "npm version patch && npm run copypackfiles && cd dist && npm publish",
-    "copypackfiles": "/bin/cp package.json dist/package.json && /bin/cp README.md dist/README.md"
+    "pub:major": "npm version major && npm publish",
+    "pub:minor": "npm version minor && npm publish",
+    "pub": "npm version patch && npm publish"
   },
   "repository": {
     "type": "git",
@@ -32,8 +29,8 @@
     "babel-core": "^6.24.0",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^6.4.1",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
-    "babel-preset-latest": "^6.24.0",
     "babel-preset-stage-1": "^6.22.0",
     "copy-webpack-plugin": "^4.0.1",
     "eslint": "^3.19.0",
@@ -46,7 +43,6 @@
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
-    "glob": "^7.1.1",
     "mocha": "^3.4.1",
     "webpack": "^2.3.2",
     "webpack-dev-server": "^2.4.2"

@@ -4,18 +4,16 @@
  * @flow
  */
 
-let xdString = {
+const xdType = require('./type')
 
-  getStrLen (str: string): number {
-    return str.length
+const xdString = {
+
+  isStrEmpty (str: string): boolean {
+    return !str.length
   },
 
   capitalize (str: string): string {
     return str.replace(/\b[a-z]/g, (s: string): string => s.toUpperCase())
-  },
-
-  kebabCase (strs: array): string {
-    return strs.map((str: string): string => str).join('-')
   },
 
   camelCase (strs: array): string {
@@ -24,6 +22,30 @@ let xdString = {
 
   capitalCamelCase (strs: array): string {
     return strs.map((str: string): string => this.capitalize(str)).join('')
+  },
+
+  kebabCase (strs: array): string {
+    return strs.join('-')
+  },
+
+  fillZero (num: number | string, width: number = 2, direction: string = 'left'): string {
+    let numText = xdType.toStr(num)
+    let len = numText.length
+    let result
+
+    if (len >= width) {
+      result = numText
+    } else {
+      let zeros = '0'.repeat(width - len)
+
+      if (direction === 'left') {
+        result = `${zeros}${numText}`
+      } else {
+        result = `${numText}${zeros}`
+      }
+    }
+
+    return result
   }
 
 }

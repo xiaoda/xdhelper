@@ -4,38 +4,37 @@
  * @flow
  */
 
-import xdArray from './modules/array'
-import xdDevice from './modules/device'
-import xdFunction from './modules/function'
-import xdMask from './modules/mask'
-import xdMath from './modules/math'
-import xdObject from './modules/object'
-import xdString from './modules/string'
-import xdSupport from './modules/support'
-import xdType from './modules/type'
-import xdUrl from './modules/url'
+const xdArray = require('./modules/array')
+const xdDevice = require('./modules/device')
+const xdFunction = require('./modules/function')
+const xdMath = require('./modules/math')
+const xdObject = require('./modules/object')
+const xdString = require('./modules/string')
+const xdType = require('./modules/type')
+const xdUrl = require('./modules/url')
 
 let xd = {
   ...xdArray,
   ...xdDevice,
   ...xdFunction,
-  ...xdMask,
   ...xdMath,
   ...xdObject,
   ...xdString,
-  ...xdSupport,
   ...xdType,
   ...xdUrl
 }
 
-let xdOverview = {
+let xdGlobal = {
 
   chain (...args: array): mixed {
-    if (args.length < 2) return args[0]
+    if (args.length <= 1) return args[0]
+
     let major = args.shift()
+
     args.forEach((ring: mixed): mixed => {
       let func
       let params
+
       if (xdType.isArr(ring)) {
         func = ring.shift()
         params = [major, ...ring]
@@ -43,11 +42,14 @@ let xdOverview = {
         func = ring
         params = [major]
       }
-      if (xd[func] !== undefined) {
+
+      if (xdType.isFunc(xd[func])) {
         func = xd[func].bind(xd)
       }
+
       major = func(...params)
     })
+
     return major
   }
 
@@ -55,11 +57,12 @@ let xdOverview = {
 
 xd = {
   ...xd,
-  ...xdOverview
+  ...xdGlobal
 }
 
 Object.freeze(xd)
-Object.keys(xd).forEach((key: string) => {
+
+xdObject.forEachObj(xd, (item: mixed, key: string) => {
   Object.freeze(xd[key])
 })
 

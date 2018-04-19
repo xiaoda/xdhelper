@@ -1,13 +1,19 @@
 const assert = require('assert')
-const xd = require('../../../dist')
+const xd = require('../../../')
 
 describe('xdString', function () {
 
-  describe('#getStrLen()', function () {
-    it('word', function () {
+  describe('#isStrEmpty()', function () {
+    it('string empty', function () {
       assert.equal(
-        xd.getStrLen('fire in the hole'),
-        16
+        xd.isStrEmpty(''),
+        true
+      )
+    })
+    it('string not empty', function () {
+      assert.equal(
+        xd.isStrEmpty('abc'),
+        false
       )
     })
   })
@@ -17,15 +23,6 @@ describe('xdString', function () {
       assert.equal(
         xd.capitalize('fire in the hole'),
         'Fire In The Hole'
-      )
-    })
-  })
-
-  describe('#kebabCase()', function () {
-    it('kebabCase words', function () {
-      assert.equal(
-        xd.kebabCase(['fire', 'in', 'the', 'hole']),
-        'fire-in-the-hole'
       )
     })
   })
@@ -44,6 +41,30 @@ describe('xdString', function () {
       assert.equal(
         xd.capitalCamelCase(['fire', 'in', 'the', 'hole']),
         'FireInTheHole'
+      )
+    })
+  })
+
+  describe('#kebabCase()', function () {
+    it('kebabCase words', function () {
+      assert.equal(
+        xd.kebabCase(['fire', 'in', 'the', 'hole']),
+        'fire-in-the-hole'
+      )
+    })
+  })
+
+  describe('#fillZero()', function () {
+    it('need fill', function () {
+      assert.equal(
+        xd.fillZero(1, 2),
+        '01'
+      )
+    })
+    it('not need fill', function () {
+      assert.equal(
+        xd.fillZero(1, 1),
+        '1'
       )
     })
   })
