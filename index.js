@@ -253,12 +253,14 @@ var xdArray = {
     return this.getArrFirstItem(sortedArr, num);
   },
   getArrRepeatedItem: function getArrRepeatedItem(arr, times) {
-    var counter = {};
+    var counter = new Map();
 
     arr.forEach(function (item) {
-      var key = JSON.stringify(item);
+      var key = item;
+      var count = void 0;
 
-      if (xdType.isUndef(counter[key])) counter[key] = 1;else counter[key]++;
+      if (counter.has(key)) count = counter.get(key) + 1;else count = 1;
+      counter.set(key, count);
     });
 
     var targetArr = [];
@@ -267,20 +269,20 @@ var xdArray = {
       case 'number':
       case 'string':
         times = xdType.toNum(times);
-        Object.keys(counter).forEach(function (key) {
-          if (counter[key] === times) targetArr.push(JSON.parse(key));
+        counter.forEach(function (count, key) {
+          if (count === times) targetArr.push(key);
         });
         break;
 
       case 'function':
-        Object.keys(counter).forEach(function (key) {
-          if (times(counter[key])) targetArr.push(JSON.parse(key));
+        counter.forEach(function (count, key) {
+          if (times(count)) targetArr.push(key);
         });
         break;
 
       default:
-        Object.keys(counter).forEach(function (key) {
-          targetArr.push(JSON.parse(key));
+        counter.forEach(function (count, key) {
+          targetArr.push(key);
         });
     }
 
@@ -635,18 +637,18 @@ var xdString = {
       return s.toUpperCase();
     });
   },
-  capitalCamelCase: function capitalCamelCase(strs) {
+  camelCase: function camelCase(strs) {
     var _this = this;
 
-    return strs.map(function (str) {
-      return _this.capitalize(str);
+    return strs.map(function (str, index) {
+      return index ? _this.capitalize(str) : str;
     }).join('');
   },
-  camelCase: function camelCase(strs) {
+  capitalCamelCase: function capitalCamelCase(strs) {
     var _this2 = this;
 
-    return strs.map(function (str, index) {
-      return index ? _this2.capitalize(str) : str;
+    return strs.map(function (str) {
+      return _this2.capitalize(str);
     }).join('');
   },
   kebabCase: function kebabCase(strs) {
@@ -692,6 +694,7 @@ module.exports = xdString;
  */
 
 var xdObj = __webpack_require__(2);
+var xdType = __webpack_require__(0);
 
 var xdUrl = {
   buildQueryStr: function buildQueryStr(queryObj) {
@@ -713,7 +716,7 @@ var xdUrl = {
 
     queryArr.forEach(function (item, key) {
       var arr = item.split('=');
-      queryObj[arr[0]] = arr[1];
+      queryObj[arr[0]] = xdType.isNum(xdType.toNum(arr[1])) ? xdType.toNum(arr[1]) : arr[1];
     });
 
     return queryObj;

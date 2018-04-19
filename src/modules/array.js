@@ -100,13 +100,15 @@ const xdArray = {
   },
 
   getArrRepeatedItem (arr: array, times: mixed): array {
-    let counter = {}
+    let counter = new Map()
 
     arr.forEach((item: mixed) => {
-      let key = JSON.stringify(item)
+      let key = item
+      let count
 
-      if (xdType.isUndef(counter[key])) counter[key] = 1
-      else counter[key] ++
+      if (counter.has(key)) count = counter.get(key) + 1
+      else count = 1
+      counter.set(key, count)
     })
 
     let targetArr = []
@@ -115,20 +117,20 @@ const xdArray = {
       case 'number':
       case 'string':
         times = xdType.toNum(times)
-        Object.keys(counter).forEach((key: string) => {
-          if (counter[key] === times) targetArr.push(JSON.parse(key))
+        counter.forEach((count: number, key: mixed) => {
+          if (count === times) targetArr.push(key)
         })
         break
 
       case 'function':
-        Object.keys(counter).forEach((key: string) => {
-          if (times(counter[key])) targetArr.push(JSON.parse(key))
+        counter.forEach((count: number, key: mixed) => {
+          if (times(count)) targetArr.push(key)
         })
         break
 
       default:
-        Object.keys(counter).forEach((key: string) => {
-          targetArr.push(JSON.parse(key))
+        counter.forEach((count: number, key: mixed) => {
+          targetArr.push(key)
         })
     }
 

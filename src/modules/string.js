@@ -16,12 +16,12 @@ const xdString = {
     return str.replace(/\b[a-z]/g, (s: string): string => s.toUpperCase())
   },
 
-  capitalCamelCase (strs: array): string {
-    return strs.map((str: string): string => this.capitalize(str)).join('')
-  },
-
   camelCase (strs: array): string {
     return strs.map((str: string, index: number): string => index ? this.capitalize(str) : str).join('')
+  },
+
+  capitalCamelCase (strs: array): string {
+    return strs.map((str: string): string => this.capitalize(str)).join('')
   },
 
   kebabCase (strs: array): string {

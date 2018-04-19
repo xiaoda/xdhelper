@@ -22,6 +22,16 @@ describe('xdUrl', () => {
         true
       )
     })
+
+    it('number', () => {
+      assert.equal(
+        xd.isObjEqual(
+          xd.getQueryParam('a=1&b=2.5'),
+          {a: 1, b: 2.5}
+        ),
+        true
+      )
+    })
   })
 
 })

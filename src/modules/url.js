@@ -5,6 +5,7 @@
  */
 
 const xdObj = require('./object')
+const xdType = require('./type')
 
 const xdUrl = {
 
@@ -28,7 +29,7 @@ const xdUrl = {
 
     queryArr.forEach((item: string, key: number) => {
       let arr = item.split('=')
-      queryObj[arr[0]] = arr[1]
+      queryObj[arr[0]] = xdType.isNum(xdType.toNum(arr[1])) ? xdType.toNum(arr[1]) : arr[1]
     })
 
     return queryObj

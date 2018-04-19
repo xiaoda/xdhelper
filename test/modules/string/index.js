@@ -27,20 +27,20 @@ describe('xdString', function () {
     })
   })
 
-  describe('#capitalCamelCase()', function () {
-    it('capitalCamelCase words', function () {
-      assert.equal(
-        xd.capitalCamelCase(['fire', 'in', 'the', 'hole']),
-        'FireInTheHole'
-      )
-    })
-  })
-
   describe('#camelCase()', function () {
     it('camelCase words', function () {
       assert.equal(
         xd.camelCase(['fire', 'in', 'the', 'hole']),
         'fireInTheHole'
+      )
+    })
+  })
+
+  describe('#capitalCamelCase()', function () {
+    it('capitalCamelCase words', function () {
+      assert.equal(
+        xd.capitalCamelCase(['fire', 'in', 'the', 'hole']),
+        'FireInTheHole'
       )
     })
   })

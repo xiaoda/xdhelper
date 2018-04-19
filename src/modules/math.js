@@ -47,7 +47,7 @@ const xdMath = {
     return result
   },
 
-  map (num: number | string, rangeA: array, rangeB: array): number {
+  map (num: number, rangeA: array, rangeB: array): number {
     num = xdType.toNum(num)
     let startA = xdType.toNum(rangeA[0])
     let endA = xdType.toNum(rangeA[1])
