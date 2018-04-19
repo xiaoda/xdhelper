@@ -20,26 +20,6 @@ const xdArray = {
     return JSON.parse(JSON.stringify(arr))
   },
 
-  getArrFirstItem (arr: array, num: number = 1): mixed {
-    let result = []
-
-    for (let i = 0; i < num; i++) {
-      result.push(arr[i])
-    }
-
-    return result.length === 1 ? result[0] : result
-  },
-
-  getArrLastItem (arr: array, num: number = 1): mixed {
-    let result = []
-
-    for (let i = arr.length - num; i < arr.length; i++) {
-      result.push(arr[i])
-    }
-
-    return result.length === 1 ? result[0] : result
-  },
-
   countArrItem (arr: array, item: mixed): number {
     return arr.filter((i: mixed): array => i === item).length
   },
@@ -75,10 +55,30 @@ const xdArray = {
     return arr
   },
 
-  getArrGreatestItem (arr: array, num: number = 1): mixed {
-    let sortedArr = this.sortArr(arr)
+  getArrFirstItem (arr: array, num: number = 1): mixed {
+    let result = []
 
-    return this.getArrLastItem(sortedArr, num)
+    for (let i = 0; i < num; i++) {
+      result.push(arr[i])
+    }
+
+    return result.length === 1 ? result[0] : result
+  },
+
+  getArrLastItem (arr: array, num: number = 1): mixed {
+    let result = []
+
+    for (let i = arr.length - num; i < arr.length; i++) {
+      result.push(arr[i])
+    }
+
+    return result.length === 1 ? result[0] : result
+  },
+
+  getArrGreatestItem (arr: array, num: number = 1): mixed {
+    let sortedArr = this.sortArr(arr, 'desc')
+
+    return this.getArrFirstItem(sortedArr, num)
   },
 
   getArrLeastItem (arr: array, num: number = 1): mixed {
@@ -88,9 +88,9 @@ const xdArray = {
   },
 
   getArrGreatestItemBy (arr: array, field: string, num: number = 1): object {
-    let sortedArr = this.sortArrBy(arr, field)
+    let sortedArr = this.sortArrBy(arr, field, 'desc')
 
-    return this.getArrLastItem(sortedArr, num)
+    return this.getArrFirstItem(sortedArr, num)
   },
 
   getArrLeastItemBy (arr: array, field: string, num: number = 1): object {
@@ -105,7 +105,7 @@ const xdArray = {
     arr.forEach((item: mixed) => {
       let key = JSON.stringify(item)
 
-      if (xdType.isUndefined(counter[key])) counter[key] = 1
+      if (xdType.isUndef(counter[key])) counter[key] = 1
       else counter[key] ++
     })
 
@@ -139,24 +139,24 @@ const xdArray = {
     return this.getArrRepeatedItem(arr)
   },
 
-  unionArr (...arr: mixed): array {
+  unionArr (...arrs: mixed): array {
     let tmpArr = []
 
-    arr.forEach((singleArr: array): array => {
+    arrs.forEach((singleArr: array): array => {
       tmpArr = tmpArr.concat(this.uniqArr(singleArr))
     })
 
     return this.getArrRepeatedItem(tmpArr)
   },
 
-  intersectArr (...arr: mixed): array {
+  intersectArr (...arrs: mixed): array {
     let tmpArr = []
 
-    arr.forEach((singleArr: array): array => {
+    arrs.forEach((singleArr: array): array => {
       tmpArr = tmpArr.concat(this.uniqArr(singleArr))
     })
 
-    return this.getArrRepeatedItem(tmpArr, arr.length)
+    return this.getArrRepeatedItem(tmpArr, arrs.length)
   },
 
   sortArr (arr: array, order: string = 'asc'): array {

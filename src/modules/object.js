@@ -13,7 +13,7 @@ const xdObject = {
   },
 
   hasObjKey (obj: object, key: string): boolean {
-    return !xdType.isUndefined(obj[key])
+    return !xdType.isUndef(obj[key])
   },
 
   isObjEmpty (obj: object): boolean {

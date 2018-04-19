@@ -8,12 +8,12 @@ const xdType = require('./type')
 
 const xdString = {
 
-  getStrLen (str: string): number {
-    return str.length
+  isStrEmpty (str: string): boolean {
+    return !str.length
   },
 
   capitalize (str: string): string {
-    return str.toLowerCase().replace(/\b[a-z]/g, (s: string): string => s.toUpperCase())
+    return str.replace(/\b[a-z]/g, (s: string): string => s.toUpperCase())
   },
 
   capitalCamelCase (strs: array): string {
@@ -25,10 +25,10 @@ const xdString = {
   },
 
   kebabCase (strs: array): string {
-    return strs.map((str: string): string => str.toLowerCase()).join('-')
+    return strs.join('-')
   },
 
-  fillZero (num: number | string, width: number, direction: string = 'left'): string {
+  fillZero (num: number | string, width: number = 2, direction: string = 'left'): string {
     let numText = xdType.toStr(num)
     let len = numText.length
     let result

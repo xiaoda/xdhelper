@@ -24,7 +24,7 @@ let xd = {
   ...xdUrl
 }
 
-let xdOverview = {
+let xdGlobal = {
 
   chain (...args: array): mixed {
     if (args.length <= 1) return args[0]
@@ -57,7 +57,7 @@ let xdOverview = {
 
 xd = {
   ...xd,
-  ...xdOverview
+  ...xdGlobal
 }
 
 Object.freeze(xd)

@@ -4,7 +4,7 @@
  * @flow
  */
 
-const xdObj = require('./type')
+const xdObj = require('./object')
 
 const xdUrl = {
 
