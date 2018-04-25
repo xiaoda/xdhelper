@@ -6,23 +6,23 @@
 
 xdhelper 是一个 JS 帮助函数库，使 JS 的常规操作更加简单。2018.4 重构并发布 v2 版本，完善了 v1 版本的问题。
 
-## 安装
+## Install
 
 ```
 npm install xdhelper
 ```
 
-或
+or
 
 ``` html
 <script src="xdhelper.js"></script>
 ```
 
-## 命名规范
+## Naming Spec
 
 大部分函数采用“动词 [+ 名词 [+ 属性 / 形容词]]”的命名方式，方便依靠直觉快速搜索到需要的函数；为减少记忆负担，函数名中出现的名词都是单数形式。
 
-## API 文档
+## API Doc
 
 ### [Array 数组模块](https://github.com/xiaoda/xdhelper/wiki/Array-%E6%95%B0%E7%BB%84%E6%A8%A1%E5%9D%97)
 * isArrEmpty
