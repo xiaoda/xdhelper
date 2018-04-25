@@ -1,5 +1,5 @@
 import xd from '../src'
 
-let test = xd.getArrLeastItem([1, 2, 3], 2)
+let test = xd.chain(1, ['fillZero'], ['fillZero', 3])
 
 console.log(test)

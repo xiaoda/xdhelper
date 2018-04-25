@@ -22,14 +22,6 @@ npm install xdhelper
 
 大部分函数采用“动词 [+ 名词 [+ 属性 / 形容词]]”的命名方式，方便依靠直觉快速搜索到需要的函数；为减少记忆负担，函数名中出现的名词都是单数形式。
 
-## (伪)链式操作
-
-同时支持库函数和自定义函数
-
-``` js
-xd.chain('test', 'funcA', ['funcB', 'param'], customFuncA, [customFuncB, 'param'])
-```
-
 ## API 文档
 
 ### [Array 数组模块](https://github.com/xiaoda/xdhelper/wiki/Array-%E6%95%B0%E7%BB%84%E6%A8%A1%E5%9D%97)
@@ -54,6 +46,9 @@ xd.chain('test', 'funcA', ['funcB', 'param'], customFuncA, [customFuncB, 'param'
 * sortArrBy
 * shuffleArr
 * getArrSample
+
+## [Chain 链式操作模块](https://github.com/xiaoda/xdhelper/wiki/Chain-%E9%93%BE%E5%BC%8F%E6%93%8D%E4%BD%9C%E6%A8%A1%E5%9D%97)
+* chain
 
 ### [Device 设备类型模块](https://github.com/xiaoda/xdhelper/wiki/Device-%E8%AE%BE%E5%A4%87%E7%B1%BB%E5%9E%8B%E6%A8%A1%E5%9D%97)
 * getUserAgent

@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -425,6 +425,60 @@ module.exports = xdObject;
 "use strict";
 
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+/**
+ * 链式操作模块
+ *
+ * 
+ */
+
+var xdType = __webpack_require__(0);
+
+var xdChain = {
+  chain: function chain() {
+    var _this = this;
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    if (args.length <= 1) return args[0];
+
+    var major = args.shift();
+
+    args.forEach(function (ring) {
+      var func = void 0;
+      var params = void 0;
+
+      if (xdType.isArr(ring)) {
+        func = ring.shift();
+        params = [major].concat(_toConsumableArray(ring));
+      } else {
+        func = ring;
+        params = [major];
+      }
+
+      if (xdType.isFunc(_this[func])) {
+        func = _this[func].bind(_this);
+      }
+
+      major = func.apply(undefined, _toConsumableArray(params));
+    });
+
+    return major;
+  }
+};
+
+module.exports = xdChain;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 /**
  * 设备类型模块
  *
@@ -486,7 +540,7 @@ var xdDevice = {
 module.exports = xdDevice;
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -521,7 +575,7 @@ var xdFunction = {
 module.exports = xdFunction;
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -614,7 +668,7 @@ var xdMath = {
 module.exports = xdMath;
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -681,7 +735,7 @@ var xdString = {
 module.exports = xdString;
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -726,15 +780,13 @@ var xdUrl = {
 module.exports = xdUrl;
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 /**
  * 入口文件
@@ -743,57 +795,18 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
  */
 
 var xdArray = __webpack_require__(1);
-var xdDevice = __webpack_require__(3);
-var xdFunction = __webpack_require__(4);
-var xdMath = __webpack_require__(5);
+var xdChain = __webpack_require__(3);
+var xdDevice = __webpack_require__(4);
+var xdFunction = __webpack_require__(5);
+var xdMath = __webpack_require__(6);
 var xdObject = __webpack_require__(2);
-var xdString = __webpack_require__(6);
+var xdString = __webpack_require__(7);
 var xdType = __webpack_require__(0);
-var xdUrl = __webpack_require__(7);
+var xdUrl = __webpack_require__(8);
 
-var xd = _extends({}, xdArray, xdDevice, xdFunction, xdMath, xdObject, xdString, xdType, xdUrl);
-
-var xdGlobal = {
-  chain: function chain() {
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    if (args.length <= 1) return args[0];
-
-    var major = args.shift();
-
-    args.forEach(function (ring) {
-      var func = void 0;
-      var params = void 0;
-
-      if (xdType.isArr(ring)) {
-        func = ring.shift();
-        params = [major].concat(_toConsumableArray(ring));
-      } else {
-        func = ring;
-        params = [major];
-      }
-
-      if (xdType.isFunc(xd[func])) {
-        func = xd[func].bind(xd);
-      }
-
-      major = func.apply(undefined, _toConsumableArray(params));
-    });
-
-    return major;
-  }
-};
-
-xd = _extends({}, xd, xdGlobal);
+var xd = _extends({}, xdArray, xdChain, xdDevice, xdFunction, xdMath, xdObject, xdString, xdType, xdUrl);
 
 Object.freeze(xd);
-
-xdObject.forEachObj(xd, function (item, key) {
-  Object.freeze(xd[key]);
-});
-
 module.exports = xd;
 
 /***/ })
