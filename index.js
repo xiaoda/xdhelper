@@ -713,19 +713,16 @@ var xdString = {
     var direction = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'left';
 
     var numText = xdType.toStr(num);
-    var len = numText.length;
     var result = void 0;
 
-    if (len >= width) {
-      result = numText;
-    } else {
-      var zeros = '0'.repeat(width - len);
+    switch (direction) {
+      case 'left':
+        result = numText.padStart(width, '0');
+        break;
 
-      if (direction === 'left') {
-        result = '' + zeros + numText;
-      } else {
-        result = '' + numText + zeros;
-      }
+      case 'right':
+        result = numText.padEnd(width, '0');
+        break;
     }
 
     return result;

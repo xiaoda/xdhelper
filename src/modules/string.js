@@ -30,19 +30,16 @@ const xdString = {
 
   fillZero (num: number | string, width: number = 2, direction: string = 'left'): string {
     let numText = xdType.toStr(num)
-    let len = numText.length
     let result
 
-    if (len >= width) {
-      result = numText
-    } else {
-      let zeros = '0'.repeat(width - len)
+    switch (direction) {
+      case 'left':
+        result = numText.padStart(width, '0')
+        break
 
-      if (direction === 'left') {
-        result = `${zeros}${numText}`
-      } else {
-        result = `${numText}${zeros}`
-      }
+      case 'right':
+        result = numText.padEnd(width, '0')
+        break
     }
 
     return result
