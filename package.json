@@ -25,6 +25,10 @@
   ],
   "author": "xiaoda",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xiaoda/xdhelper/issues"
+  },
+  "homepage": "https://github.com/xiaoda/xdhelper#readme",
   "devDependencies": {
     "babel-core": "^6.24.0",
     "babel-eslint": "^7.2.3",
