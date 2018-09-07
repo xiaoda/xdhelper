@@ -5,7 +5,7 @@ const defaultConf = require('./default.config')
 
 let webpackConf = {
   entry: {
-    index: path.resolve(__dirname, './public/index.js')
+    index: path.resolve(__dirname, '../public/index.js')
   },
   output: {
     filename: '[name].js',
