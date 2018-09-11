@@ -1,5 +1,5 @@
 import xd from '../src'
 
-let test = xd.chain(1, ['fillZero'], ['fillZero', 3])
+let str = xd.camelCase('fire', 'in', 'the', 'hole')
 
-console.log(test)
+console.log(str)

@@ -24,12 +24,12 @@ const xdUrl = {
     let queryObj = {}
 
     if (!url) queryArr = []
-    else if (url.charAt(0) === '?') queryArr = url.slice(1).split('&')
+    else if (url.startsWith('?')) queryArr = url.slice(1).split('&')
     else queryArr = url.split('&')
 
-    queryArr.forEach((item: string, key: number) => {
-      let arr = item.split('=')
-      queryObj[arr[0]] = xdType.isNum(xdType.toNum(arr[1])) ? xdType.toNum(arr[1]) : arr[1]
+    queryArr.forEach((item: string) => {
+      let [key, val] = item.split('=')
+      queryObj[key] = xdType.isNum(xdType.toNum(val)) ? xdType.toNum(val) : val
     })
 
     return queryObj

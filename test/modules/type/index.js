@@ -28,24 +28,6 @@ describe('xdType', () => {
     })
   })
 
-  describe('#toStr()', () => {
-    it('number type', () => {
-      assert.equal(
-        xd.toStr(1),
-        '1'
-      )
-    })
-  })
-
-  describe('#toNum()', () => {
-    it('string type', () => {
-      assert.equal(
-        xd.toNum('1'),
-        1
-      )
-    })
-  })
-
   describe('#toBool()', () => {
     it('string to true', () => {
       assert.equal(
@@ -69,6 +51,24 @@ describe('xdType', () => {
       assert.equal(
         xd.toBool(0),
         false
+      )
+    })
+  })
+
+  describe('#toStr()', () => {
+    it('number type', () => {
+      assert.equal(
+        xd.toStr(1),
+        '1'
+      )
+    })
+  })
+
+  describe('#toNum()', () => {
+    it('string type', () => {
+      assert.equal(
+        xd.toNum('1'),
+        1
       )
     })
   })

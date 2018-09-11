@@ -49,18 +49,14 @@ const xdMath = {
 
   map (num: number, rangeA: array, rangeB: array): number {
     num = xdType.toNum(num)
-    let startA = xdType.toNum(rangeA[0])
-    let endA = xdType.toNum(rangeA[1])
-    let startB = xdType.toNum(rangeB[0])
-    let endB = xdType.toNum(rangeB[1])
+    let [startA, endA] = rangeA.map(xdType.toNum)
+    let [startB, endB] = rangeB.map(xdType.toNum)
 
     return startB + (num - startA) / (endA - startA) * (endB - startB)
   },
 
   random (range: array, decimal: number = 0): number {
-    let start = xdType.toNum(range[0])
-    let end = xdType.toNum(range[1])
-    let random = this.map(Math.random(), [0, 1], [start, end])
+    let random = this.map(Math.random(), [0, 1], range)
 
     return decimal === -1 ? random : random.toFixed(decimal)
   }

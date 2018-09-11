@@ -26,5 +26,4 @@ const xd = {
   ...xdUrl
 }
 
-Object.freeze(xd)
 module.exports = xd

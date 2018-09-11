@@ -28,27 +28,81 @@ describe('xdString', function () {
   })
 
   describe('#camelCase()', function () {
-    it('camelCase words', function () {
+    it('params in array type', function () {
       assert.equal(
         xd.camelCase(['fire', 'in', 'the', 'hole']),
+        'fireInTheHole'
+      )
+    })
+    it('params in array type & force format', function () {
+      assert.equal(
+        xd.camelCase(['FIRE', 'IN', 'THE', 'HOLE'], true),
+        'fireInTheHole'
+      )
+    })
+    it('params in string type', function () {
+      assert.equal(
+        xd.camelCase('fire', 'in', 'the', 'hole'),
+        'fireInTheHole'
+      )
+    })
+    it('params in string type & force format', function () {
+      assert.equal(
+        xd.camelCase('FIRE', 'IN', 'THE', 'HOLE', true),
         'fireInTheHole'
       )
     })
   })
 
   describe('#capitalCamelCase()', function () {
-    it('capitalCamelCase words', function () {
+    it('params in array type', function () {
       assert.equal(
         xd.capitalCamelCase(['fire', 'in', 'the', 'hole']),
+        'FireInTheHole'
+      )
+    })
+    it('params in array type & force format', function () {
+      assert.equal(
+        xd.capitalCamelCase(['FIRE', 'IN', 'THE', 'HOLE'], true),
+        'FireInTheHole'
+      )
+    })
+    it('params in string type', function () {
+      assert.equal(
+        xd.capitalCamelCase('fire', 'in', 'the', 'hole'),
+        'FireInTheHole'
+      )
+    })
+    it('params in string type & force format', function () {
+      assert.equal(
+        xd.capitalCamelCase('FIRE', 'IN', 'THE', 'HOLE', true),
         'FireInTheHole'
       )
     })
   })
 
   describe('#kebabCase()', function () {
-    it('kebabCase words', function () {
+    it('params in array type', function () {
       assert.equal(
         xd.kebabCase(['fire', 'in', 'the', 'hole']),
+        'fire-in-the-hole'
+      )
+    })
+    it('params in array type & force format', function () {
+      assert.equal(
+        xd.kebabCase(['FIRE', 'IN', 'THE', 'HOLE'], true),
+        'fire-in-the-hole'
+      )
+    })
+    it('params in string type', function () {
+      assert.equal(
+        xd.kebabCase('fire', 'in', 'the', 'hole'),
+        'fire-in-the-hole'
+      )
+    })
+    it('params in string type & force format', function () {
+      assert.equal(
+        xd.kebabCase('FIRE', 'IN', 'THE', 'HOLE', true),
         'fire-in-the-hole'
       )
     })

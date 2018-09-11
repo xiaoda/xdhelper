@@ -79,6 +79,7 @@ or
 * isObjEqual
 * cloneObj
 * forEachObj
+* mapEachObj
 
 ### [String 字符串模块](https://github.com/xiaoda/xdhelper/wiki/String-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%A8%A1%E5%9D%97)
 * isStrEmpty
@@ -90,19 +91,21 @@ or
 
 ### [Type 类型模块](https://github.com/xiaoda/xdhelper/wiki/Type-%E7%B1%BB%E5%9E%8B%E6%A8%A1%E5%9D%97)
 * getType
+* isBool
 * isStr
 * isNum
-* isArr
-* isObj
-* isFunc
+* isInfinity
 * isReg
-* isBool
 * isDate
 * isNull
+* isObj
+* isArr
+* isFunc
+* isDef
 * isUndef
+* toBool
 * toStr
 * toNum
-* toBool
 * objToArr
 
 ### [Url 网址模块](https://github.com/xiaoda/xdhelper/wiki/Url--%E7%BD%91%E5%9D%80%E6%A8%A1%E5%9D%97)

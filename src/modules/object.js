@@ -13,7 +13,7 @@ const xdObject = {
   },
 
   hasObjKey (obj: object, key: string): boolean {
-    return !xdType.isUndef(obj[key])
+    return xdType.isDef(obj[key])
   },
 
   isObjEmpty (obj: object): boolean {
@@ -30,14 +30,18 @@ const xdObject = {
 
   forEachObj (obj: object, callback: mixed): boolean {
     let keys = Object.keys(obj)
-    let index = 0
 
-    keys.forEach((key: string, index: number) => {
-      callback(obj[key], key, index)
-      index++
+    keys.forEach((key: string) => {
+      callback(obj[key], key, obj)
     })
 
     return keys.length
+  },
+
+  mapEachObj (obj: object, callback: mixed): array {
+    let keys = Object.keys(obj)
+
+    return keys.map((key: string): mixed => callback(obj[key], key, obj))
   }
 
 }

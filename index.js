@@ -93,9 +93,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var xdType = {
   getType: function getType(obj) {
-    if (Number.isNaN(obj)) return 'NaN';
-    if (typeof obj === 'number' && !Number.isFinite(obj)) return 'Infinity';
+    if (Number.isNaN(obj)) return 'nan';
+    if (typeof obj === 'number' && !Number.isFinite(obj)) return 'infinity';
     if (obj === null) return String(obj);else if ((typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) !== 'object') return typeof obj === 'undefined' ? 'undefined' : _typeof(obj);else return Object.prototype.toString.call(obj).toLowerCase().match(/\[\s*object\s*([^\]]*)\s*\]/)[1];
+  },
+  isBool: function isBool(obj) {
+    return this.getType(obj) === 'boolean';
   },
   isStr: function isStr(obj) {
     return this.getType(obj) === 'string';
@@ -103,20 +106,11 @@ var xdType = {
   isNum: function isNum(obj) {
     return this.getType(obj) === 'number';
   },
-  isArr: function isArr(obj) {
-    return this.getType(obj) === 'array';
-  },
-  isObj: function isObj(obj) {
-    return this.getType(obj) === 'object';
-  },
-  isFunc: function isFunc(obj) {
-    return this.getType(obj) === 'function';
+  isInfinity: function isInfinity(obj) {
+    return this.getType(obj) === 'infinity';
   },
   isReg: function isReg(obj) {
     return this.getType(obj) === 'regexp';
-  },
-  isBool: function isBool(obj) {
-    return this.getType(obj) === 'boolean';
   },
   isDate: function isDate(obj) {
     return this.getType(obj) === 'date';
@@ -124,17 +118,29 @@ var xdType = {
   isNull: function isNull(obj) {
     return this.getType(obj) === 'null';
   },
+  isObj: function isObj(obj) {
+    return this.getType(obj) === 'object';
+  },
+  isArr: function isArr(obj) {
+    return this.getType(obj) === 'array';
+  },
+  isFunc: function isFunc(obj) {
+    return this.getType(obj) === 'function';
+  },
+  isDef: function isDef(obj) {
+    return this.getType(obj) !== 'undefined';
+  },
   isUndef: function isUndef(obj) {
     return this.getType(obj) === 'undefined';
+  },
+  toBool: function toBool(obj) {
+    return !!obj;
   },
   toStr: function toStr(obj) {
     return String(obj);
   },
   toNum: function toNum(obj) {
     return Number(obj);
-  },
-  toBool: function toBool(obj) {
-    return !!obj;
   },
   objToArr: function objToArr(obj) {
     return Object.keys(obj).map(function (key) {
@@ -392,7 +398,7 @@ var xdObject = {
     return Object.keys(obj).length;
   },
   hasObjKey: function hasObjKey(obj, key) {
-    return !xdType.isUndef(obj[key]);
+    return xdType.isDef(obj[key]);
   },
   isObjEmpty: function isObjEmpty(obj) {
     return !this.getObjLen(obj);
@@ -405,14 +411,19 @@ var xdObject = {
   },
   forEachObj: function forEachObj(obj, callback) {
     var keys = Object.keys(obj);
-    var index = 0;
 
-    keys.forEach(function (key, index) {
-      callback(obj[key], key, index);
-      index++;
+    keys.forEach(function (key) {
+      callback(obj[key], key, obj);
     });
 
     return keys.length;
+  },
+  mapEachObj: function mapEachObj(obj, callback) {
+    var keys = Object.keys(obj);
+
+    return keys.map(function (key) {
+      return callback(obj[key], key, obj);
+    });
   }
 };
 
@@ -581,6 +592,8 @@ module.exports = xdFunction;
 "use strict";
 
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 /**
  * 算术模块
  *
@@ -647,19 +660,23 @@ var xdMath = {
   },
   map: function map(num, rangeA, rangeB) {
     num = xdType.toNum(num);
-    var startA = xdType.toNum(rangeA[0]);
-    var endA = xdType.toNum(rangeA[1]);
-    var startB = xdType.toNum(rangeB[0]);
-    var endB = xdType.toNum(rangeB[1]);
+
+    var _rangeA$map = rangeA.map(xdType.toNum),
+        _rangeA$map2 = _slicedToArray(_rangeA$map, 2),
+        startA = _rangeA$map2[0],
+        endA = _rangeA$map2[1];
+
+    var _rangeB$map = rangeB.map(xdType.toNum),
+        _rangeB$map2 = _slicedToArray(_rangeB$map, 2),
+        startB = _rangeB$map2[0],
+        endB = _rangeB$map2[1];
 
     return startB + (num - startA) / (endA - startA) * (endB - startB);
   },
   random: function random(range) {
     var decimal = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
 
-    var start = xdType.toNum(range[0]);
-    var end = xdType.toNum(range[1]);
-    var random = this.map(Math.random(), [0, 1], [start, end]);
+    var random = this.map(Math.random(), [0, 1], range);
 
     return decimal === -1 ? random : random.toFixed(decimal);
   }
@@ -683,29 +700,70 @@ module.exports = xdMath;
 var xdType = __webpack_require__(0);
 
 var xdString = {
+  _preProcessStringModulesParams: function _preProcessStringModulesParams() {
+    var strs = [];
+    var force = false;
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    if (xdType.isArr(args[0])) {
+      strs = args[0];
+      if (xdType.isDef(args[1])) force = args[1];
+    } else {
+      if (xdType.isBool(args[args.length - 1])) {
+        force = args[args.length - 1];
+        args.pop();
+      }
+      strs = args;
+    }
+
+    return { strs: strs, force: force };
+  },
   isStrEmpty: function isStrEmpty(str) {
     return !str.length;
   },
   capitalize: function capitalize(str) {
+    var force = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+    if (force) str = str.toLowerCase();
     return str.replace(/\b[a-z]/g, function (s) {
       return s.toUpperCase();
     });
   },
-  camelCase: function camelCase(strs) {
+  camelCase: function camelCase() {
     var _this = this;
 
+    var _preProcessStringModu = this._preProcessStringModulesParams.apply(this, arguments),
+        strs = _preProcessStringModu.strs,
+        force = _preProcessStringModu.force;
+
     return strs.map(function (str, index) {
+      if (force) str = str.toLowerCase();
       return index ? _this.capitalize(str) : str;
     }).join('');
   },
-  capitalCamelCase: function capitalCamelCase(strs) {
+  capitalCamelCase: function capitalCamelCase() {
     var _this2 = this;
 
+    var _preProcessStringModu2 = this._preProcessStringModulesParams.apply(this, arguments),
+        strs = _preProcessStringModu2.strs,
+        force = _preProcessStringModu2.force;
+
     return strs.map(function (str) {
+      if (force) str = str.toLowerCase();
       return _this2.capitalize(str);
     }).join('');
   },
-  kebabCase: function kebabCase(strs) {
+  kebabCase: function kebabCase() {
+    var _preProcessStringModu3 = this._preProcessStringModulesParams.apply(this, arguments),
+        strs = _preProcessStringModu3.strs,
+        force = _preProcessStringModu3.force;
+
+    if (force) strs = strs.map(function (str) {
+      return str.toLowerCase();
+    });
     return strs.join('-');
   },
   fillZero: function fillZero(num) {
@@ -738,6 +796,8 @@ module.exports = xdString;
 "use strict";
 
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 /**
  * url模块
  *
@@ -763,11 +823,15 @@ var xdUrl = {
     var queryArr = void 0;
     var queryObj = {};
 
-    if (!url) queryArr = [];else if (url.charAt(0) === '?') queryArr = url.slice(1).split('&');else queryArr = url.split('&');
+    if (!url) queryArr = [];else if (url.startsWith('?')) queryArr = url.slice(1).split('&');else queryArr = url.split('&');
 
-    queryArr.forEach(function (item, key) {
-      var arr = item.split('=');
-      queryObj[arr[0]] = xdType.isNum(xdType.toNum(arr[1])) ? xdType.toNum(arr[1]) : arr[1];
+    queryArr.forEach(function (item) {
+      var _item$split = item.split('='),
+          _item$split2 = _slicedToArray(_item$split, 2),
+          key = _item$split2[0],
+          val = _item$split2[1];
+
+      queryObj[key] = xdType.isNum(xdType.toNum(val)) ? xdType.toNum(val) : val;
     });
 
     return queryObj;
@@ -803,7 +867,6 @@ var xdUrl = __webpack_require__(8);
 
 var xd = _extends({}, xdArray, xdChain, xdDevice, xdFunction, xdMath, xdObject, xdString, xdType, xdUrl);
 
-Object.freeze(xd);
 module.exports = xd;
 
 /***/ })

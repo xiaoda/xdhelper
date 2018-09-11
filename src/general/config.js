@@ -5,17 +5,17 @@
  */
 
 const ENV = process.env.NODE_ENV
-const DEV = 'dev'
-const PROD = 'prod'
+const ENV_DEV = 'dev'
+const ENV_PROD = 'prod'
 
 const config = {
 
   isDev (): boolean {
-    return ENV === DEV
+    return ENV === ENV_DEV
   },
 
   isProd (): boolean {
-    return ENV === PROD
+    return ENV === ENV_PROD
   },
 
 }
