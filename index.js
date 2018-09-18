@@ -418,7 +418,7 @@ var xdObject = {
 
     return keys.length;
   },
-  mapEachObj: function mapEachObj(obj, callback) {
+  mapObj: function mapObj(obj, callback) {
     var keys = Object.keys(obj);
 
     return keys.map(function (key) {

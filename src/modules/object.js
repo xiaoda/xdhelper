@@ -38,7 +38,7 @@ const xdObject = {
     return keys.length
   },
 
-  mapEachObj (obj: object, callback: mixed): array {
+  mapObj (obj: object, callback: mixed): array {
     let keys = Object.keys(obj)
 
     return keys.map((key: string): mixed => callback(obj[key], key, obj))

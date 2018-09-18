@@ -79,7 +79,7 @@ or
 * isObjEqual
 * cloneObj
 * forEachObj
-* mapEachObj
+* mapObj
 
 ### [String 字符串模块](https://github.com/xiaoda/xdhelper/wiki/String-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%A8%A1%E5%9D%97)
 * isStrEmpty
