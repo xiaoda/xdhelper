@@ -496,9 +496,11 @@ module.exports = xdChain;
  * 
  */
 
+var xdType = __webpack_require__(0);
+
 var xdDevice = {
   getUserAgent: function getUserAgent() {
-    return window.navigator.userAgent;
+    return xdType.isDef(window) ? window.navigator.userAgent : '';
   },
   isMobile: function isMobile() {
     var userAgent = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.getUserAgent();
@@ -604,7 +606,7 @@ var xdType = __webpack_require__(0);
 var xdArr = __webpack_require__(1);
 
 var xdMath = {
-  sum: function sum() {
+  getSum: function getSum() {
     for (var _len = arguments.length, arr = Array(_len), _key = 0; _key < _len; _key++) {
       arr[_key] = arguments[_key];
     }
@@ -615,7 +617,7 @@ var xdMath = {
       return result + xdType.toNum(num);
     });
   },
-  product: function product() {
+  getProduct: function getProduct() {
     for (var _len2 = arguments.length, arr = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
       arr[_key2] = arguments[_key2];
     }
@@ -626,19 +628,19 @@ var xdMath = {
       return result * xdType.toNum(num);
     });
   },
-  mean: function mean() {
+  getMean: function getMean() {
     for (var _len3 = arguments.length, arr = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
       arr[_key3] = arguments[_key3];
     }
 
     if (xdType.isArr(arr[0])) arr = arr[0];
 
-    var sum = this.sum(arr);
+    var sum = this.getSum(arr);
     var count = arr.length;
 
     return sum / count;
   },
-  medium: function medium() {
+  getMedium: function getMedium() {
     for (var _len4 = arguments.length, arr = Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
       arr[_key4] = arguments[_key4];
     }
@@ -653,12 +655,19 @@ var xdMath = {
     } else {
       var mediumA = sortedArr[sortedArr.length / 2 - 1];
       var mediumB = sortedArr[sortedArr.length / 2];
-      result = this.mean(mediumA, mediumB);
+      result = this.getMean(mediumA, mediumB);
     }
 
     return result;
   },
-  map: function map(num, rangeA, rangeB) {
+  getRandom: function getRandom(range) {
+    var decimal = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+
+    var random = this.map(Math.random(), [0, 1], range);
+
+    return decimal === -1 ? random : random.toFixed(decimal);
+  },
+  mapRange: function mapRange(num, rangeA, rangeB) {
     num = xdType.toNum(num);
 
     var _rangeA$map = rangeA.map(xdType.toNum),
@@ -672,13 +681,6 @@ var xdMath = {
         endB = _rangeB$map2[1];
 
     return startB + (num - startA) / (endA - startA) * (endB - startB);
-  },
-  random: function random(range) {
-    var decimal = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-
-    var random = this.map(Math.random(), [0, 1], range);
-
-    return decimal === -1 ? random : random.toFixed(decimal);
   }
 };
 
@@ -817,11 +819,11 @@ var xdUrl = {
 
     return queryArr.length ? '?' + queryArr.join('&') : '';
   },
-  getQueryParam: function getQueryParam() {
-    var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window.location.search;
-
+  getQueryParam: function getQueryParam(url) {
     var queryArr = void 0;
     var queryObj = {};
+
+    if (!url && xdType.isDef(window)) url = window.location.search;
 
     if (!url) queryArr = [];else if (url.startsWith('?')) queryArr = url.slice(1).split('&');else queryArr = url.split('&');
 

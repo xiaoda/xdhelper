@@ -3,52 +3,52 @@ const xd = require('../../../')
 
 describe('xdMath', () => {
 
-  describe('#sum()', () => {
+  describe('#getSum()', () => {
     it('sum', () => {
       assert.equal(
-        xd.sum([1, 2, 3, 4]),
+        xd.getSum([1, 2, 3, 4]),
         10
       )
     })
   })
 
-  describe('#product()', () => {
+  describe('#getProduct()', () => {
     it('product', () => {
       assert.equal(
-        xd.product([1, 2, 3, 4]),
+        xd.getProduct([1, 2, 3, 4]),
         24
       )
     })
   })
 
-  describe('#mean()', () => {
+  describe('#getMean()', () => {
     it('mean', () => {
       assert.equal(
-        xd.mean([1, 2, 3, 4]),
+        xd.getMean([1, 2, 3, 4]),
         2.5
       )
     })
   })
 
-  describe('#medium()', () => {
+  describe('#getMedium()', () => {
     it('odd number', () => {
       assert.equal(
-        xd.medium([1, 2, 4]),
+        xd.getMedium([1, 2, 4]),
         2
       )
     })
     it('even number', () => {
       assert.equal(
-        xd.medium([1, 2, 4, 8]),
+        xd.getMedium([1, 2, 4, 8]),
         3
       )
     })
   })
 
-  describe('#map()', () => {
+  describe('#mapRange()', () => {
     it('number type', () => {
       assert.equal(
-        xd.map(5, [0, 10], [-100, -200]),
+        xd.mapRange(5, [0, 10], [-100, -200]),
         -150
       )
     })

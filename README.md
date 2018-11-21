@@ -65,12 +65,12 @@ or
 * safelyRun
 
 ### [Math 算术模块](https://github.com/xiaoda/xdhelper/wiki/Math-%E7%AE%97%E6%9C%AF%E6%A8%A1%E5%9D%97)
-* sum
-* product
-* mean
-* medium
-* map
-* random
+* getSum
+* getProduct
+* getMean
+* getMedium
+* getRandom
+* mapRange
 
 ### [Object 对象模块](https://github.com/xiaoda/xdhelper/wiki/Object-%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9D%97)
 * getObjLen

@@ -19,9 +19,11 @@ const xdUrl = {
     return queryArr.length ? `?${queryArr.join('&')}` : ''
   },
 
-  getQueryParam (url: string = window.location.search): object {
+  getQueryParam (url: string): object {
     let queryArr
     let queryObj = {}
+
+    if (!url && xdType.isDef(window)) url = window.location.search
 
     if (!url) queryArr = []
     else if (url.startsWith('?')) queryArr = url.slice(1).split('&')

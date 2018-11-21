@@ -4,10 +4,12 @@
  * @flow
  */
 
+const xdType = require('./type')
+
 const xdDevice = {
 
   getUserAgent (): string {
-    return window.navigator.userAgent
+    return xdType.isDef(window) ? window.navigator.userAgent : ''
   },
 
   isMobile (userAgent: string = this.getUserAgent()): boolean {
