@@ -786,6 +786,11 @@ var xdString = {
     }
 
     return result;
+  },
+  generateUniqId: function generateUniqId() {
+    var prefix = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+    return prefix + '_' + Math.random().toString(36).substr(2, 9);
   }
 };
 

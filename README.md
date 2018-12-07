@@ -88,6 +88,7 @@ or
 * capitalCamelCase
 * kebabCase
 * fillZero
+* generateUniqId
 
 ### [Type 类型模块](https://github.com/xiaoda/xdhelper/wiki/Type-%E7%B1%BB%E5%9E%8B%E6%A8%A1%E5%9D%97)
 * getType
