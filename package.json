@@ -1,6 +1,6 @@
 {
   "name": "xdhelper",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "js helper",
   "engines": {
     "node": ">=8"
