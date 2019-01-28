@@ -330,27 +330,29 @@ var xdArray = {
   sortArr: function sortArr(arr) {
     var order = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'asc';
 
+    var originalArr = this.cloneArr(arr);
     var targetArr = void 0;
-    var isItemsAllNum = arr.every(function (item) {
+    var isItemsAllNum = originalArr.every(function (item) {
       return xdType.isNum(item);
     });
 
-    if (isItemsAllNum) targetArr = arr.sort(function (a, b) {
+    if (isItemsAllNum) targetArr = originalArr.sort(function (a, b) {
       return a - b;
-    });else targetArr = arr.sort();
+    });else targetArr = originalArr.sort();
 
-    if (order === 'desc') targetArr = targetArr.reverse();
+    if (order === 'desc') targetArr.reverse();
 
     return targetArr;
   },
   sortArrBy: function sortArrBy(arr, field) {
     var order = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'asc';
 
-    var targetArr = arr.sort(function (itemA, itemB) {
+    var originalArr = this.cloneArr(arr);
+    var targetArr = originalArr.sort(function (itemA, itemB) {
       if (itemA[field] > itemB[field]) return 1;else if (itemA[field] < itemB[field]) return -1;else return 0;
     });
 
-    if (order === 'desc') targetArr = targetArr.reverse();
+    if (order === 'desc') targetArr.reverse();
 
     return targetArr;
   },

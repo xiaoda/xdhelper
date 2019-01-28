@@ -16,6 +16,10 @@ let xdFunction = {
     }
 
     return result
+  },
+
+  sleep (ms: number): mixed {
+    return new Promise(resolve => setTimeout(resolve, ms))
   }
 
 }

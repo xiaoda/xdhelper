@@ -75,13 +75,13 @@ describe('xdArray', () => {
   describe('#removeArrItem()', () => {
     it('remove item', () => {
       assert.equal(
-        xd.isArrEqual(xd.removeArrItem([1, 2], 2), [1]),
+        xd.isArrEqual(xd.removeArrItem([1, 2, 3], [1, 3]), [2]),
         true
       )
     })
     it('not remove item', () => {
       assert.equal(
-        xd.isArrEqual(xd.removeArrItem([1, 2], 3), [1, 2]),
+        xd.isArrEqual(xd.removeArrItem([1, 2, 3], 4), [1, 2, 3]),
         true
       )
     })

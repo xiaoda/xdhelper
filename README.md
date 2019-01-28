@@ -63,6 +63,7 @@ or
 
 ### [Function 函数模块](https://github.com/xiaoda/xdhelper/wiki/Function-%E5%87%BD%E6%95%B0%E6%A8%A1%E5%9D%97)
 * safelyRun
+* sleep
 
 ### [Math 算术模块](https://github.com/xiaoda/xdhelper/wiki/Math-%E7%AE%97%E6%9C%AF%E6%A8%A1%E5%9D%97)
 * getSum

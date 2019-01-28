@@ -162,25 +162,27 @@ const xdArray = {
   },
 
   sortArr (arr: array, order: string = 'asc'): array {
+    let originalArr = this.cloneArr(arr)
     let targetArr
-    let isItemsAllNum = arr.every((item: mixed): boolean => xdType.isNum(item))
+    let isItemsAllNum = originalArr.every((item: mixed): boolean => xdType.isNum(item))
 
-    if (isItemsAllNum) targetArr = arr.sort((a: number, b: number): boolean => a - b)
-    else targetArr = arr.sort()
+    if (isItemsAllNum) targetArr = originalArr.sort((a: number, b: number): boolean => a - b)
+    else targetArr = originalArr.sort()
 
-    if (order === 'desc') targetArr = targetArr.reverse()
+    if (order === 'desc') targetArr.reverse()
 
     return targetArr
   },
 
   sortArrBy (arr: array, field: string, order: string = 'asc'): array {
-    let targetArr = arr.sort((itemA: object, itemB: object): number => {
+    let originalArr = this.cloneArr(arr)
+    let targetArr = originalArr.sort((itemA: object, itemB: object): number => {
       if (itemA[field] > itemB[field]) return 1
       else if (itemA[field] < itemB[field]) return -1
       else return 0
     })
 
-    if (order === 'desc') targetArr = targetArr.reverse()
+    if (order === 'desc') targetArr.reverse()
 
     return targetArr
   },
