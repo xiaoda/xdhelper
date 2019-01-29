@@ -203,6 +203,12 @@ const xdArray = {
 
   getArrSample (arr: array, num: number = 1): mixed {
     return this.getArrFirstItem(this.shuffleArr(arr), num)
+  },
+
+  asyncForEach: async (arr: array, callback: mixed): promise => {
+    for (let index = 0; index < arr.length; index++) {
+      await callback(arr[index], index, arr)
+    }
   }
 
 }

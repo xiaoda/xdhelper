@@ -46,6 +46,7 @@ or
 * sortArrBy
 * shuffleArr
 * getArrSample
+* asyncForEach
 
 ## [Chain 链式操作模块](https://github.com/xiaoda/xdhelper/wiki/Chain-%E9%93%BE%E5%BC%8F%E6%93%8D%E4%BD%9C%E6%A8%A1%E5%9D%97)
 * chain

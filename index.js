@@ -158,6 +158,8 @@ module.exports = xdType;
 "use strict";
 
 
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
 /**
  * 数组模块
  *
@@ -375,7 +377,45 @@ var xdArray = {
     var num = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
     return this.getArrFirstItem(this.shuffleArr(arr), num);
-  }
+  },
+
+
+  asyncForEach: function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(arr, callback) {
+      var index;
+      return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              index = 0;
+
+            case 1:
+              if (!(index < arr.length)) {
+                _context.next = 7;
+                break;
+              }
+
+              _context.next = 4;
+              return callback(arr[index], index, arr);
+
+            case 4:
+              index++;
+              _context.next = 1;
+              break;
+
+            case 7:
+            case 'end':
+              return _context.stop();
+          }
+        }
+      }, _callee, undefined);
+    }));
+
+    return function asyncForEach(_x10, _x11) {
+      return _ref.apply(this, arguments);
+    };
+  }()
+
 };
 
 module.exports = xdArray;
