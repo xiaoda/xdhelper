@@ -1,3 +1,4 @@
+require('babel-polyfill')
 require('./modules/array')
 require('./modules/device')
 require('./modules/function')

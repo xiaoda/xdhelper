@@ -31,7 +31,7 @@ const xdUrl = {
 
     queryArr.forEach((item: string) => {
       let [key, val] = item.split('=')
-      queryObj[key] = xdType.isNum(xdType.toNum(val)) ? xdType.toNum(val) : val
+      queryObj[decodeURIComponent(key)] = xdType.isNum(xdType.toNum(val)) ? xdType.toNum(val) : decodeURIComponent(val)
     })
 
     return queryObj

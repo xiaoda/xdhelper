@@ -14,10 +14,6 @@ const xdType = {
     else return Object.prototype.toString.call(obj).toLowerCase().match(/\[\s*object\s*([^\]]*)\s*\]/)[1]
   },
 
-  isBool (obj: mixed): boolean {
-    return this.getType(obj) === 'boolean'
-  },
-
   isStr (obj: mixed): boolean {
     return this.getType(obj) === 'string'
   },
@@ -26,20 +22,12 @@ const xdType = {
     return this.getType(obj) === 'number'
   },
 
-  isInfinity (obj: mixed): boolean {
-    return this.getType(obj) === 'infinity'
-  },
-
   isReg (obj: mixed): boolean {
     return this.getType(obj) === 'regexp'
   },
 
   isDate (obj: mixed): boolean {
     return this.getType(obj) === 'date'
-  },
-
-  isNull (obj: mixed): boolean {
-    return this.getType(obj) === 'null'
   },
 
   isObj (obj: mixed): boolean {
@@ -54,12 +42,24 @@ const xdType = {
     return this.getType(obj) === 'function'
   },
 
+  isBool (obj: mixed): boolean {
+    return obj === true || obj === false
+  },
+
+  isInfinity (obj: mixed): boolean {
+    return obj === Infinity || obj === -Infinity
+  },
+
+  isNull (obj: mixed): boolean {
+    return obj === null
+  },
+
   isDef (obj: mixed): boolean {
-    return this.getType(obj) !== 'undefined'
+    return obj !== undefined
   },
 
   isUndef (obj: mixed): boolean {
-    return this.getType(obj) === 'undefined'
+    return obj === undefined
   },
 
   toBool (obj: mixed): boolean {

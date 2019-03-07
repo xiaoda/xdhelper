@@ -97,26 +97,17 @@ var xdType = {
     if (typeof obj === 'number' && !Number.isFinite(obj)) return 'infinity';
     if (obj === null) return String(obj);else if ((typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) !== 'object') return typeof obj === 'undefined' ? 'undefined' : _typeof(obj);else return Object.prototype.toString.call(obj).toLowerCase().match(/\[\s*object\s*([^\]]*)\s*\]/)[1];
   },
-  isBool: function isBool(obj) {
-    return this.getType(obj) === 'boolean';
-  },
   isStr: function isStr(obj) {
     return this.getType(obj) === 'string';
   },
   isNum: function isNum(obj) {
     return this.getType(obj) === 'number';
   },
-  isInfinity: function isInfinity(obj) {
-    return this.getType(obj) === 'infinity';
-  },
   isReg: function isReg(obj) {
     return this.getType(obj) === 'regexp';
   },
   isDate: function isDate(obj) {
     return this.getType(obj) === 'date';
-  },
-  isNull: function isNull(obj) {
-    return this.getType(obj) === 'null';
   },
   isObj: function isObj(obj) {
     return this.getType(obj) === 'object';
@@ -127,11 +118,20 @@ var xdType = {
   isFunc: function isFunc(obj) {
     return this.getType(obj) === 'function';
   },
+  isBool: function isBool(obj) {
+    return obj === true || obj === false;
+  },
+  isInfinity: function isInfinity(obj) {
+    return obj === Infinity || obj === -Infinity;
+  },
+  isNull: function isNull(obj) {
+    return obj === null;
+  },
   isDef: function isDef(obj) {
-    return this.getType(obj) !== 'undefined';
+    return obj !== undefined;
   },
   isUndef: function isUndef(obj) {
-    return this.getType(obj) === 'undefined';
+    return obj === undefined;
   },
   toBool: function toBool(obj) {
     return !!obj;
@@ -885,7 +885,7 @@ var xdUrl = {
           key = _item$split2[0],
           val = _item$split2[1];
 
-      queryObj[key] = xdType.isNum(xdType.toNum(val)) ? xdType.toNum(val) : val;
+      queryObj[decodeURIComponent(key)] = xdType.isNum(xdType.toNum(val)) ? xdType.toNum(val) : decodeURIComponent(val);
     });
 
     return queryObj;
